@@ -1,0 +1,3017 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book java patterns -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>请求的链式处理——职责链模式（三） | java patterns</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="flycloud &lt;damonflycloud@126.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-theme-comscore/test.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./请求的链式处理——职责链模式（四）.html" />
+    
+    
+    <link rel="prev" href="./请求的链式处理——职责链模式（二）.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="4.1.3"
+        data-chapter-title="请求的链式处理——职责链模式（三）"
+        data-filepath="请求的链式处理——职责链模式（三）.md"
+        data-basepath="."
+        data-revision="Sat Apr 08 2017 12:33:04 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="基础知识.html">
+            
+                
+                    <a href="./基础知识.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        基础知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="设计模式概述.html">
+            
+                
+                    <a href="./设计模式概述.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        设计模式概述
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="从招式与内功谈起——设计模式概述（一）.html">
+            
+                
+                    <a href="./从招式与内功谈起——设计模式概述（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.1.</b>
+                        
+                        从招式与内功谈起——设计模式概述（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="从招式与内功谈起——设计模式概述（二）.html">
+            
+                
+                    <a href="./从招式与内功谈起——设计模式概述（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.2.</b>
+                        
+                        从招式与内功谈起——设计模式概述（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="从招式与内功谈起——设计模式概述（三）.html">
+            
+                
+                    <a href="./从招式与内功谈起——设计模式概述（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.3.</b>
+                        
+                        从招式与内功谈起——设计模式概述（三）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="面向对象设计原则.html">
+            
+                
+                    <a href="./面向对象设计原则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        面向对象设计原则
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="面向对象设计原则之单一职责原则.html">
+            
+                
+                    <a href="./面向对象设计原则之单一职责原则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.</b>
+                        
+                        面向对象设计原则之单一职责原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="面向对象设计原则之开闭原则.html">
+            
+                
+                    <a href="./面向对象设计原则之开闭原则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.</b>
+                        
+                        面向对象设计原则之开闭原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="面向对象设计原则之里氏代换原则.html">
+            
+                
+                    <a href="./面向对象设计原则之里氏代换原则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.</b>
+                        
+                        面向对象设计原则之里氏代换原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="面向对象设计原则之依赖倒转原则.html">
+            
+                
+                    <a href="./面向对象设计原则之依赖倒转原则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.</b>
+                        
+                        面向对象设计原则之依赖倒转原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="面向对象设计原则之接口隔离原则.html">
+            
+                
+                    <a href="./面向对象设计原则之接口隔离原则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.5.</b>
+                        
+                        面向对象设计原则之接口隔离原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="面向对象设计原则之合成复用原则.html">
+            
+                
+                    <a href="./面向对象设计原则之合成复用原则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.6.</b>
+                        
+                        面向对象设计原则之合成复用原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="面向对象设计原则之迪米特法则.html">
+            
+                
+                    <a href="./面向对象设计原则之迪米特法则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.7.</b>
+                        
+                        面向对象设计原则之迪米特法则
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="六个创建型模式.html">
+            
+                
+                    <a href="./六个创建型模式.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        六个创建型模式
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="简单工厂模式-Simple Factory Pattern.html">
+            
+                
+                    <a href="./简单工厂模式-Simple Factory Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        简单工厂模式-Simple Factory Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="工厂三兄弟之简单工厂模式（一）.html">
+            
+                
+                    <a href="./工厂三兄弟之简单工厂模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        工厂三兄弟之简单工厂模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="工厂三兄弟之简单工厂模式（二）.html">
+            
+                
+                    <a href="./工厂三兄弟之简单工厂模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        工厂三兄弟之简单工厂模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="工厂三兄弟之简单工厂模式（三）.html">
+            
+                
+                    <a href="./工厂三兄弟之简单工厂模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.3.</b>
+                        
+                        工厂三兄弟之简单工厂模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="工厂三兄弟之简单工厂模式（四）.html">
+            
+                
+                    <a href="./工厂三兄弟之简单工厂模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.4.</b>
+                        
+                        工厂三兄弟之简单工厂模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="工厂方法模式-Factory Method Pattern.html">
+            
+                
+                    <a href="./工厂方法模式-Factory Method Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        工厂方法模式-Factory Method Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="工厂三兄弟之工厂方法模式（一）.html">
+            
+                
+                    <a href="./工厂三兄弟之工厂方法模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        工厂三兄弟之工厂方法模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="工厂三兄弟之工厂方法模式（二）.html">
+            
+                
+                    <a href="./工厂三兄弟之工厂方法模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.</b>
+                        
+                        工厂三兄弟之工厂方法模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="工厂三兄弟之工厂方法模式（三）.html">
+            
+                
+                    <a href="./工厂三兄弟之工厂方法模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.3.</b>
+                        
+                        工厂三兄弟之工厂方法模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="工厂三兄弟之工厂方法模式（四）.html">
+            
+                
+                    <a href="./工厂三兄弟之工厂方法模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.4.</b>
+                        
+                        工厂三兄弟之工厂方法模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="抽象工厂模式-Abstract  Factory Pattern.html">
+            
+                
+                    <a href="./抽象工厂模式-Abstract  Factory Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        抽象工厂模式-Abstract  Factory Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="工厂三兄弟之抽象工厂模式（一）.html">
+            
+                
+                    <a href="./工厂三兄弟之抽象工厂模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.1.</b>
+                        
+                        工厂三兄弟之抽象工厂模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="工厂三兄弟之抽象工厂模式（二）.html">
+            
+                
+                    <a href="./工厂三兄弟之抽象工厂模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.</b>
+                        
+                        工厂三兄弟之抽象工厂模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="工厂三兄弟之抽象工厂模式（三）.html">
+            
+                
+                    <a href="./工厂三兄弟之抽象工厂模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.</b>
+                        
+                        工厂三兄弟之抽象工厂模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="工厂三兄弟之抽象工厂模式（四）.html">
+            
+                
+                    <a href="./工厂三兄弟之抽象工厂模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.4.</b>
+                        
+                        工厂三兄弟之抽象工厂模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="工厂三兄弟之抽象工厂模式（五）.html">
+            
+                
+                    <a href="./工厂三兄弟之抽象工厂模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.5.</b>
+                        
+                        工厂三兄弟之抽象工厂模式（五）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="单例模式-Singleton Pattern.html">
+            
+                
+                    <a href="./单例模式-Singleton Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        单例模式-Singleton Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="确保对象的唯一性——单例模式 （一）.html">
+            
+                
+                    <a href="./确保对象的唯一性——单例模式 （一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.1.</b>
+                        
+                        确保对象的唯一性——单例模式 （一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="确保对象的唯一性——单例模式 （二）.html">
+            
+                
+                    <a href="./确保对象的唯一性——单例模式 （二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.2.</b>
+                        
+                        确保对象的唯一性——单例模式 （二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="确保对象的唯一性——单例模式 （三）.html">
+            
+                
+                    <a href="./确保对象的唯一性——单例模式 （三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.3.</b>
+                        
+                        确保对象的唯一性——单例模式 （三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="确保对象的唯一性——单例模式 （四）.html">
+            
+                
+                    <a href="./确保对象的唯一性——单例模式 （四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.4.</b>
+                        
+                        确保对象的唯一性——单例模式 （四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="确保对象的唯一性——单例模式 （五）.html">
+            
+                
+                    <a href="./确保对象的唯一性——单例模式 （五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.5.</b>
+                        
+                        确保对象的唯一性——单例模式 （五）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="原型模式-Prototype Pattern.html">
+            
+                
+                    <a href="./原型模式-Prototype Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        原型模式-Prototype Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="对象的克隆——原型模式（一）.html">
+            
+                
+                    <a href="./对象的克隆——原型模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.1.</b>
+                        
+                        对象的克隆——原型模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="对象的克隆——原型模式（二）.html">
+            
+                
+                    <a href="./对象的克隆——原型模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.2.</b>
+                        
+                        对象的克隆——原型模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="对象的克隆——原型模式（三）.html">
+            
+                
+                    <a href="./对象的克隆——原型模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.3.</b>
+                        
+                        对象的克隆——原型模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="对象的克隆——原型模式（四）.html">
+            
+                
+                    <a href="./对象的克隆——原型模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.4.</b>
+                        
+                        对象的克隆——原型模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="建造者模式-Builder Pattern.html">
+            
+                
+                    <a href="./建造者模式-Builder Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        建造者模式-Builder Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="复杂对象的组装与创建——建造者模式（一）.html">
+            
+                
+                    <a href="./复杂对象的组装与创建——建造者模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.1.</b>
+                        
+                        复杂对象的组装与创建——建造者模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="复杂对象的组装与创建——建造者模式（二）.html">
+            
+                
+                    <a href="./复杂对象的组装与创建——建造者模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.2.</b>
+                        
+                        复杂对象的组装与创建——建造者模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.3" data-path="复杂对象的组装与创建——建造者模式（三）.html">
+            
+                
+                    <a href="./复杂对象的组装与创建——建造者模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.3.</b>
+                        
+                        复杂对象的组装与创建——建造者模式（三）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="七个结构型模式.html">
+            
+                
+                    <a href="./七个结构型模式.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        七个结构型模式
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="适配器模式-Adapter Pattern.html">
+            
+                
+                    <a href="./适配器模式-Adapter Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        适配器模式-Adapter Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="不兼容结构的协调——适配器模式（一）.html">
+            
+                
+                    <a href="./不兼容结构的协调——适配器模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.1.</b>
+                        
+                        不兼容结构的协调——适配器模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="不兼容结构的协调——适配器模式（二）.html">
+            
+                
+                    <a href="./不兼容结构的协调——适配器模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.2.</b>
+                        
+                        不兼容结构的协调——适配器模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="不兼容结构的协调——适配器模式（三）.html">
+            
+                
+                    <a href="./不兼容结构的协调——适配器模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.3.</b>
+                        
+                        不兼容结构的协调——适配器模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="不兼容结构的协调——适配器模式（四）.html">
+            
+                
+                    <a href="./不兼容结构的协调——适配器模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.4.</b>
+                        
+                        不兼容结构的协调——适配器模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="桥接模式-Bridge Pattern.html">
+            
+                
+                    <a href="./桥接模式-Bridge Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        桥接模式-Bridge Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="处理多维度变化——桥接模式（一）.html">
+            
+                
+                    <a href="./处理多维度变化——桥接模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.1.</b>
+                        
+                        处理多维度变化——桥接模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="处理多维度变化——桥接模式（二）.html">
+            
+                
+                    <a href="./处理多维度变化——桥接模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.2.</b>
+                        
+                        处理多维度变化——桥接模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="处理多维度变化——桥接模式（三）.html">
+            
+                
+                    <a href="./处理多维度变化——桥接模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.3.</b>
+                        
+                        处理多维度变化——桥接模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="处理多维度变化——桥接模式（四）.html">
+            
+                
+                    <a href="./处理多维度变化——桥接模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.4.</b>
+                        
+                        处理多维度变化——桥接模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="组合模式-Composite Pattern.html">
+            
+                
+                    <a href="./组合模式-Composite Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        组合模式-Composite Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="树形结构的处理——组合模式（一）.html">
+            
+                
+                    <a href="./树形结构的处理——组合模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                        树形结构的处理——组合模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="树形结构的处理——组合模式（二）.html">
+            
+                
+                    <a href="./树形结构的处理——组合模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                        树形结构的处理——组合模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="树形结构的处理——组合模式（三）.html">
+            
+                
+                    <a href="./树形结构的处理——组合模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.3.</b>
+                        
+                        树形结构的处理——组合模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="树形结构的处理——组合模式（四）.html">
+            
+                
+                    <a href="./树形结构的处理——组合模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.4.</b>
+                        
+                        树形结构的处理——组合模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="树形结构的处理——组合模式（五）.html">
+            
+                
+                    <a href="./树形结构的处理——组合模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.5.</b>
+                        
+                        树形结构的处理——组合模式（五）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="装饰模式-Decorator Pattern.html">
+            
+                
+                    <a href="./装饰模式-Decorator Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        装饰模式-Decorator Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="扩展系统功能——装饰模式（一）.html">
+            
+                
+                    <a href="./扩展系统功能——装饰模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.1.</b>
+                        
+                        扩展系统功能——装饰模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="扩展系统功能——装饰模式（二）.html">
+            
+                
+                    <a href="./扩展系统功能——装饰模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.2.</b>
+                        
+                        扩展系统功能——装饰模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="扩展系统功能——装饰模式（三）.html">
+            
+                
+                    <a href="./扩展系统功能——装饰模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.3.</b>
+                        
+                        扩展系统功能——装饰模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.4" data-path="扩展系统功能——装饰模式（四）.html">
+            
+                
+                    <a href="./扩展系统功能——装饰模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.4.</b>
+                        
+                        扩展系统功能——装饰模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="外观模式-Facade Pattern.html">
+            
+                
+                    <a href="./外观模式-Facade Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        外观模式-Facade Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="深入浅出外观模式（一）.html">
+            
+                
+                    <a href="./深入浅出外观模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.1.</b>
+                        
+                        深入浅出外观模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="深入浅出外观模式（二）.html">
+            
+                
+                    <a href="./深入浅出外观模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.2.</b>
+                        
+                        深入浅出外观模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="深入浅出外观模式（三）.html">
+            
+                
+                    <a href="./深入浅出外观模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.3.</b>
+                        
+                        深入浅出外观模式（三）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="享元模式-Flyweight Pattern.html">
+            
+                
+                    <a href="./享元模式-Flyweight Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        享元模式-Flyweight Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.6.1" data-path="实现对象的复用——享元模式（一）.html">
+            
+                
+                    <a href="./实现对象的复用——享元模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.1.</b>
+                        
+                        实现对象的复用——享元模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.2" data-path="实现对象的复用——享元模式（二）.html">
+            
+                
+                    <a href="./实现对象的复用——享元模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.2.</b>
+                        
+                        实现对象的复用——享元模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.3" data-path="实现对象的复用——享元模式（三）.html">
+            
+                
+                    <a href="./实现对象的复用——享元模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.3.</b>
+                        
+                        实现对象的复用——享元模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.4" data-path="实现对象的复用——享元模式（四）.html">
+            
+                
+                    <a href="./实现对象的复用——享元模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.4.</b>
+                        
+                        实现对象的复用——享元模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.5" data-path="实现对象的复用——享元模式（五）.html">
+            
+                
+                    <a href="./实现对象的复用——享元模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.5.</b>
+                        
+                        实现对象的复用——享元模式（五）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="代理模式-Proxy Pattern.html">
+            
+                
+                    <a href="./代理模式-Proxy Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        代理模式-Proxy Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="设计模式之代理模式（一）.html">
+            
+                
+                    <a href="./设计模式之代理模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.1.</b>
+                        
+                        设计模式之代理模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="设计模式之代理模式（二）.html">
+            
+                
+                    <a href="./设计模式之代理模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.2.</b>
+                        
+                        设计模式之代理模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.3" data-path="设计模式之代理模式（三）.html">
+            
+                
+                    <a href="./设计模式之代理模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.3.</b>
+                        
+                        设计模式之代理模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.4" data-path="设计模式之代理模式（四）.html">
+            
+                
+                    <a href="./设计模式之代理模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.4.</b>
+                        
+                        设计模式之代理模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="十一个行为型模式.html">
+            
+                
+                    <a href="./十一个行为型模式.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        十一个行为型模式
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="职责链模式-Chain of Responsibility Pattern.html">
+            
+                
+                    <a href="./职责链模式-Chain of Responsibility Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        职责链模式-Chain of Responsibility Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="请求的链式处理——职责链模式（一）.html">
+            
+                
+                    <a href="./请求的链式处理——职责链模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.1.</b>
+                        
+                        请求的链式处理——职责链模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="请求的链式处理——职责链模式（二）.html">
+            
+                
+                    <a href="./请求的链式处理——职责链模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.2.</b>
+                        
+                        请求的链式处理——职责链模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.3" data-path="请求的链式处理——职责链模式（三）.html">
+            
+                
+                    <a href="./请求的链式处理——职责链模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.3.</b>
+                        
+                        请求的链式处理——职责链模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="请求的链式处理——职责链模式（四）.html">
+            
+                
+                    <a href="./请求的链式处理——职责链模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.4.</b>
+                        
+                        请求的链式处理——职责链模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="命令模式-Command Pattern.html">
+            
+                
+                    <a href="./命令模式-Command Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        命令模式-Command Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="请求发送者与接收者解耦——命令模式（一）.html">
+            
+                
+                    <a href="./请求发送者与接收者解耦——命令模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                        请求发送者与接收者解耦——命令模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="请求发送者与接收者解耦——命令模式（二）.html">
+            
+                
+                    <a href="./请求发送者与接收者解耦——命令模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.2.</b>
+                        
+                        请求发送者与接收者解耦——命令模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="请求发送者与接收者解耦——命令模式（三）.html">
+            
+                
+                    <a href="./请求发送者与接收者解耦——命令模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.</b>
+                        
+                        请求发送者与接收者解耦——命令模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="请求发送者与接收者解耦——命令模式（四）.html">
+            
+                
+                    <a href="./请求发送者与接收者解耦——命令模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.4.</b>
+                        
+                        请求发送者与接收者解耦——命令模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.5" data-path="请求发送者与接收者解耦——命令模式（五）.html">
+            
+                
+                    <a href="./请求发送者与接收者解耦——命令模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.5.</b>
+                        
+                        请求发送者与接收者解耦——命令模式（五）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.6" data-path="请求发送者与接收者解耦——命令模式（六）.html">
+            
+                
+                    <a href="./请求发送者与接收者解耦——命令模式（六）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.6.</b>
+                        
+                        请求发送者与接收者解耦——命令模式（六）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="解释器模式-Interpreter Pattern.html">
+            
+                
+                    <a href="./解释器模式-Interpreter Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        解释器模式-Interpreter Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="自定义语言的实现——解释器模式（一）.html">
+            
+                
+                    <a href="./自定义语言的实现——解释器模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.1.</b>
+                        
+                        自定义语言的实现——解释器模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="自定义语言的实现——解释器模式（二）.html">
+            
+                
+                    <a href="./自定义语言的实现——解释器模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.2.</b>
+                        
+                        自定义语言的实现——解释器模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="自定义语言的实现——解释器模式（三）.html">
+            
+                
+                    <a href="./自定义语言的实现——解释器模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.3.</b>
+                        
+                        自定义语言的实现——解释器模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="自定义语言的实现——解释器模式（四）.html">
+            
+                
+                    <a href="./自定义语言的实现——解释器模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.4.</b>
+                        
+                        自定义语言的实现——解释器模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="自定义语言的实现——解释器模式（五）.html">
+            
+                
+                    <a href="./自定义语言的实现——解释器模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.5.</b>
+                        
+                        自定义语言的实现——解释器模式（五）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.6" data-path="自定义语言的实现——解释器模式（六）.html">
+            
+                
+                    <a href="./自定义语言的实现——解释器模式（六）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.6.</b>
+                        
+                        自定义语言的实现——解释器模式（六）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="迭代器模式-Iterator Pattern.html">
+            
+                
+                    <a href="./迭代器模式-Iterator Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        迭代器模式-Iterator Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="遍历聚合对象中的元素——迭代器模式（一）.html">
+            
+                
+                    <a href="./遍历聚合对象中的元素——迭代器模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.1.</b>
+                        
+                        遍历聚合对象中的元素——迭代器模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" data-path="遍历聚合对象中的元素——迭代器模式（二）.html">
+            
+                
+                    <a href="./遍历聚合对象中的元素——迭代器模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.2.</b>
+                        
+                        遍历聚合对象中的元素——迭代器模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.3" data-path="遍历聚合对象中的元素——迭代器模式（三）.html">
+            
+                
+                    <a href="./遍历聚合对象中的元素——迭代器模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.3.</b>
+                        
+                        遍历聚合对象中的元素——迭代器模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.4" data-path="遍历聚合对象中的元素——迭代器模式（四）.html">
+            
+                
+                    <a href="./遍历聚合对象中的元素——迭代器模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.4.</b>
+                        
+                        遍历聚合对象中的元素——迭代器模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.5" data-path="遍历聚合对象中的元素——迭代器模式（五）.html">
+            
+                
+                    <a href="./遍历聚合对象中的元素——迭代器模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.5.</b>
+                        
+                        遍历聚合对象中的元素——迭代器模式（五）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.6" data-path="遍历聚合对象中的元素——迭代器模式（六）.html">
+            
+                
+                    <a href="./遍历聚合对象中的元素——迭代器模式（六）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.6.</b>
+                        
+                        遍历聚合对象中的元素——迭代器模式（六）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="中介者模式-Mediator Pattern.html">
+            
+                
+                    <a href="./中介者模式-Mediator Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        中介者模式-Mediator Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="协调多个对象之间的交互——中介者模式（一）.html">
+            
+                
+                    <a href="./协调多个对象之间的交互——中介者模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.1.</b>
+                        
+                        协调多个对象之间的交互——中介者模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="协调多个对象之间的交互——中介者模式（二）.html">
+            
+                
+                    <a href="./协调多个对象之间的交互——中介者模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.2.</b>
+                        
+                        协调多个对象之间的交互——中介者模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="协调多个对象之间的交互——中介者模式（三）.html">
+            
+                
+                    <a href="./协调多个对象之间的交互——中介者模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.3.</b>
+                        
+                        协调多个对象之间的交互——中介者模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.4" data-path="协调多个对象之间的交互——中介者模式（四）.html">
+            
+                
+                    <a href="./协调多个对象之间的交互——中介者模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.4.</b>
+                        
+                        协调多个对象之间的交互——中介者模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.5" data-path="协调多个对象之间的交互——中介者模式（五）.html">
+            
+                
+                    <a href="./协调多个对象之间的交互——中介者模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.5.</b>
+                        
+                        协调多个对象之间的交互——中介者模式（五）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="备忘录模式-Memento Pattern.html">
+            
+                
+                    <a href="./备忘录模式-Memento Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        备忘录模式-Memento Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1" data-path="撤销功能的实现——备忘录模式（一）.html">
+            
+                
+                    <a href="./撤销功能的实现——备忘录模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.1.</b>
+                        
+                        撤销功能的实现——备忘录模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.2" data-path="撤销功能的实现——备忘录模式（二）.html">
+            
+                
+                    <a href="./撤销功能的实现——备忘录模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.2.</b>
+                        
+                        撤销功能的实现——备忘录模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.3" data-path="撤销功能的实现——备忘录模式（三）.html">
+            
+                
+                    <a href="./撤销功能的实现——备忘录模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.3.</b>
+                        
+                        撤销功能的实现——备忘录模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.4" data-path="撤销功能的实现——备忘录模式（四）.html">
+            
+                
+                    <a href="./撤销功能的实现——备忘录模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.4.</b>
+                        
+                        撤销功能的实现——备忘录模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.5" data-path="撤销功能的实现——备忘录模式（五）.html">
+            
+                
+                    <a href="./撤销功能的实现——备忘录模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.5.</b>
+                        
+                        撤销功能的实现——备忘录模式（五）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="观察者模式-Observer Pattern.html">
+            
+                
+                    <a href="./观察者模式-Observer Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        观察者模式-Observer Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.7.1" data-path="对象间的联动——观察者模式（一）.html">
+            
+                
+                    <a href="./对象间的联动——观察者模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.1.</b>
+                        
+                        对象间的联动——观察者模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.2" data-path="对象间的联动——观察者模式（二）.html">
+            
+                
+                    <a href="./对象间的联动——观察者模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.2.</b>
+                        
+                        对象间的联动——观察者模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.3" data-path="对象间的联动——观察者模式（三）.html">
+            
+                
+                    <a href="./对象间的联动——观察者模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.3.</b>
+                        
+                        对象间的联动——观察者模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.4" data-path="对象间的联动——观察者模式（四）.html">
+            
+                
+                    <a href="./对象间的联动——观察者模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.4.</b>
+                        
+                        对象间的联动——观察者模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.5" data-path="对象间的联动——观察者模式（五）.html">
+            
+                
+                    <a href="./对象间的联动——观察者模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.5.</b>
+                        
+                        对象间的联动——观察者模式（五）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.6" data-path="对象间的联动——观察者模式（六）.html">
+            
+                
+                    <a href="./对象间的联动——观察者模式（六）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.6.</b>
+                        
+                        对象间的联动——观察者模式（六）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="状态模式-State Pattern.html">
+            
+                
+                    <a href="./状态模式-State Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        状态模式-State Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.8.1" data-path="处理对象的多种状态及其相互转换——状态模式（一）.html">
+            
+                
+                    <a href="./处理对象的多种状态及其相互转换——状态模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.1.</b>
+                        
+                        处理对象的多种状态及其相互转换——状态模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.2" data-path="处理对象的多种状态及其相互转换——状态模式（二）.html">
+            
+                
+                    <a href="./处理对象的多种状态及其相互转换——状态模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.2.</b>
+                        
+                        处理对象的多种状态及其相互转换——状态模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.3" data-path="处理对象的多种状态及其相互转换——状态模式（三）.html">
+            
+                
+                    <a href="./处理对象的多种状态及其相互转换——状态模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.3.</b>
+                        
+                        处理对象的多种状态及其相互转换——状态模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.4" data-path="处理对象的多种状态及其相互转换——状态模式（四）.html">
+            
+                
+                    <a href="./处理对象的多种状态及其相互转换——状态模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.4.</b>
+                        
+                        处理对象的多种状态及其相互转换——状态模式（四）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.5" data-path="处理对象的多种状态及其相互转换——状态模式（五）.html">
+            
+                
+                    <a href="./处理对象的多种状态及其相互转换——状态模式（五）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.5.</b>
+                        
+                        处理对象的多种状态及其相互转换——状态模式（五）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.6" data-path="处理对象的多种状态及其相互转换——状态模式（六）.html">
+            
+                
+                    <a href="./处理对象的多种状态及其相互转换——状态模式（六）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.6.</b>
+                        
+                        处理对象的多种状态及其相互转换——状态模式（六）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="策略模式-Strategy Pattern.html">
+            
+                
+                    <a href="./策略模式-Strategy Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        策略模式-Strategy Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.9.1" data-path="算法的封装与切换——策略模式（一）.html">
+            
+                
+                    <a href="./算法的封装与切换——策略模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.1.</b>
+                        
+                        算法的封装与切换——策略模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.2" data-path="算法的封装与切换——策略模式（二）.html">
+            
+                
+                    <a href="./算法的封装与切换——策略模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.2.</b>
+                        
+                        算法的封装与切换——策略模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.3" data-path="算法的封装与切换——策略模式（三）.html">
+            
+                
+                    <a href="./算法的封装与切换——策略模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.3.</b>
+                        
+                        算法的封装与切换——策略模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.4" data-path="算法的封装与切换——策略模式（四）.html">
+            
+                
+                    <a href="./算法的封装与切换——策略模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.4.</b>
+                        
+                        算法的封装与切换——策略模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="模板方法模式-Template Method Pattern.html">
+            
+                
+                    <a href="./模板方法模式-Template Method Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        模板方法模式-Template Method Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.10.1" data-path="模板方法模式深度解析（一）.html">
+            
+                
+                    <a href="./模板方法模式深度解析（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.1.</b>
+                        
+                        模板方法模式深度解析（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.2" data-path="模板方法模式深度解析（二）.html">
+            
+                
+                    <a href="./模板方法模式深度解析（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.2.</b>
+                        
+                        模板方法模式深度解析（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.3" data-path="模板方法模式深度解析（三）.html">
+            
+                
+                    <a href="./模板方法模式深度解析（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.3.</b>
+                        
+                        模板方法模式深度解析（三）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="访问者模式-Visitor Pattern.html">
+            
+                
+                    <a href="./访问者模式-Visitor Pattern.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        访问者模式-Visitor Pattern
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.11.1" data-path="操作复杂对象结构——访问者模式（一）.html">
+            
+                
+                    <a href="./操作复杂对象结构——访问者模式（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.1.</b>
+                        
+                        操作复杂对象结构——访问者模式（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.2" data-path="操作复杂对象结构——访问者模式（二）.html">
+            
+                
+                    <a href="./操作复杂对象结构——访问者模式（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.2.</b>
+                        
+                        操作复杂对象结构——访问者模式（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.3" data-path="操作复杂对象结构——访问者模式（三）.html">
+            
+                
+                    <a href="./操作复杂对象结构——访问者模式（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.3.</b>
+                        
+                        操作复杂对象结构——访问者模式（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.4" data-path="操作复杂对象结构——访问者模式（四）.html">
+            
+                
+                    <a href="./操作复杂对象结构——访问者模式（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.4.</b>
+                        
+                        操作复杂对象结构——访问者模式（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="设计模式趣味学习（复习）.html">
+            
+                
+                    <a href="./设计模式趣味学习（复习）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        设计模式趣味学习（复习）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="设计模式与足球（一）.html">
+            
+                
+                    <a href="./设计模式与足球（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        设计模式与足球（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="设计模式与足球（二）.html">
+            
+                
+                    <a href="./设计模式与足球（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        设计模式与足球（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="设计模式与足球（三）.html">
+            
+                
+                    <a href="./设计模式与足球（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        设计模式与足球（三）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="设计模式与足球（四）.html">
+            
+                
+                    <a href="./设计模式与足球（四）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        设计模式与足球（四）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="设计模式综合应用实例.html">
+            
+                
+                    <a href="./设计模式综合应用实例.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        设计模式综合应用实例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="多人联机射击游戏.html">
+            
+                
+                    <a href="./多人联机射击游戏.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        多人联机射击游戏
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="多人联机射击游戏中的设计模式应用（一）.html">
+            
+                
+                    <a href="./多人联机射击游戏中的设计模式应用（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.1.</b>
+                        
+                        多人联机射击游戏中的设计模式应用（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="多人联机射击游戏中的设计模式应用（二）.html">
+            
+                
+                    <a href="./多人联机射击游戏中的设计模式应用（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.2.</b>
+                        
+                        多人联机射击游戏中的设计模式应用（二）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="数据库同步系统.html">
+            
+                
+                    <a href="./数据库同步系统.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        数据库同步系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="设计模式综合实例分析之数据库同步系统（一）.html">
+            
+                
+                    <a href="./设计模式综合实例分析之数据库同步系统（一）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.1.</b>
+                        
+                        设计模式综合实例分析之数据库同步系统（一）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="设计模式综合实例分析之数据库同步系统（二）.html">
+            
+                
+                    <a href="./设计模式综合实例分析之数据库同步系统（二）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.2.</b>
+                        
+                        设计模式综合实例分析之数据库同步系统（二）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="设计模式综合实例分析之数据库同步系统（三）.html">
+            
+                
+                    <a href="./设计模式综合实例分析之数据库同步系统（三）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.3.</b>
+                        
+                        设计模式综合实例分析之数据库同步系统（三）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >java patterns</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x8BF7;&#x6C42;&#x7684;&#x94FE;&#x5F0F;&#x5904;&#x7406;&#x2014;&#x2014;&#x804C;&#x8D23;&#x94FE;&#x6A21;&#x5F0F;&#xFF08;&#x4E09;&#xFF09;">&#x8BF7;&#x6C42;&#x7684;&#x94FE;&#x5F0F;&#x5904;&#x7406;&#x2014;&#x2014;&#x804C;&#x8D23;&#x94FE;&#x6A21;&#x5F0F;&#xFF08;&#x4E09;&#xFF09;</h1>
+<p>16.3 &#x5B8C;&#x6574;&#x89E3;&#x51B3;&#x65B9;&#x6848;
+      &#x4E3A;&#x4E86;&#x8BA9;&#x91C7;&#x8D2D;&#x5355;&#x7684;&#x5BA1;&#x6279;&#x6D41;&#x7A0B;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x91C7;&#x8D2D;&#x5355;&#x7684;&#x94FE;&#x5F0F;&#x4F20;&#x9012;&#x548C;&#x5904;&#x7406;&#xFF0C;Sunny&#x516C;&#x53F8;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4F7F;&#x7528;&#x804C;&#x8D23;&#x94FE;&#x6A21;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x91C7;&#x8D2D;&#x5355;&#x7684;&#x5206;&#x7EA7;&#x5BA1;&#x6279;&#xFF0C;&#x5176;&#x57FA;&#x672C;&#x7ED3;&#x6784;&#x5982;&#x56FE;16-3&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="http://my.csdn.net/uploads/201204/02/1333307860_9326.gif" alt=""></p>
+<p>&#x5728;&#x56FE;16-3&#x4E2D;&#xFF0C;&#x62BD;&#x8C61;&#x7C7B;Approver&#x5145;&#x5F53;&#x62BD;&#x8C61;&#x5904;&#x7406;&#x8005;&#xFF08;&#x62BD;&#x8C61;&#x4F20;&#x9012;&#x8005;&#xFF09;&#xFF0C;Director&#x3001;VicePresident&#x3001;President&#x548C;Congress&#x5145;&#x5F53;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;&#xFF08;&#x5177;&#x4F53;&#x4F20;&#x9012;&#x8005;&#xFF09;&#xFF0C;PurchaseRequest&#x5145;&#x5F53;&#x8BF7;&#x6C42;&#x7C7B;&#x3002;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>//&#x91C7;&#x8D2D;&#x5355;&#xFF1A;&#x8BF7;&#x6C42;&#x7C7B;  
+class PurchaseRequest {  
+    private double amount;  //&#x91C7;&#x8D2D;&#x91D1;&#x989D;  
+    private int number;  //&#x91C7;&#x8D2D;&#x5355;&#x7F16;&#x53F7;  
+    private String purpose;  //&#x91C7;&#x8D2D;&#x76EE;&#x7684;  
+
+    public PurchaseRequest(double amount, int number, String purpose) {  
+        this.amount = amount;  
+        this.number = number;  
+        this.purpose = purpose;  
+    }  
+
+    public void setAmount(double amount) {  
+        this.amount = amount;  
+    }  
+
+    public double getAmount() {  
+        return this.amount;  
+    }  
+
+    public void setNumber(int number) {  
+        this.number = number;  
+    }  
+
+    public int getNumber() {  
+        return this.number;  
+    }  
+
+    public void setPurpose(String purpose) {  
+        this.purpose = purpose;  
+    }  
+
+    public String getPurpose() {  
+        return this.purpose;  
+    }  
+}  
+
+//&#x5BA1;&#x6279;&#x8005;&#x7C7B;&#xFF1A;&#x62BD;&#x8C61;&#x5904;&#x7406;&#x8005;  
+abstract class Approver {  
+    protected Approver successor; //&#x5B9A;&#x4E49;&#x540E;&#x7EE7;&#x5BF9;&#x8C61;  
+    protected String name; //&#x5BA1;&#x6279;&#x8005;&#x59D3;&#x540D;  
+
+    public Approver(String name) {  
+        this.name = name;  
+    }  
+
+    //&#x8BBE;&#x7F6E;&#x540E;&#x7EE7;&#x8005;  
+    public void setSuccessor(Approver successor) {   
+        this.successor = successor;  
+    }  
+
+    //&#x62BD;&#x8C61;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x65B9;&#x6CD5;  
+    public abstract void processRequest(PurchaseRequest request);  
+}  
+
+//&#x4E3B;&#x4EFB;&#x7C7B;&#xFF1A;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;  
+class Director extends Approver {  
+    public Director(String name) {  
+        super(name);  
+    }  
+
+    //&#x5177;&#x4F53;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x65B9;&#x6CD5;  
+    public void processRequest(PurchaseRequest request) {  
+        if (request.getAmount() &lt; 50000) {  
+            System.out.println(&quot;&#x4E3B;&#x4EFB;&quot; + this.name + &quot;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;&quot; + request.getNumber() + &quot;&#xFF0C;&#x91D1;&#x989D;&#xFF1A;&quot; + request.getAmount() + &quot;&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&quot; + request.getPurpose() + &quot;&#x3002;&quot;);  //&#x5904;&#x7406;&#x8BF7;&#x6C42;  
+        }  
+        else {  
+            this.successor.processRequest(request);  //&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;  
+        }     
+    }  
+}  
+
+//&#x526F;&#x8463;&#x4E8B;&#x957F;&#x7C7B;&#xFF1A;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;  
+class VicePresident extends Approver {  
+    public VicePresident(String name) {  
+        super(name);  
+    }  
+
+    //&#x5177;&#x4F53;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x65B9;&#x6CD5;  
+    public void processRequest(PurchaseRequest request) {  
+        if (request.getAmount() &lt; 100000) {  
+            System.out.println(&quot;&#x526F;&#x8463;&#x4E8B;&#x957F;&quot; + this.name + &quot;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;&quot; + request.getNumber() + &quot;&#xFF0C;&#x91D1;&#x989D;&#xFF1A;&quot; + request.getAmount() + &quot;&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&quot; + request.getPurpose() + &quot;&#x3002;&quot;);  //&#x5904;&#x7406;&#x8BF7;&#x6C42;  
+        }  
+        else {  
+            this.successor.processRequest(request);  //&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;  
+        }     
+    }  
+}  
+
+//&#x8463;&#x4E8B;&#x957F;&#x7C7B;&#xFF1A;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;  
+class President extends Approver {  
+    public President(String name) {  
+        super(name);  
+    }  
+
+    //&#x5177;&#x4F53;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x65B9;&#x6CD5;  
+    public void processRequest(PurchaseRequest request) {  
+        if (request.getAmount() &lt; 500000) {  
+            System.out.println(&quot;&#x8463;&#x4E8B;&#x957F;&quot; + this.name + &quot;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;&quot; + request.getNumber() + &quot;&#xFF0C;&#x91D1;&#x989D;&#xFF1A;&quot; + request.getAmount() + &quot;&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&quot; + request.getPurpose() + &quot;&#x3002;&quot;);  //&#x5904;&#x7406;&#x8BF7;&#x6C42;  
+        }  
+        else {  
+            this.successor.processRequest(request);  //&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;  
+        }  
+    }  
+}  
+
+//&#x8463;&#x4E8B;&#x4F1A;&#x7C7B;&#xFF1A;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;  
+class Congress extends Approver {  
+    public Congress(String name) {  
+        super(name);  
+    }  
+
+    //&#x5177;&#x4F53;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x65B9;&#x6CD5;  
+    public void processRequest(PurchaseRequest request) {  
+        System.out.println(&quot;&#x53EC;&#x5F00;&#x8463;&#x4E8B;&#x4F1A;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;&quot; + request.getNumber() + &quot;&#xFF0C;&#x91D1;&#x989D;&#xFF1A;&quot; + request.getAmount() + &quot;&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&quot; + request.getPurpose() + &quot;&#x3002;&quot;);        //&#x5904;&#x7406;&#x8BF7;&#x6C42;  
+    }      
+}
+</code></pre><p>&#x7F16;&#x5199;&#x5982;&#x4E0B;&#x5BA2;&#x6237;&#x7AEF;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF1A; </p>
+<pre><code>class Client {  
+    public static void main(String[] args) {  
+        Approver wjzhang,gyang,jguo,meeting;  
+        wjzhang = new Director(&quot;&#x5F20;&#x65E0;&#x5FCC;&quot;);  
+        gyang = new VicePresident(&quot;&#x6768;&#x8FC7;&quot;);  
+        jguo = new President(&quot;&#x90ED;&#x9756;&quot;);  
+        meeting = new Congress(&quot;&#x8463;&#x4E8B;&#x4F1A;&quot;);  
+
+        //&#x521B;&#x5EFA;&#x804C;&#x8D23;&#x94FE;  
+        wjzhang.setSuccessor(gyang);  
+        gyang.setSuccessor(jguo);  
+        jguo.setSuccessor(meeting);  
+
+        //&#x521B;&#x5EFA;&#x91C7;&#x8D2D;&#x5355;  
+        PurchaseRequest pr1 = new PurchaseRequest(45000,10001,&quot;&#x8D2D;&#x4E70;&#x501A;&#x5929;&#x5251;&quot;);  
+        wjzhang.processRequest(pr1);  
+
+        PurchaseRequest pr2 = new PurchaseRequest(60000,10002,&quot;&#x8D2D;&#x4E70;&#x300A;&#x8475;&#x82B1;&#x5B9D;&#x5178;&#x300B;&quot;);  
+        wjzhang.processRequest(pr2);  
+
+        PurchaseRequest pr3 = new PurchaseRequest(160000,10003,&quot;&#x8D2D;&#x4E70;&#x300A;&#x91D1;&#x521A;&#x7ECF;&#x300B;&quot;);  
+        wjzhang.processRequest(pr3);  
+
+        PurchaseRequest pr4 = new PurchaseRequest(800000,10004,&quot;&#x8D2D;&#x4E70;&#x6843;&#x82B1;&#x5C9B;&quot;);  
+        wjzhang.processRequest(pr4);  
+    }  
+}
+</code></pre><p>&#x7F16;&#x8BD1;&#x5E76;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>&#x4E3B;&#x4EFB;&#x5F20;&#x65E0;&#x5FCC;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10001&#xFF0C;&#x91D1;&#x989D;&#xFF1A;45000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x501A;&#x5929;&#x5251;&#x3002;
+&#x526F;&#x8463;&#x4E8B;&#x957F;&#x6768;&#x8FC7;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10002&#xFF0C;&#x91D1;&#x989D;&#xFF1A;60000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x300A;&#x8475;&#x82B1;&#x5B9D;&#x5178;&#x300B;&#x3002;
+&#x8463;&#x4E8B;&#x957F;&#x90ED;&#x9756;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10003&#xFF0C;&#x91D1;&#x989D;&#xFF1A;160000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x300A;&#x91D1;&#x521A;&#x7ECF;&#x300B;&#x3002;
+&#x53EC;&#x5F00;&#x8463;&#x4E8B;&#x4F1A;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10004&#xFF0C;&#x91D1;&#x989D;&#xFF1A;800000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x6843;&#x82B1;&#x5C9B;&#x3002;
+</code></pre><p>&#x5982;&#x679C;&#x9700;&#x8981;&#x5728;&#x7CFB;&#x7EDF;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;&#xFF0C;&#x5982;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7ECF;&#x7406;(Manager)&#x89D2;&#x8272;&#x53EF;&#x4EE5;&#x5BA1;&#x6279;5&#x4E07;&#x5143;&#x81F3;8&#x4E07;&#x5143;&#xFF08;&#x4E0D;&#x5305;&#x62EC;8&#x4E07;&#x5143;&#xFF09;&#x7684;&#x91C7;&#x8D2D;&#x5355;&#xFF0C;&#x9700;&#x8981;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;&#x7C7B;Manager&#xFF0C;&#x4F5C;&#x4E3A;&#x62BD;&#x8C61;&#x5904;&#x7406;&#x8005;&#x7C7B;Approver&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;&#x5728;Approver&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x62BD;&#x8C61;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x91C7;&#x8D2D;&#x91D1;&#x989D;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;8&#x4E07;&#x5143;&#xFF0C;&#x5219;&#x5C06;&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x7ED9;&#x4E0B;&#x5BB6;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>//&#x7ECF;&#x7406;&#x7C7B;&#xFF1A;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;  
+class Manager extends Approver {  
+    public Manager(String name) {  
+        super(name);  
+    }  
+
+    //&#x5177;&#x4F53;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x65B9;&#x6CD5;  
+    public void processRequest(PurchaseRequest request) {  
+        if (request.getAmount() &lt; 80000) {  
+            System.out.println(&quot;&#x7ECF;&#x7406;&quot; + this.name + &quot;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;&quot; + request.getNumber() + &quot;&#xFF0C;&#x91D1;&#x989D;&#xFF1A;&quot; + request.getAmount() + &quot;&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&quot; + request.getPurpose() + &quot;&#x3002;&quot;);  //&#x5904;&#x7406;&#x8BF7;&#x6C42;  
+        }  
+        else {  
+            this.successor.processRequest(request);  //&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;  
+        }     
+    }  
+}
+</code></pre><p>&#x7531;&#x4E8E;&#x94FE;&#x7684;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;&#x7531;&#x5BA2;&#x6237;&#x7AEF;&#x8D1F;&#x8D23;&#xFF0C;&#x56E0;&#x6B64;&#x589E;&#x52A0;&#x65B0;&#x7684;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;&#x7C7B;&#x5BF9;&#x539F;&#x6709;&#x7C7B;&#x5E93;&#x65E0;&#x4EFB;&#x4F55;&#x5F71;&#x54CD;&#xFF0C;&#x65E0;&#x987B;&#x4FEE;&#x6539;&#x5DF2;&#x6709;&#x7C7B;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x7B26;&#x5408;&#x201C;&#x5F00;&#x95ED;&#x539F;&#x5219;&#x201D;&#x3002;</p>
+<p>&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5C06;&#x65B0;&#x7684;&#x5177;&#x4F53;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x8005;&#x5E94;&#x7528;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5177;&#x4F53;&#x5904;&#x7406;&#x8005;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x52A0;&#x5165;&#x804C;&#x8D23;&#x94FE;&#x4E2D;&#x3002;&#x5982;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x4E2D;&#x589E;&#x52A0;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>Approver rhuang;  
+rhuang = new Manager(&quot;&#x9EC4;&#x84C9;&quot;);
+</code></pre><p>&#x5C06;&#x5EFA;&#x94FE;&#x4EE3;&#x7801;&#x6539;&#x4E3A;&#xFF1A;</p>
+<pre><code>//&#x521B;&#x5EFA;&#x804C;&#x8D23;&#x94FE;
+</code></pre><p>wjzhang.setSuccessor(rhuang); //&#x5C06;&#x201C;&#x9EC4;&#x84C9;&#x201D;&#x4F5C;&#x4E3A;&#x201C;&#x5F20;&#x65E0;&#x5FCC;&#x201D;&#x7684;&#x4E0B;&#x5BB6;<br>rhuang.setSuccessor(gyang); //&#x5C06;&#x201C;&#x6768;&#x8FC7;&#x201D;&#x4F5C;&#x4E3A;&#x201C;&#x9EC4;&#x84C9;&#x201D;&#x7684;&#x4E0B;&#x5BB6;<br>gyang.setSuccessor(jguo);<br>jguo.setSuccessor(meeting);</p>
+<pre><code>
+&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x5E76;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;
+</code></pre><p>&#x4E3B;&#x4EFB;&#x5F20;&#x65E0;&#x5FCC;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10001&#xFF0C;&#x91D1;&#x989D;&#xFF1A;45000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x501A;&#x5929;&#x5251;&#x3002;
+&#x7ECF;&#x7406;&#x9EC4;&#x84C9;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10002&#xFF0C;&#x91D1;&#x989D;&#xFF1A;60000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x300A;&#x8475;&#x82B1;&#x5B9D;&#x5178;&#x300B;&#x3002;
+&#x8463;&#x4E8B;&#x957F;&#x90ED;&#x9756;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10003&#xFF0C;&#x91D1;&#x989D;&#xFF1A;160000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x300A;&#x91D1;&#x521A;&#x7ECF;&#x300B;&#x3002;
+&#x53EC;&#x5F00;&#x8463;&#x4E8B;&#x4F1A;&#x5BA1;&#x6279;&#x91C7;&#x8D2D;&#x5355;&#xFF1A;10004&#xFF0C;&#x91D1;&#x989D;&#xFF1A;800000.0&#x5143;&#xFF0C;&#x91C7;&#x8D2D;&#x76EE;&#x7684;&#xFF1A;&#x8D2D;&#x4E70;&#x6843;&#x82B1;&#x5C9B;&#x3002;
+```</p>
+<p>&#x601D;&#x8003;</p>
+<blockquote>
+<p>&#x5982;&#x679C;&#x5C06;&#x5BA1;&#x6279;&#x6D41;&#x7A0B;&#x7531;&#x201C;&#x4E3B;&#x4EFB;--&gt;&#x526F;&#x8463;&#x4E8B;&#x957F;--&gt;&#x8463;&#x4E8B;&#x957F;--&gt;&#x8463;&#x4E8B;&#x4F1A;&#x201D;&#x8C03;&#x6574;&#x4E3A;&#x201C;&#x4E3B;&#x4EFB;--&gt;&#x8463;&#x4E8B;&#x957F;--&gt;&#x8463;&#x4E8B;&#x4F1A;&#x201D;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x505A;&#x51FA;&#x54EA;&#x4E9B;&#x6539;&#x52A8;&#xFF1F;&#x9884;&#x6D4B;&#x4FEE;&#x6539;&#x4E4B;&#x540E;&#x5BA2;&#x6237;&#x7AEF;&#x4EE3;&#x7801;&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x3002;</p>
+</blockquote>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./请求的链式处理——职责链模式（二）.html" class="navigation navigation-prev " aria-label="Previous page: 请求的链式处理——职责链模式（二）"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./请求的链式处理——职责链模式（四）.html" class="navigation navigation-next " aria-label="Next page: 请求的链式处理——职责链模式（四）"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-theme-comscore/test.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"search":{"maxIndexSize":100000},"splitter":{},"anchors":{},"theme-comscore":{},"codeblock-filename":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book java patterns -->
+</html>
