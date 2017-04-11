@@ -1,0 +1,2930 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book ELK 教程 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>discover解析 | ELK 教程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="flycloud &lt;damonflycloud@126.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-theme-comscore/test.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../../kibana/v5/source-code-analysis/visualize.html" />
+    
+    
+    <link rel="prev" href="../../../kibana/v5/source-code-analysis/indexjs.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="4.10.3"
+        data-chapter-title="discover解析"
+        data-filepath="kibana/v5/source-code-analysis/discover.md"
+        data-basepath="../../.."
+        data-revision="Tue Apr 11 2017 22:48:47 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        前言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="logstash/index.html">
+            
+                
+                    <a href="../../../logstash/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Logstash
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="logstash/get-start/index.html">
+            
+                
+                    <a href="../../../logstash/get-start/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        入门示例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="logstash/get-start/install.html">
+            
+                
+                    <a href="../../../logstash/get-start/install.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.1.</b>
+                        
+                        下载安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="logstash/get-start/hello-world.html">
+            
+                
+                    <a href="../../../logstash/get-start/hello-world.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.2.</b>
+                        
+                        hello world
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="logstash/get-start/full-config.html">
+            
+                
+                    <a href="../../../logstash/get-start/full-config.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.3.</b>
+                        
+                        配置语法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="logstash/get-start/install-plugins.html">
+            
+                
+                    <a href="../../../logstash/get-start/install-plugins.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.4.</b>
+                        
+                        plugin的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="logstash/get-start/daemon.html">
+            
+                
+                    <a href="../../../logstash/get-start/daemon.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.5.</b>
+                        
+                        长期运行
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+            <span><b>1.2.</b> 插件配置</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="logstash/plugins/input/index.html">
+            
+                
+                    <a href="../../../logstash/plugins/input/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.</b>
+                        
+                        input配置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="logstash/plugins/input/file.html">
+            
+                
+                    <a href="../../../logstash/plugins/input/file.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.1.</b>
+                        
+                        file
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="logstash/plugins/input/stdin.html">
+            
+                
+                    <a href="../../../logstash/plugins/input/stdin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.2.</b>
+                        
+                        stdin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="logstash/plugins/input/syslog.html">
+            
+                
+                    <a href="../../../logstash/plugins/input/syslog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.3.</b>
+                        
+                        syslog
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="logstash/plugins/input/tcp.html">
+            
+                
+                    <a href="../../../logstash/plugins/input/tcp.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.4.</b>
+                        
+                        tcp
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="logstash/plugins/codec/index.html">
+            
+                
+                    <a href="../../../logstash/plugins/codec/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.</b>
+                        
+                        codec配置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="logstash/plugins/codec/json.html">
+            
+                
+                    <a href="../../../logstash/plugins/codec/json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.1.</b>
+                        
+                        json
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="logstash/plugins/codec/multiline.html">
+            
+                
+                    <a href="../../../logstash/plugins/codec/multiline.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.2.</b>
+                        
+                        multiline
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="logstash/plugins/codec/collectd.html">
+            
+                
+                    <a href="../../../logstash/plugins/codec/collectd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.3.</b>
+                        
+                        collectd
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="logstash/plugins/codec/netflow.html">
+            
+                
+                    <a href="../../../logstash/plugins/codec/netflow.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.4.</b>
+                        
+                        netflow
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="logstash/plugins/filter/index.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.</b>
+                        
+                        filter配置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="logstash/plugins/filter/date.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/date.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.1.</b>
+                        
+                        date
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="logstash/plugins/filter/grok.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/grok.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.2.</b>
+                        
+                        grok
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="logstash/plugins/filter/dissect.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/dissect.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.3.</b>
+                        
+                        dissect
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="logstash/plugins/filter/geoip.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/geoip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.4.</b>
+                        
+                        geoip
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="logstash/plugins/filter/json.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.5.</b>
+                        
+                        json
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="logstash/plugins/filter/kv.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/kv.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.6.</b>
+                        
+                        kv
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.7" data-path="logstash/plugins/filter/metrics.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/metrics.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.7.</b>
+                        
+                        metrics
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.8" data-path="logstash/plugins/filter/mutate.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/mutate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.8.</b>
+                        
+                        mutate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.9" data-path="logstash/plugins/filter/ruby.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/ruby.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.9.</b>
+                        
+                        ruby
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.10" data-path="logstash/plugins/filter/split.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/split.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.10.</b>
+                        
+                        split
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.11" data-path="logstash/plugins/filter/elapsed.html">
+            
+                
+                    <a href="../../../logstash/plugins/filter/elapsed.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.11.</b>
+                        
+                        elapsed
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+            <span><b>1.2.4.</b> output配置</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="logstash/plugins/output/elasticsearch.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/elasticsearch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.1.</b>
+                        
+                        elasticsearch
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="logstash/plugins/output/email.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/email.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.2.</b>
+                        
+                        email
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="logstash/plugins/output/exec.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/exec.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.3.</b>
+                        
+                        exec
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="logstash/plugins/output/file.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/file.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.</b>
+                        
+                        file
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="logstash/plugins/output/nagios.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/nagios.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.5.</b>
+                        
+                        nagios
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="logstash/plugins/output/statsd.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/statsd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.6.</b>
+                        
+                        statsd
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="logstash/plugins/output/stdout.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/stdout.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.7.</b>
+                        
+                        stdout
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="logstash/plugins/output/tcp.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/tcp.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.8.</b>
+                        
+                        tcp
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.9" data-path="logstash/plugins/output/hdfs.html">
+            
+                
+                    <a href="../../../logstash/plugins/output/hdfs.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.9.</b>
+                        
+                        hdfs
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="logstash/examples/index.html">
+            
+                
+                    <a href="../../../logstash/examples/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        场景示例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="logstash/examples/nginx-access.html">
+            
+                
+                    <a href="../../../logstash/examples/nginx-access.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.1.</b>
+                        
+                        nginx访问日志
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="logstash/examples/nginx-error.html">
+            
+                
+                    <a href="../../../logstash/examples/nginx-error.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.2.</b>
+                        
+                        nginx错误日志
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="logstash/examples/postfix.html">
+            
+                
+                    <a href="../../../logstash/examples/postfix.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.3.</b>
+                        
+                        postfix日志
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="logstash/examples/ossec.html">
+            
+                
+                    <a href="../../../logstash/examples/ossec.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.4.</b>
+                        
+                        ossec日志
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="logstash/examples/windows.html">
+            
+                
+                    <a href="../../../logstash/examples/windows.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.5.</b>
+                        
+                        windows系统日志
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="logstash/examples/java.html">
+            
+                
+                    <a href="../../../logstash/examples/java.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.6.</b>
+                        
+                        Java日志
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="logstash/examples/mysql-slow.html">
+            
+                
+                    <a href="../../../logstash/examples/mysql-slow.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.7.</b>
+                        
+                        MySQL慢查询日志
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="logstash/performance/index.html">
+            
+                
+                    <a href="../../../logstash/performance/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        性能与测试
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="logstash/performance/generator.html">
+            
+                
+                    <a href="../../../logstash/performance/generator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.1.</b>
+                        
+                        generator方式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="logstash/performance/monitor/index.html">
+            
+            <span><b>1.4.2.</b> 监控方案</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="logstash/performance/monitor/heartbeat.html">
+            
+                
+                    <a href="../../../logstash/performance/monitor/heartbeat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.2.1.</b>
+                        
+                        logstash-input-heartbeat方式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="logstash/performance/monitor/jmx.html">
+            
+                
+                    <a href="../../../logstash/performance/monitor/jmx.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.2.2.</b>
+                        
+                        jmx启动参数方式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="logstash/performance/monitor/api.html">
+            
+                
+                    <a href="../../../logstash/performance/monitor/api.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.2.3.</b>
+                        
+                        API方式
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="logstash/scale/index.html">
+            
+                
+                    <a href="../../../logstash/scale/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        扩展方案
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="logstash/scale/redis.html">
+            
+                
+                    <a href="../../../logstash/scale/redis.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.1.</b>
+                        
+                        通过redis传输
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="logstash/scale/kafka.html">
+            
+                
+                    <a href="../../../logstash/scale/kafka.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.2.</b>
+                        
+                        通过kafka传输
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="logstash/scale/logstash-forwarder-java.html">
+            
+                
+                    <a href="../../../logstash/scale/logstash-forwarder-java.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.3.</b>
+                        
+                        AIX 平台上的logstash-forwarder-java
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="logstash/scale/rsyslog.html">
+            
+                
+                    <a href="../../../logstash/scale/rsyslog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.4.</b>
+                        
+                        rsyslog
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="logstash/scale/nxlog.html">
+            
+                
+                    <a href="../../../logstash/scale/nxlog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.5.</b>
+                        
+                        nxlog
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="logstash/scale/heka.html">
+            
+                
+                    <a href="../../../logstash/scale/heka.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.6.</b>
+                        
+                        heka
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="logstash/scale/fluent.html">
+            
+                
+                    <a href="../../../logstash/scale/fluent.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.7.</b>
+                        
+                        fluent
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="logstash/scale/message-passing.html">
+            
+                
+                    <a href="../../../logstash/scale/message-passing.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.8.</b>
+                        
+                        Message::Passing
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="logstash/source-code-analysis/index.html">
+            
+                
+                    <a href="../../../logstash/source-code-analysis/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        源码解析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="logstash/source-code-analysis/pipeline.html">
+            
+                
+                    <a href="../../../logstash/source-code-analysis/pipeline.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        pipeline流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="logstash/source-code-analysis/event.html">
+            
+                
+                    <a href="../../../logstash/source-code-analysis/event.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        Event的生成
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="logstash/develop/index.html">
+            
+                
+                    <a href="../../../logstash/develop/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        插件开发
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="logstash/develop/utmp.html">
+            
+                
+                    <a href="../../../logstash/develop/utmp.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.1.</b>
+                        
+                        utmp插件示例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="beats/index.html">
+            
+                
+                    <a href="../../../beats/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Beats
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="beats/file.html">
+            
+                
+                    <a href="../../../beats/file.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        filebeat
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="beats/packet.html">
+            
+                
+                    <a href="../../../beats/packet.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        packetbeat网络流量分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="beats/metric.html">
+            
+                
+                    <a href="../../../beats/metric.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        metricbeat
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="beats/winlog.html">
+            
+                
+                    <a href="../../../beats/winlog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        winlogbeat
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="elasticsearch/index.html">
+            
+                
+                    <a href="../../../elasticsearch/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        ElasticSearch
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="elasticsearch/principle/index.html">
+            
+                
+                    <a href="../../../elasticsearch/principle/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        架构原理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="elasticsearch/principle/realtime.html">
+            
+                
+                    <a href="../../../elasticsearch/principle/realtime.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.1.</b>
+                        
+                        segment、buffer和translog对实时性的影响
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="elasticsearch/principle/indexing-performance.html">
+            
+                
+                    <a href="../../../elasticsearch/principle/indexing-performance.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.2.</b>
+                        
+                        segment merge对写入性能的影响
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="elasticsearch/principle/route-and-replica.html">
+            
+                
+                    <a href="../../../elasticsearch/principle/route-and-replica.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.3.</b>
+                        
+                        routing和replica的读写过程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="elasticsearch/principle/shard-allocate.html">
+            
+                
+                    <a href="../../../elasticsearch/principle/shard-allocate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.4.</b>
+                        
+                        shard的allocate控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="elasticsearch/principle/auto-discovery.html">
+            
+                
+                    <a href="../../../elasticsearch/principle/auto-discovery.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.5.</b>
+                        
+                        自动发现的配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+            <span><b>3.2.</b> 接口使用示例</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="elasticsearch/api/CRUD.html">
+            
+                
+                    <a href="../../../elasticsearch/api/CRUD.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.1.</b>
+                        
+                        增删改查操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="elasticsearch/api/search.html">
+            
+                
+                    <a href="../../../elasticsearch/api/search.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.2.</b>
+                        
+                        搜索请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="elasticsearch/api/script.html">
+            
+                
+                    <a href="../../../elasticsearch/api/script.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.3.</b>
+                        
+                        Painless脚本
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="elasticsearch/api/reindex.html">
+            
+                
+                    <a href="../../../elasticsearch/api/reindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.4.</b>
+                        
+                        reindex接口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+            <span><b>3.3.</b> 性能优化</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="elasticsearch/performance/bulk.html">
+            
+                
+                    <a href="../../../elasticsearch/performance/bulk.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                        bulk提交
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="elasticsearch/performance/gateway.html">
+            
+                
+                    <a href="../../../elasticsearch/performance/gateway.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                        gateway配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="elasticsearch/performance/cluster-state.html">
+            
+                
+                    <a href="../../../elasticsearch/performance/cluster-state.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.3.</b>
+                        
+                        集群状态维护
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="elasticsearch/performance/cache.html">
+            
+                
+                    <a href="../../../elasticsearch/performance/cache.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.4.</b>
+                        
+                        缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="elasticsearch/performance/fielddata.html">
+            
+                
+                    <a href="../../../elasticsearch/performance/fielddata.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.5.</b>
+                        
+                        fielddata
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="elasticsearch/performance/curator.html">
+            
+                
+                    <a href="../../../elasticsearch/performance/curator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.6.</b>
+                        
+                        curator工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="elasticsearch/performance/profile.html">
+            
+                
+                    <a href="../../../elasticsearch/performance/profile.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.7.</b>
+                        
+                        profile接口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="elasticsearch/testing.html">
+            
+                
+                    <a href="../../../elasticsearch/testing.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        rally测试方案
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="elasticsearch/tribe.html">
+            
+                
+                    <a href="../../../elasticsearch/tribe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        多集群互联
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="elasticsearch/alias.html">
+            
+                
+                    <a href="../../../elasticsearch/alias.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        别名的应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="elasticsearch/template.html">
+            
+                
+                    <a href="../../../elasticsearch/template.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        映射与模板的定制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="elasticsearch/puppet.html">
+            
+                
+                    <a href="../../../elasticsearch/puppet.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        puppet-elasticsearch模块的使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="elasticsearch/upgrade.html">
+            
+                
+                    <a href="../../../elasticsearch/upgrade.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        计划内停机升级的操作流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="elasticsearch/snapshot.html">
+            
+                
+                    <a href="../../../elasticsearch/snapshot.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        镜像备份
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="elasticsearch/rollover.html">
+            
+                
+                    <a href="../../../elasticsearch/rollover.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.</b>
+                        
+                        rollover和shrink
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="elasticsearch/ingest.html">
+            
+                
+                    <a href="../../../elasticsearch/ingest.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.12.</b>
+                        
+                        Ingest节点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="elasticsearch/hadoop/index.html">
+            
+            <span><b>3.13.</b> Hadoop 集成</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.13.1" data-path="elasticsearch/hadoop/spark-streaming.html">
+            
+                
+                    <a href="../../../elasticsearch/hadoop/spark-streaming.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.13.1.</b>
+                        
+                        spark streaming交互
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="elasticsearch/auth/index.html">
+            
+            <span><b>3.14.</b> 权限管理</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.14.1" data-path="elasticsearch/auth/shield.html">
+            
+                
+                    <a href="../../../elasticsearch/auth/shield.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.14.1.</b>
+                        
+                        Shield
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14.2" data-path="elasticsearch/auth/searchguard-2.html">
+            
+                
+                    <a href="../../../elasticsearch/auth/searchguard-2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.14.2.</b>
+                        
+                        Search-Guard 在 Elasticsearch 2.x 上的运用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="elasticsearch/monitor/index.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.</b>
+                        
+                        监控方案
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.15.1" data-path="elasticsearch/monitor/api/index.html">
+            
+            <span><b>3.15.1.</b> 监控相关接口</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.15.1.1" data-path="elasticsearch/monitor/api/health.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/api/health.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.1.1.</b>
+                        
+                        集群健康状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.1.2" data-path="elasticsearch/monitor/api/node-stats.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/api/node-stats.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.1.2.</b>
+                        
+                        节点状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.1.3" data-path="elasticsearch/monitor/api/index-stats.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/api/index-stats.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.1.3.</b>
+                        
+                        索引状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.1.4" data-path="elasticsearch/monitor/api/tasks-management.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/api/tasks-management.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.1.4.</b>
+                        
+                        任务管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.1.5" data-path="elasticsearch/monitor/api/cat-cmd.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/api/cat-cmd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.1.5.</b>
+                        
+                        cat 接口的命令行使用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.2" data-path="elasticsearch/monitor/logging.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/logging.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.2.</b>
+                        
+                        日志记录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.3" data-path="elasticsearch/monitor/bigdesk.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/bigdesk.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.3.</b>
+                        
+                        实时bigdesk方案
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.4" data-path="elasticsearch/monitor/cerebro.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/cerebro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.4.</b>
+                        
+                        cerebro
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15.5" data-path="elasticsearch/monitor/zabbix.html">
+            
+                
+                    <a href="../../../elasticsearch/monitor/zabbix.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.5.</b>
+                        
+                        zabbix trapper方案
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="elasticsearch/other/index.html">
+            
+                
+                    <a href="../../../elasticsearch/other/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.</b>
+                        
+                        ES在运维监控领域的其他玩法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.16.1" data-path="elasticsearch/other/percolator.html">
+            
+                
+                    <a href="../../../elasticsearch/other/percolator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.1.</b>
+                        
+                        percolator接口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16.2" data-path="elasticsearch/other/watcher.html">
+            
+                
+                    <a href="../../../elasticsearch/other/watcher.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.2.</b>
+                        
+                        watcher报警
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16.3" data-path="elasticsearch/other/elastalert.html">
+            
+                
+                    <a href="../../../elasticsearch/other/elastalert.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.3.</b>
+                        
+                        ElastAlert
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16.4" data-path="elasticsearch/other/rrd.html">
+            
+                
+                    <a href="../../../elasticsearch/other/rrd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.4.</b>
+                        
+                        时序数据库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16.5" data-path="elasticsearch/other/grafana.html">
+            
+                
+                    <a href="../../../elasticsearch/other/grafana.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.5.</b>
+                        
+                        Grafana
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16.6" data-path="elasticsearch/other/juttle.html">
+            
+                
+                    <a href="../../../elasticsearch/other/juttle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.6.</b>
+                        
+                        juttle
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16.7" data-path="elasticsearch/other/kale.html">
+            
+                
+                    <a href="../../../elasticsearch/other/kale.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.7.</b>
+                        
+                        Etsy的Kale异常检测
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="kibana/index.html">
+            
+                
+                    <a href="../../../kibana/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Kibana 5
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="kibana/v5/setup.html">
+            
+                
+                    <a href="../../../kibana/v5/setup.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        安装、配置和运行
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="kibana/v5/production.html">
+            
+                
+                    <a href="../../../kibana/v5/production.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        生产环境部署
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="kibana/v5/discover.html">
+            
+                
+                    <a href="../../../kibana/v5/discover.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        discover功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="kibana/v5/visualize/index.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        各visualize功能
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="kibana/v5/visualize/area.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/area.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.1.</b>
+                        
+                        area
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" data-path="kibana/v5/visualize/table.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/table.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.2.</b>
+                        
+                        table
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.3" data-path="kibana/v5/visualize/lines.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/lines.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.3.</b>
+                        
+                        line
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.4" data-path="kibana/v5/visualize/markdown.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/markdown.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.4.</b>
+                        
+                        markdown
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.5" data-path="kibana/v5/visualize/metric.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/metric.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.5.</b>
+                        
+                        metric
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.6" data-path="kibana/v5/visualize/pie.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/pie.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.6.</b>
+                        
+                        pie
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.7" data-path="kibana/v5/visualize/map.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.7.</b>
+                        
+                        tile map
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.8" data-path="kibana/v5/visualize/bar.html">
+            
+                
+                    <a href="../../../kibana/v5/visualize/bar.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.8.</b>
+                        
+                        vertical bar
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="kibana/v5/dashboard.html">
+            
+                
+                    <a href="../../../kibana/v5/dashboard.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        dashboard功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="kibana/v5/timelion.html">
+            
+                
+                    <a href="../../../kibana/v5/timelion.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        timelion 介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="kibana/v5/console.html">
+            
+                
+                    <a href="../../../kibana/v5/console.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        console 介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="kibana/v5/settings.html">
+            
+                
+                    <a href="../../../kibana/v5/settings.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        setting功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="kibana/v5/examples/index.html">
+            
+                
+                    <a href="../../../kibana/v5/examples/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        常用sub agg示例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.9.1" data-path="kibana/v5/examples/function-stack.html">
+            
+                
+                    <a href="../../../kibana/v5/examples/function-stack.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.1.</b>
+                        
+                        函数堆栈链分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.2" data-path="kibana/v5/examples/terms-split.html">
+            
+                
+                    <a href="../../../kibana/v5/examples/terms-split.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.2.</b>
+                        
+                        分图统计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.3" data-path="kibana/v5/examples/topn-datehistogram.html">
+            
+                
+                    <a href="../../../kibana/v5/examples/topn-datehistogram.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.3.</b>
+                        
+                        TopN的时序趋势图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.4" data-path="kibana/v5/examples/percentile-datehistogram.html">
+            
+                
+                    <a href="../../../kibana/v5/examples/percentile-datehistogram.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.4.</b>
+                        
+                        响应时间的百分占比趋势图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.5" data-path="kibana/v5/examples/histogram-filters.html">
+            
+                
+                    <a href="../../../kibana/v5/examples/histogram-filters.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.5.</b>
+                        
+                        响应时间的概率分布在不同时段的相似度对比
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="kibana/v5/source-code-analysis/index.html">
+            
+                
+                    <a href="../../../kibana/v5/source-code-analysis/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        源码解析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.10.1" data-path="kibana/v5/source-code-analysis/kbnindex.html">
+            
+                
+                    <a href="../../../kibana/v5/source-code-analysis/kbnindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.1.</b>
+                        
+                        .kibana索引的数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.2" data-path="kibana/v5/source-code-analysis/indexjs.html">
+            
+                
+                    <a href="../../../kibana/v5/source-code-analysis/indexjs.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.2.</b>
+                        
+                        主页入口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.10.3" data-path="kibana/v5/source-code-analysis/discover.html">
+            
+                
+                    <a href="../../../kibana/v5/source-code-analysis/discover.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.3.</b>
+                        
+                        discover解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.4" data-path="kibana/v5/source-code-analysis/visualize.html">
+            
+                
+                    <a href="../../../kibana/v5/source-code-analysis/visualize.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.4.</b>
+                        
+                        visualize解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10.5" data-path="kibana/v5/source-code-analysis/dashboard.html">
+            
+                
+                    <a href="../../../kibana/v5/source-code-analysis/dashboard.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.5.</b>
+                        
+                        dashboard解析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="kibana/v5/plugin/index.html">
+            
+                
+                    <a href="../../../kibana/v5/plugin/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        插件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.11.1" data-path="kibana/v5/plugin/vis-develop.html">
+            
+                
+                    <a href="../../../kibana/v5/plugin/vis-develop.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.1.</b>
+                        
+                        可视化开发示例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.2" data-path="kibana/v5/plugin/server-develop.html">
+            
+                
+                    <a href="../../../kibana/v5/plugin/server-develop.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.2.</b>
+                        
+                        后端开发示例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11.3" data-path="kibana/v5/plugin/app.html">
+            
+                
+                    <a href="../../../kibana/v5/plugin/app.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.3.</b>
+                        
+                        完整app开发示例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="kibana/phantomjs.html">
+            
+                
+                    <a href="../../../kibana/phantomjs.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.12.</b>
+                        
+                        Kibana报表
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="diff-hdfs.html">
+            
+                
+                    <a href="../../../diff-hdfs.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        竞品对比
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="see-also.html">
+            
+                
+                    <a href="../../../see-also.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        推荐阅读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="contributors.html">
+            
+                
+                    <a href="../../../contributors.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        合作名单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="donors.html">
+            
+                
+                    <a href="../../../donors.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        捐赠名单
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../" >ELK 教程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x641C;&#x7D22;&#x9875;">&#x641C;&#x7D22;&#x9875;</h1>
+<p>&#x524D;&#x6587;&#x5DF2;&#x7ECF;&#x8BF4;&#x5230;&#xFF0C;kibana.js &#x4E2D;&#x4F9D;&#x6B21;&#x52A0;&#x8F7D;&#x4E86;&#x5404;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x7684;&#x5165;&#x53E3;&#x3002;&#x6BD4;&#x5982;&#x641C;&#x7D22;&#x9875;&#x662F; <code>src/core_plugins/kibana/public/discover/index.js</code>&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x5C31;&#x53EF;&#x4EE5;&#x731C;&#x5230;&#xFF0C;&#x6709;&#x5173;&#x641C;&#x7D22;&#x9875;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4EE3;&#x7801;&#x5E94;&#x8BE5;&#x90FD;&#x5728; <code>src/core_plugins/kibana/public/discover/</code> &#x91CC;&#x4E86;&#x3002;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x6709;&#xFF1A;</p>
+<ul>
+<li>_hit_sort_fn.js</li>
+<li>components/</li>
+<li>controllers/</li>
+<li>directives/</li>
+<li>index.html</li>
+<li>index.js</li>
+<li>partials/</li>
+<li>saved_searches/</li>
+<li>styles/</li>
+</ul>
+<p>&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6807;&#x51C6;&#x7684; angular &#x6A21;&#x5757;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x4E86;&#x3002;&#x4E00;&#x773C;&#x5C31;&#x80FD;&#x77E5;&#x9053;&#xFF0C;controller&#x3001;directive &#x7B49;&#x7B49;&#x5206;&#x522B;&#x5E94;&#x8BE5;&#x8FDB;&#x54EA;&#x91CC;&#x53BB;&#x770B;&#x3002;&#x5F53;&#x7136;&#x9996;&#x5148;&#x7B2C;&#x4E00;&#x6B65;&#x8FD8;&#x662F;&#x770B; index.js&#xFF1A;</p>
+<pre><code>import &apos;plugins/kibana/discover/saved_searches/saved_searches&apos;;
+import &apos;plugins/kibana/discover/directives/no_results&apos;;
+import &apos;plugins/kibana/discover/directives/timechart&apos;;
+import &apos;ui/collapsible_sidebar&apos;;
+import &apos;plugins/kibana/discover/components/field_chooser/field_chooser&apos;;
+import &apos;plugins/kibana/discover/controllers/discover&apos;;
+import &apos;plugins/kibana/discover/styles/main.less&apos;;
+import &apos;ui/doc_table/components/table_row&apos;;
+import savedObjectRegistry from &apos;ui/saved_objects/saved_object_registry&apos;;
+
+savedObjectRegistry.register(require(&apos;plugins/kibana/discover/saved_searches/saved_search_register&apos;));
+</code></pre><p>&#x5DF2;&#x5B58;&#x641C;&#x7D22;&#x3001;&#x4E8B;&#x4EF6;&#x6570;&#x8D8B;&#x52BF;&#x56FE;&#x3001;&#x4E8B;&#x4EF6;&#x5217;&#x8868;&#x3001;&#x5B57;&#x6BB5;&#x5217;&#x8868;&#xFF0C;&#x5404;&#x81EA;&#x8F7D;&#x5165;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x51E0;&#x4E2A;&#x529F;&#x80FD;&#x70B9;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<h2 id="pluginskibanadiscoversavedsearchessavedsearchesjs">plugins/kibana/discover/saved_searches/saved_searches.js</h2>
+<ul>
+<li>&#x5B9A;&#x4E49; savedSearches &#x8FD9;&#x4E2A; angular service&#xFF0C;&#x7528;&#x6765;&#x64CD;&#x4F5C; kbnIndex &#x7D22;&#x5F15;&#x91CC; search &#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x4E0B;&#x7684;&#x6570;&#x636E;&#xFF1B;</li>
+<li>&#x52A0;&#x8F7D;&#x4E86; <code>saved_searches/_saved_searches.js</code> &#x63D0;&#x4F9B;&#x7684; savedSearch &#x8FD9;&#x4E2A; angular factory&#xFF0C;&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x641C;&#x7D22; (search) &#x5728; <code>kbnIndex</code> &#x91CC;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x5305;&#x62EC; title, description, hits, column, sort, version &#x7B49;&#x5B57;&#x6BB5;(&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x8BFB;&#x53D6; Elasticsearch &#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x5185;&#x5BB9;&#x770B;&#x5230;&#xFF0C;&#x6BD4;&#x9605;&#x8BFB;&#x4EE3;&#x7801;&#x66F4;&#x76F4;&#x63A5;&#xFF0C;&#x672C;&#x7AE0;&#x6700;&#x540E;&#x5373;&#x4E13;&#x95E8;&#x4ECB;&#x7ECD; <code>kbnIndex</code> &#x4E2D;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;)&#xFF0C;&#x770B;&#x7684;&#x662F;&#x4E0D;&#x662F;&#x6709;&#x70B9;&#x773C;&#x719F;&#xFF1F;&#x6CA1;&#x9519;&#xFF0C;&#x8FD9;&#x4E2A; savedSearch &#x5C31;&#x662F;&#x7EE7;&#x627F;&#x4E86;&#x4E0A;&#x4E00;&#x8282;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x7684;&#x90A3;&#x4E2A; courier &#x7684; savedObject&#xFF1A;</li>
+</ul>
+<pre><code>  module.factory(&apos;SavedSearch&apos;, function (courier) {
+    _.class(SavedSearch).inherits(courier.SavedObject);
+    function SavedSearch(id) {
+      ...
+</code></pre><ul>
+<li>&#x8FD8;&#x52A0;&#x8F7D;&#x5E76;&#x6CE8;&#x518C;&#x4E86; <code>plugins/kibana/management/saved_object_registry</code>&#xFF0C;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x5728; management &#x91CC;&#x4FEE;&#x6539;&#x8FD9;&#x91CC;&#x7684; savedSearches &#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+<h2 id="pluginskibanadiscoverdirectivestimechartjs">plugins/kibana/discover/directives/timechart.js</h2>
+<ul>
+<li>&#x52A0;&#x8F7D; <code>ui/vislib</code>&#x3002;</li>
+<li>&#x63D0;&#x4F9B; discoverTimechart &#x8FD9;&#x4E2A; angular directive&#xFF0C;&#x76D1;&#x542C; &quot;data&quot; &#x5E76;&#x8C03;&#x7528; <code>vislib.Chart</code> &#x5BF9;&#x8C61;&#x7ED8;&#x56FE;&#x3002;</li>
+</ul>
+<p>vislib &#x662F;&#x6574;&#x4E2A; Kibana &#x53EF;&#x89C6;&#x5316;&#x7684;&#x5B9E;&#x73B0;&#x90E8;&#x5206;&#xFF0C;&#x4E0B;&#x4E00;&#x8282;&#x4F1A;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x8BB2;&#x8FF0;&#x3002;</p>
+<h2 id="pluginskibanadiscovercomponentsfieldchooserfieldchooserjs">plugins/kibana/discover/components/field_chooser/field_chooser.js</h2>
+<ul>
+<li>&#x63D0;&#x4F9B; discFieldChooser &#x8FD9;&#x4E2A; angular directive&#xFF0C;&#x5176;&#x4E2D;&#x76D1;&#x542C;&#x5B57;&#x6BB5;&#x548C;&#x4E8B;&#x4EF6;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x5E76;&#x8C03;&#x7528;&#x8BA1;&#x7B97;&#x5E38;&#x7528;&#x5B57;&#x6BB5;&#x6392;&#x884C;&#xFF0C;</li>
+</ul>
+<pre><code>        $scope.$watchMulti([
+          &apos;[]fieldCounts&apos;,
+          &apos;[]columns&apos;,
+          &apos;[]hits&apos;
+        ], function (cur, prev) {
+          var newHits = cur[2] !== prev[2];
+          var fields = $scope.fields;
+          var columns = $scope.columns || [];
+          var fieldCounts = $scope.fieldCounts;
+
+          if (!fields || newHits) {
+            $scope.fields = fields = getFields();
+          }
+
+          _.chain(fields)
+          .each(function (field) {
+            field.displayOrder = _.indexOf(columns, field.name) + 1;
+            field.display = !!field.displayOrder;
+            field.rowCount = fieldCounts[field.name];
+          })
+          .sortBy(function (field) {
+            return (field.count || 0) * -1;
+          })
+          .groupBy(function (field) {
+            if (field.display) return &apos;selected&apos;;
+            return field.count &gt; 0 ? &apos;popular&apos; : &apos;unpopular&apos;;
+          })
+          .tap(function (groups) {
+            groups.selected = _.sortBy(groups.selected || [], &apos;displayOrder&apos;);
+            groups.popular = groups.popular || [];
+            groups.unpopular = groups.unpopular || [];
+            var extras = groups.popular.splice(config.get(&apos;fields:popularLimit&apos;));
+            groups.unpopular = extras.concat(groups.unpopular);
+          })
+          .each(function (group, name) {
+            $scope[name + &apos;Fields&apos;] = _.sortBy(group, name === &apos;selected&apos; ? &apos;display&apos; : &apos;name&apos;);
+          })
+          .commit();
+
+          $scope.fieldTypes = _.union([undefined], _.pluck(fields, &apos;type&apos;));
+        });
+</code></pre><p>&#x76D1;&#x542C; &quot;data&quot; &#x5E76;&#x8C03;&#x7528; <code>$scope.details()</code> &#x65B9;&#x6CD5;&#xFF0C;</p>
+<p>&#x63D0;&#x4F9B; <code>$scope.vizLocation()</code> &#x65B9;&#x6CD5;&#x3002;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x6839;&#x636E;&#x5B57;&#x6BB5;&#x7684;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x522B;&#x53EF;&#x80FD;&#x4F7F;&#x7528; <code>date_histogram</code>/<code>geohash_grid</code>/<code>terms</code> &#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x521B;&#x5EFA;&#x53EF;&#x89C6;&#x5316;&#x6A21;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x5E26;&#x7740;&#x5F53;&#x524D;&#x9875;&#x8FD9;&#x4E9B;&#x8BBE;&#x5B9A;&#x2014;&#x2014;&#x524D;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;&#x5404; app &#x4E4B;&#x95F4;&#x901A;&#x8FC7; globalState &#x5171;&#x4EAB;&#x72B6;&#x6001;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; URL &#x4E2D;&#x7684; <code>?_a=(...)</code>&#x3002;&#x5404; app &#x4F1A;&#x901A;&#x8FC7; <code>rison.decode($location.search()._a)</code> &#x548C; <code>rison.encode($location.search()._a)</code> &#x8BBE;&#x7F6E;&#x548C;&#x8BFB;&#x53D6;&#x2014;&#x2014;&#x8DF3;&#x8F6C;&#x5230; &quot;/visualize/create&quot; &#x9875;&#x9762;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x662F;&#x8FD9;&#x4E09;&#x4E2A;&#x5E38;&#x7528;&#x805A;&#x5408;&#x7684;&#x5FEB;&#x901F;&#x53EF;&#x89C6;&#x5316;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x7684; create &#x9875;&#x7684; rison &#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>          return &apos;#/visualize/create?&apos; + $.param(_.assign($location.search(), {
+            indexPattern: $scope.state.index,
+            type: type,
+            _a: rison.encode({
+              filters: $scope.state.filters || [],
+              query: $scope.state.query || undefined,
+              vis: {
+                type: type,
+                aggs: [
+                  agg,
+                  {schema: &apos;metric&apos;, type: &apos;count&apos;, &apos;id&apos;: &apos;2&apos;}
+                ]
+              }
+            })
+          });
+</code></pre><p>&#x4E4B;&#x524D;&#x7AE0;&#x8282;&#x7684; url &#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x8BFB;&#x8005;&#x5982;&#x679C;&#x6CE8;&#x610F;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0; id &#x662F;&#x4ECE; 2 &#x5F00;&#x59CB;&#x7684;&#xFF0C;&#x539F;&#x56E0;&#x5373;&#x5728;&#x6B64;&#x3002;</p>
+<ul>
+<li>&#x52A0;&#x8F7D; <code>plugins/kibana/discover/components/field_chooser/lib/field_calculator.js</code> &#xFF0C;&#x63D0;&#x4F9B; <code>fieldCalculator.getFieldValueCounts()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5728; <code>$scope.details()</code> &#x4E2D;&#x8BFB;&#x53D6;&#x88AB;&#x70B9;&#x51FB;&#x7684;&#x5B57;&#x6BB5;&#x503C;&#x7684;&#x60C5;&#x51B5;&#x3002;</li>
+<li>&#x52A0;&#x8F7D; <code>plugins/kibana/discover/components/field_chooser/discover_field.js</code>&#xFF0C;&#x63D0;&#x4F9B; discoverField &#x8FD9;&#x4E2A; angular directive&#xFF0C;&#x7528;&#x4E8E;&#x5F39;&#x51FA;&#x6D6E;&#x5C42;&#x5C55;&#x793A;&#x4E34;&#x65F6;&#x7684; visualize(&#x8C03;&#x7528;&#x4E0A;&#x4E00;&#x6761;&#x63D0;&#x4F9B;&#x7684; <code>$scope.details()</code> &#x65B9;&#x6CD5;)&#xFF0C;&#x540C;&#x65F6;&#x7ED9;&#x88AB;&#x70B9;&#x51FB;&#x7684;&#x5B57;&#x6BB5;&#x52A0;&#x5E38;&#x7528;&#x5EA6;&#xFF1B;&#x52A0;&#x8F7D; <code>plugins/kibana/discover/components/field_chooser/lib/detail_views/string.html</code> &#x7F51;&#x9875;&#xFF0C;&#x7528;&#x4E8E;&#x6D6E;&#x5C42;&#x6548;&#x679C;&#x3002;&#x7F51;&#x9875;&#x4E2D;&#x5BF9; indexed &#x6216; scripted &#x7C7B;&#x578B;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684; <code>vizLocation()</code> &#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<pre><code>        import detailsHtml from &apos;plugins/kibana/discover/components/field_chooser/lib/detail_views/string.html&apos;;
+        $scope.toggleDetails = function (field, recompute) {
+          if (_.isUndefined(field.details) || recompute) {
+            // This is inherited from fieldChooser
+            $scope.details(field, recompute);
+            detailScope.$destroy();
+            detailScope = $scope.$new();
+            detailScope.warnings = getWarnings(field);
+
+            detailsElem = $(detailsHtml);
+            $compile(detailsElem)(detailScope);
+            $elem.append(detailsElem).addClass(&apos;active&apos;);
+          } else {
+            delete field.details;
+            detailsElem.remove();
+            $elem.removeClass(&apos;active&apos;);
+          }
+        };
+</code></pre><ul>
+<li>&#x52A0;&#x8F7D;&#x5E76;&#x6E32;&#x67D3; <code>plugins/kibana/discover/components/field_chooser/field_chooser.html</code> &#x7F51;&#x9875;&#x3002;&#x7F51;&#x9875;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x4E0A;&#x4E00;&#x6761;&#x63D0;&#x4F9B;&#x7684; discover-field&#x3002;</li>
+</ul>
+<h2 id="pluginskibanadiscovercontrollersdiscoverjs">plugins/kibana/discover/controllers/discover.js</h2>
+<p>&#x52A0;&#x8F7D;&#x4E86;&#x8BF8;&#x591A; js&#xFF0C;&#x4E3B;&#x8981;&#x505A;&#x4E86;&#xFF1A;</p>
+<ul>
+<li>&#x4E3A; &quot;/discover/:id?&quot; &#x63D0;&#x4F9B; route &#x5E76;&#x52A0;&#x8F7D; <code>plugins/discover/index.html</code> &#x7F51;&#x9875;&#x3002;</li>
+<li>&#x63D0;&#x4F9B; discoverApp &#x8FD9;&#x4E2A; angular controller&#x3002;</li>
+<li>&#x52A0;&#x8F7D; <code>ui/vis.js</code> &#x5E76;&#x5728; setupVisualization &#x51FD;&#x6570;&#x4E2D;&#x7ED8;&#x5236; histogram &#x56FE;&#x3002;</li>
+</ul>
+<pre><code>      var visStateAggs = [
+        {
+          type: &apos;count&apos;,
+          schema: &apos;metric&apos;
+        },
+        {
+          type: &apos;date_histogram&apos;,
+          schema: &apos;segment&apos;,
+          params: {
+            field: $scope.opts.timefield,
+            interval: $state.interval
+          }
+        }
+      ];
+
+      $scope.vis = new Vis($scope.indexPattern, {
+        title: savedSearch.title,
+        type: &apos;histogram&apos;,
+        params: {
+          addLegend: false,
+          addTimeMarker: true
+        },
+        listeners: {
+          click: function (e) {
+            timefilter.time.from = moment(e.point.x);
+            timefilter.time.to = moment(e.point.x + e.data.ordered.interval);
+            timefilter.time.mode = &apos;absolute&apos;;
+          },
+          brush: brushEvent
+        },
+        aggs: visStateAggs
+      });
+
+      $scope.searchSource.aggs(function () {
+        $scope.vis.requesting();
+        return $scope.vis.aggs.toDsl();
+      });
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../../kibana/v5/source-code-analysis/indexjs.html" class="navigation navigation-prev " aria-label="Previous page: 主页入口"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../../kibana/v5/source-code-analysis/visualize.html" class="navigation navigation-next " aria-label="Next page: visualize解析"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../../gitbook/app.js"></script>
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-theme-comscore/test.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"search":{"maxIndexSize":100000},"splitter":{},"anchors":{},"theme-comscore":{},"codeblock-filename":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book ELK 教程 -->
+</html>
