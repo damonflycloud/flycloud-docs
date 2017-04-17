@@ -17,10 +17,53 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
-    <script type="text/javascript" async src="http://e.topthink.com/Public/static/client.js"></script>
-    <link rel="shortcut icon" href="/favicon.ico">
+    <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="http://7xowny.com1.z0.glb.clouddn.com/flycloud.ico?v=0.4.4">
     <link rel="stylesheet" href="http://static.kancloud.cn/Static/home/font/style.css?v=20161121002">
     <link rel="stylesheet" href="http://static.kancloud.cn/Static/home/dist/app.min.css?v=20161121002">
+    <style type="text/css">
+        /*.m-manual-item.manual-item-standard .e-cover:hover{
+            border-color:#4db559;
+            box-shadow:0 0 8px rgba(77,181,89,.7)
+        }*/
+
+        .m-manual-item.manual-item-standard .e-cover:hover{
+            border:1px solid #f3f3f3;
+            width:173px;
+            position:relative;
+            display:inline-block;
+            height:231px;
+            background-color:#eee;
+            border-color:#4db559;
+            box-shadow:0 0 8px rgba(77,181,89,.7)
+        }
+
+        .list-item .e-cover h2{
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            font-size: 24px;
+            line-height: 28px;
+            color: #FFF;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.7);
+            text-align: center;
+            margin-top: 0px;
+            width: 100%;
+            /*padding: 0 15px;*/
+            height: 231px;
+            margin-bottom: 0;
+            display: table
+
+
+        }
+
+        .list-item .e-cover h2 span{
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
 
     <script>(function (H) {
         H.className = H.className.replace(/\bno-js\b/, 'js')
@@ -68,6 +111,7 @@
                             <h1> FLYCLOUD DOCS </h1>
 
                             <p class="m-share-list share-s share-box">
+                                为了方便文档查看,特意整理各种文档,希望能帮助到大家!
                                 <!--<span class="share-title">分享到：</span>
                                 <a class="weixin icon-weixin" href="javascript:;" data-sharing="wechat" title="微信"></a>
                                 <a class="qq icon-qq" href="javascript:;" data-sharing="qq" title="qq"></a>
@@ -85,51 +129,7 @@
                     <div class="tab-wrap">
                         <div class="tab-item active">
                             <div class="m-manual-list">
-                                <div class="list-item">
-                                    <dl class="m-manual-item manual-item-standard">
-                                        <dt>
-                                            <a class="e-cover" href="/docs/design-patterns" target="_blank">
-                                                <img class="cover b-cover" width="173" height="231"
-                                                     title="java patterns"
-                                                     src="./static/img/java patterns.jpg">
-                                            </a>
-                                        </dt>
-                                        <dd>
-                                            <a href="/docs/design-patterns" target="_blank" class="name"
-                                               title="java patterns">java patterns</a>
-                                        </dd>
 
-                                    </dl>
-                                </div>
-                                <div class="list-item">
-                                    <dl class="m-manual-item manual-item-standard">
-                                        <dt>
-                                            <a class="e-cover" href="/docs/javascript-patterns" target="_blank">
-                                                <img class="cover b-cover" width="173" height="231" title="javascript patterns"
-                                                     src="./static/img/javascript patterns.jpg">
-                                            </a>
-                                        </dt>
-                                        <dd>
-                                            <a href="/docs/javascript-patterns" target="_blank" class="name"
-                                               title="javascript patterns">javascript patterns</a>
-                                        </dd>
-                                    </dl>
-                                </div>
-
-                                <div class="list-item">
-                                    <dl class="m-manual-item manual-item-standard">
-                                        <dt>
-                                            <a class="e-cover" href="/docs/ELKStack" target="_blank">
-                                                <img class="cover b-cover" width="173" height="231" title="javascript patterns"
-                                                     src="./static/img/ELK.jpg">
-                                            </a>
-                                        </dt>
-                                        <dd>
-                                            <a href="/docs/ELKStack" target="_blank" class="name"
-                                               title="ELKStack">ELKStack</a>
-                                        </dd>
-                                    </dl>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,54 +164,34 @@
 
 </div>
 
-<script src="http://static.kancloud.cn/Static/component/seajs/dist/sea.js"></script>
-<script>
-    seajs.config({
-        base: "http://static.kancloud.cn/Static/",
-        paths: {
-            'home': 'home/script',
-            'common': 'common/script',
-            'document': 'document/script',
-            'component': 'component'
-        },
-        preload: [
-            'jquery'
-        ],
-        alias: {
-            'jquery': 'component/jquery',
-            'config': 'common/module/config'
-        },
-        map: [
-            [/^(.*\.(?:css|js))(.*)$/i, '$1?v=20161121002']
-        ],
-        debug: true
+<script type="text/javascript">
+    $(function () {
+        $.getJSON("./static/json/docs.json",function(data){
+            $.each( data, function(i,item) {
+                var middle="";
+                if(item.middle==null||item.middle==false){
+                     middle="<h2><span>"+item.title+"</span></h2>";
+                }
+                var listItem="<div class='list-item'><dl class='m-manual-item manual-item-standard'><dt><a class='e-cover' "+"href='"+ item.href+"' target='_blank'>" +
+                    middle+
+                    "<img class='cover b-cover' width='173' height='231' title='" +item.title+"'src='"+item.img+"'></a> </dt><dd>"+
+                    "<a href='"+item.href+"' target='_blank' class='name' title='"+item.title+"'>"+item.title+"</a></dd></dl></div>";
+
+                $('.m-manual-list').append(listItem);
+            });
+
+        })
     });
+
+
 </script>
-<script src="http://static.kancloud.cn/Static/home/dist/app.min.js?v=20161121002"></script>
-<script>
-    seajs.use('config', function (config) {
-        //设置项目配置
-        config.set({
-            "ROOT": "", //当前网站地址
-            "APP": "", //当前项目地址
-            "STATIC": "http://static.kancloud.cn/Static", //静态资源文件地址
-            "PUBLIC": "http://static.kancloud.cn/Static", //home目录地址
-            'isLogin': false,
-            "APP_DOMAIN": "www.kancloud.cn",
-            'checkNotification': true,
-            'userCoin': "0"
-        });
-        seajs.use('home/globle', function (globle) {
-            globle === false || '';
-        });
-    });
-</script>
-<script type="text/javascript" src="https://tajs.qq.com/h5?sId=500000145" charset="UTF-8"></script>
+
+
 <script>
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?ee21b19ea80b048a0b089c41510c37db";
+        //hm.src = "//hm.baidu.com/hm.js?ee21b19ea80b048a0b089c41510c37db";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
