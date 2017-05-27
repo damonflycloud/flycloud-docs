@@ -18,9 +18,10 @@
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
     <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript"  src="static/js/flycloud.js"></script>
     <link rel="shortcut icon" href="http://7xowny.com1.z0.glb.clouddn.com/flycloud.ico?v=0.4.4">
-    <link rel="stylesheet" href="http://static.kancloud.cn/Static/home/font/style.css?v=20161121002">
-    <link rel="stylesheet" href="http://static.kancloud.cn/Static/home/dist/app.min.css?v=20161121002">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/app.min.css">
     <style type="text/css">
         /*.m-manual-item.manual-item-standard .e-cover:hover{
             border-color:#4db559;
@@ -166,21 +167,7 @@
 
 <script type="text/javascript">
     $(function () {
-        $.getJSON("./static/json/docs.json",function(data){
-            $.each( data, function(i,item) {
-                var middle="";
-                if(item.middle==null||item.middle==false){
-                     middle="<h2><span>"+item.title+"</span></h2>";
-                }
-                var listItem="<div class='list-item'><dl class='m-manual-item manual-item-standard'><dt><a class='e-cover' "+"href='"+ item.href+"' target='_blank'>" +
-                    middle+
-                    "<img class='cover b-cover' width='173' height='231' title='" +item.title+"'src='"+item.img+"'></a> </dt><dd>"+
-                    "<a href='"+item.href+"' target='_blank' class='name' title='"+item.title+"'>"+item.title+"</a></dd></dl></div>";
-
-                $('.m-manual-list').append(listItem);
-            });
-
-        })
+        getJson();
     });
 
 

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlElement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.api.dom.xml</a> &gt; <span class="el_source">XmlElement.java</span></div><h1>XmlElement.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2006 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.api.dom.xml;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.generator.api.dom.OutputUtilities;
+
+/**
+ * @author Jeff Butler
+ */
+public class XmlElement extends Element {
+    private List&lt;Attribute&gt; attributes;
+
+    private List&lt;Element&gt; elements;
+
+    private String name;
+
+    /**
+     *  
+     */
+    public XmlElement(String name) {
+<span class="nc" id="L37">        super();</span>
+<span class="nc" id="L38">        attributes = new ArrayList&lt;Attribute&gt;();</span>
+<span class="nc" id="L39">        elements = new ArrayList&lt;Element&gt;();</span>
+<span class="nc" id="L40">        this.name = name;</span>
+<span class="nc" id="L41">    }</span>
+    
+    /**
+     * Copy constructor.  Not a truly deep copy, but close enough
+     * for most purposes.
+     * 
+     * @param original
+     */
+    public XmlElement(XmlElement original) {
+<span class="nc" id="L50">        super();</span>
+<span class="nc" id="L51">        attributes = new ArrayList&lt;Attribute&gt;();</span>
+<span class="nc" id="L52">        attributes.addAll(original.attributes);</span>
+<span class="nc" id="L53">        elements = new ArrayList&lt;Element&gt;();</span>
+<span class="nc" id="L54">        elements.addAll(original.elements);</span>
+<span class="nc" id="L55">        this.name = original.name;</span>
+<span class="nc" id="L56">    }</span>
+
+    /**
+     * @return Returns the attributes.
+     */
+    public List&lt;Attribute&gt; getAttributes() {
+<span class="nc" id="L62">        return attributes;</span>
+    }
+
+    public void addAttribute(Attribute attribute) {
+<span class="nc" id="L66">        attributes.add(attribute);</span>
+<span class="nc" id="L67">    }</span>
+
+    /**
+     * @return Returns the elements.
+     */
+    public List&lt;Element&gt; getElements() {
+<span class="nc" id="L73">        return elements;</span>
+    }
+
+    public void addElement(Element element) {
+<span class="nc" id="L77">        elements.add(element);</span>
+<span class="nc" id="L78">    }</span>
+
+    public void addElement(int index, Element element) {
+<span class="nc" id="L81">        elements.add(index, element);</span>
+<span class="nc" id="L82">    }</span>
+
+    /**
+     * @return Returns the name.
+     */
+    public String getName() {
+<span class="nc" id="L88">        return name;</span>
+    }
+
+    @Override
+    public String getFormattedContent(int indentLevel) {
+<span class="nc" id="L93">        StringBuilder sb = new StringBuilder();</span>
+
+<span class="nc" id="L95">        OutputUtilities.xmlIndent(sb, indentLevel);</span>
+<span class="nc" id="L96">        sb.append('&lt;');</span>
+<span class="nc" id="L97">        sb.append(name);</span>
+
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        for (Attribute att : attributes) {</span>
+<span class="nc" id="L100">            sb.append(' ');</span>
+<span class="nc" id="L101">            sb.append(att.getFormattedContent());</span>
+<span class="nc" id="L102">        }</span>
+
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        if (elements.size() &gt; 0) {</span>
+<span class="nc" id="L105">            sb.append(&quot; &gt;&quot;); //$NON-NLS-1$</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">            for (Element element : elements) {</span>
+<span class="nc" id="L107">                OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L108">                sb.append(element.getFormattedContent(indentLevel + 1));</span>
+<span class="nc" id="L109">            }</span>
+<span class="nc" id="L110">            OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L111">            OutputUtilities.xmlIndent(sb, indentLevel);</span>
+<span class="nc" id="L112">            sb.append(&quot;&lt;/&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L113">            sb.append(name);</span>
+<span class="nc" id="L114">            sb.append('&gt;');</span>
+
+        } else {
+<span class="nc" id="L117">            sb.append(&quot; /&gt;&quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L120">        return sb.toString();</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L124">        this.name = name;</span>
+<span class="nc" id="L125">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InnerClass.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.api.dom.java</a> &gt; <span class="el_source">InnerClass.java</span></div><h1>InnerClass.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2006 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.api.dom.java;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.mybatis.generator.api.dom.OutputUtilities;
+
+/**
+ * This class encapsulates the idea of an inner class - it has methods that make
+ * it easy to generate inner classes.
+ * 
+ * @author Jeff Butler
+ */
+public class InnerClass extends JavaElement {
+    private List&lt;Field&gt; fields;
+
+    private List&lt;InnerClass&gt; innerClasses;
+
+    private List&lt;InnerEnum&gt; innerEnums;
+
+    private FullyQualifiedJavaType superClass;
+
+    private FullyQualifiedJavaType type;
+
+    private Set&lt;FullyQualifiedJavaType&gt; superInterfaceTypes;
+
+    private List&lt;Method&gt; methods;
+
+    private boolean isAbstract;
+    
+    private List&lt;InitializationBlock&gt; initializationBlocks;
+
+    /**
+     *  
+     */
+    public InnerClass(FullyQualifiedJavaType type) {
+<span class="nc" id="L55">        super();</span>
+<span class="nc" id="L56">        this.type = type;</span>
+<span class="nc" id="L57">        fields = new ArrayList&lt;Field&gt;();</span>
+<span class="nc" id="L58">        innerClasses = new ArrayList&lt;InnerClass&gt;();</span>
+<span class="nc" id="L59">        innerEnums = new ArrayList&lt;InnerEnum&gt;();</span>
+<span class="nc" id="L60">        superInterfaceTypes = new HashSet&lt;FullyQualifiedJavaType&gt;();</span>
+<span class="nc" id="L61">        methods = new ArrayList&lt;Method&gt;();</span>
+<span class="nc" id="L62">        initializationBlocks = new ArrayList&lt;InitializationBlock&gt;();</span>
+<span class="nc" id="L63">    }</span>
+
+    public InnerClass(String typeName) {
+<span class="nc" id="L66">        this(new FullyQualifiedJavaType(typeName));</span>
+<span class="nc" id="L67">    }</span>
+
+    /**
+     * @return Returns the fields.
+     */
+    public List&lt;Field&gt; getFields() {
+<span class="nc" id="L73">        return fields;</span>
+    }
+
+    public void addField(Field field) {
+<span class="nc" id="L77">        fields.add(field);</span>
+<span class="nc" id="L78">    }</span>
+
+    /**
+     * @return Returns the superClass.
+     */
+    public FullyQualifiedJavaType getSuperClass() {
+<span class="nc" id="L84">        return superClass;</span>
+    }
+
+    /**
+     * @param superClass
+     *            The superClass to set.
+     */
+    public void setSuperClass(FullyQualifiedJavaType superClass) {
+<span class="nc" id="L92">        this.superClass = superClass;</span>
+<span class="nc" id="L93">    }</span>
+
+    public void setSuperClass(String superClassType) {
+<span class="nc" id="L96">        this.superClass = new FullyQualifiedJavaType(superClassType);</span>
+<span class="nc" id="L97">    }</span>
+
+    /**
+     * @return Returns the innerClasses.
+     */
+    public List&lt;InnerClass&gt; getInnerClasses() {
+<span class="nc" id="L103">        return innerClasses;</span>
+    }
+
+    public void addInnerClass(InnerClass innerClass) {
+<span class="nc" id="L107">        innerClasses.add(innerClass);</span>
+<span class="nc" id="L108">    }</span>
+
+    public List&lt;InnerEnum&gt; getInnerEnums() {
+<span class="nc" id="L111">        return innerEnums;</span>
+    }
+
+    public void addInnerEnum(InnerEnum innerEnum) {
+<span class="nc" id="L115">        innerEnums.add(innerEnum);</span>
+<span class="nc" id="L116">    }</span>
+
+    public List&lt;InitializationBlock&gt; getInitializationBlocks() {
+<span class="nc" id="L119">        return initializationBlocks;</span>
+    }
+
+    public void addInitializationBlock(InitializationBlock initializationBlock) {
+<span class="nc" id="L123">        initializationBlocks.add(initializationBlock);</span>
+<span class="nc" id="L124">    }</span>
+
+    public String getFormattedContent(int indentLevel) {
+<span class="nc" id="L127">        StringBuilder sb = new StringBuilder();</span>
+
+<span class="nc" id="L129">        addFormattedJavadoc(sb, indentLevel);</span>
+<span class="nc" id="L130">        addFormattedAnnotations(sb, indentLevel);</span>
+
+<span class="nc" id="L132">        OutputUtilities.javaIndent(sb, indentLevel);</span>
+<span class="nc" id="L133">        sb.append(getVisibility().getValue());</span>
+
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (isAbstract()) {</span>
+<span class="nc" id="L136">            sb.append(&quot;abstract &quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        if (isStatic()) {</span>
+<span class="nc" id="L140">            sb.append(&quot;static &quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L143" title="All 2 branches missed.">        if (isFinal()) {</span>
+<span class="nc" id="L144">            sb.append(&quot;final &quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L147">        sb.append(&quot;class &quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L148">        sb.append(getType().getShortName());</span>
+
+<span class="nc bnc" id="L150" title="All 2 branches missed.">        if (superClass != null) {</span>
+<span class="nc" id="L151">            sb.append(&quot; extends &quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L152">            sb.append(superClass.getShortName());</span>
+        }
+
+<span class="nc bnc" id="L155" title="All 2 branches missed.">        if (superInterfaceTypes.size() &gt; 0) {</span>
+<span class="nc" id="L156">            sb.append(&quot; implements &quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L158">            boolean comma = false;</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">            for (FullyQualifiedJavaType fqjt : superInterfaceTypes) {</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">                if (comma) {</span>
+<span class="nc" id="L161">                    sb.append(&quot;, &quot;); //$NON-NLS-1$</span>
+                } else {
+<span class="nc" id="L163">                    comma = true;</span>
+                }
+
+<span class="nc" id="L166">                sb.append(fqjt.getShortName());</span>
+<span class="nc" id="L167">            }</span>
+        }
+
+<span class="nc" id="L170">        sb.append(&quot; {&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L171">        indentLevel++;</span>
+        
+<span class="nc" id="L173">        Iterator&lt;Field&gt; fldIter = fields.iterator();</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        while (fldIter.hasNext()) {</span>
+<span class="nc" id="L175">            OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L176">            Field field = fldIter.next();</span>
+<span class="nc" id="L177">            sb.append(field.getFormattedContent(indentLevel));</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">            if (fldIter.hasNext()) {</span>
+<span class="nc" id="L179">                OutputUtilities.newLine(sb);</span>
+            }
+<span class="nc" id="L181">        }</span>
+
+<span class="nc bnc" id="L183" title="All 2 branches missed.">        if (initializationBlocks.size() &gt; 0) {</span>
+<span class="nc" id="L184">            OutputUtilities.newLine(sb);</span>
+        }
+
+<span class="nc" id="L187">        Iterator&lt;InitializationBlock&gt; blkIter = initializationBlocks.iterator();</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">        while (blkIter.hasNext()) {</span>
+<span class="nc" id="L189">            OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L190">            InitializationBlock initializationBlock = blkIter.next();</span>
+<span class="nc" id="L191">            sb.append(initializationBlock.getFormattedContent(indentLevel));</span>
+<span class="nc bnc" id="L192" title="All 2 branches missed.">            if (blkIter.hasNext()) {</span>
+<span class="nc" id="L193">                OutputUtilities.newLine(sb);</span>
+            }
+<span class="nc" id="L195">        }</span>
+
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        if (methods.size() &gt; 0) {</span>
+<span class="nc" id="L198">            OutputUtilities.newLine(sb);</span>
+        }
+
+<span class="nc" id="L201">        Iterator&lt;Method&gt; mtdIter = methods.iterator();</span>
+<span class="nc bnc" id="L202" title="All 2 branches missed.">        while (mtdIter.hasNext()) {</span>
+<span class="nc" id="L203">            OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L204">            Method method = mtdIter.next();</span>
+<span class="nc" id="L205">            sb.append(method.getFormattedContent(indentLevel, false));</span>
+<span class="nc bnc" id="L206" title="All 2 branches missed.">            if (mtdIter.hasNext()) {</span>
+<span class="nc" id="L207">                OutputUtilities.newLine(sb);</span>
+            }
+<span class="nc" id="L209">        }</span>
+
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        if (innerClasses.size() &gt; 0) {</span>
+<span class="nc" id="L212">            OutputUtilities.newLine(sb);</span>
+        }
+<span class="nc" id="L214">        Iterator&lt;InnerClass&gt; icIter = innerClasses.iterator();</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">        while (icIter.hasNext()) {</span>
+<span class="nc" id="L216">            OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L217">            InnerClass innerClass = icIter.next();</span>
+<span class="nc" id="L218">            sb.append(innerClass.getFormattedContent(indentLevel));</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">            if (icIter.hasNext()) {</span>
+<span class="nc" id="L220">                OutputUtilities.newLine(sb);</span>
+            }
+<span class="nc" id="L222">        }</span>
+
+<span class="nc bnc" id="L224" title="All 2 branches missed.">        if (innerEnums.size() &gt; 0) {</span>
+<span class="nc" id="L225">            OutputUtilities.newLine(sb);</span>
+        }
+
+<span class="nc" id="L228">        Iterator&lt;InnerEnum&gt; ieIter = innerEnums.iterator();</span>
+<span class="nc bnc" id="L229" title="All 2 branches missed.">        while (ieIter.hasNext()) {</span>
+<span class="nc" id="L230">            OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L231">            InnerEnum innerEnum = ieIter.next();</span>
+<span class="nc" id="L232">            sb.append(innerEnum.getFormattedContent(indentLevel));</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">            if (ieIter.hasNext()) {</span>
+<span class="nc" id="L234">                OutputUtilities.newLine(sb);</span>
+            }
+<span class="nc" id="L236">        }</span>
+
+<span class="nc" id="L238">        indentLevel--;</span>
+<span class="nc" id="L239">        OutputUtilities.newLine(sb);</span>
+<span class="nc" id="L240">        OutputUtilities.javaIndent(sb, indentLevel);</span>
+<span class="nc" id="L241">        sb.append('}');</span>
+
+<span class="nc" id="L243">        return sb.toString();</span>
+    }
+
+    /**
+     * @return Returns the superInterfaces.
+     */
+    public Set&lt;FullyQualifiedJavaType&gt; getSuperInterfaceTypes() {
+<span class="nc" id="L250">        return superInterfaceTypes;</span>
+    }
+
+    public void addSuperInterface(FullyQualifiedJavaType superInterface) {
+<span class="nc" id="L254">        superInterfaceTypes.add(superInterface);</span>
+<span class="nc" id="L255">    }</span>
+
+    /**
+     * @return Returns the methods.
+     */
+    public List&lt;Method&gt; getMethods() {
+<span class="nc" id="L261">        return methods;</span>
+    }
+
+    public void addMethod(Method method) {
+<span class="nc" id="L265">        methods.add(method);</span>
+<span class="nc" id="L266">    }</span>
+
+    /**
+     * @return Returns the type.
+     */
+    public FullyQualifiedJavaType getType() {
+<span class="nc" id="L272">        return type;</span>
+    }
+
+    public boolean isAbstract() {
+<span class="nc" id="L276">        return isAbstract;</span>
+    }
+
+    public void setAbstract(boolean isAbtract) {
+<span class="nc" id="L280">        this.isAbstract = isAbtract;</span>
+<span class="nc" id="L281">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

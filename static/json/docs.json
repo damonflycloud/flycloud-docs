@@ -3,5 +3,8 @@
   {"href":"/docs/javascript-patterns","img":"./static/img/javascript patterns.jpg","title":"javascript patterns","middle":"false"},
   {"href":"/docs/ELKStack","img":"./static/img/ELK.jpg","title":"ELKStack","middle":"false"},
   {"href":"/docs/shiro","img":"./static/img/shiro.jpg","title":"shiro教程","middle":"false"},
-  {"href":"/docs/ES6","img":"./static/img/ES6.jpg","title":"ES6教程","middle":"false"}
+  {"href":"/docs/ES6","img":"./static/img/ES6.jpg","title":"ES6教程","middle":"false"},
+  {"href":"/docs/mybatis","img":"./static/img/mybatis.jpg","title":"mybatis教程","middle":"false"},
+  {"href":"/docs/mybatis-spring","img":"./static/img/mybatis-spring.png","title":"mybatis-spring","middle":"false"},
+  {"href":"/docs/MBG","img":"./static/img/mbg.jpg","title":"mybatis-generator教程","middle":"false"}
 ]

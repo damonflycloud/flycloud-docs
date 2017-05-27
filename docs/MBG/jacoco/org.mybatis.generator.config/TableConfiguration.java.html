@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TableConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.config</a> &gt; <span class="el_source">TableConfiguration.java</span></div><h1>TableConfiguration.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2005 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.config;
+
+import static org.mybatis.generator.internal.util.EqualsUtil.areEqual;
+import static org.mybatis.generator.internal.util.HashCodeUtil.hash;
+import static org.mybatis.generator.internal.util.HashCodeUtil.SEED;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
+import static org.mybatis.generator.internal.util.StringUtility.composeFullyQualifiedTableName;
+import static org.mybatis.generator.internal.util.StringUtility.isTrue;
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.generator.api.dom.xml.Attribute;
+import org.mybatis.generator.api.dom.xml.XmlElement;
+
+/**
+ * 
+ * @author Jeff Butler
+ */
+public class TableConfiguration extends PropertyHolder {
+    private boolean insertStatementEnabled;
+
+    private boolean selectByPrimaryKeyStatementEnabled;
+
+    private boolean selectByExampleStatementEnabled;
+
+    private boolean updateByPrimaryKeyStatementEnabled;
+
+    private boolean deleteByPrimaryKeyStatementEnabled;
+
+    private boolean deleteByExampleStatementEnabled;
+
+    private boolean countByExampleStatementEnabled;
+
+    private boolean updateByExampleStatementEnabled;
+
+    private List&lt;ColumnOverride&gt; columnOverrides;
+
+    private Map&lt;IgnoredColumn, Boolean&gt; ignoredColumns;
+
+    private GeneratedKey generatedKey;
+
+    private String selectByPrimaryKeyQueryId;
+
+    private String selectByExampleQueryId;
+
+    private String catalog;
+    private String schema;
+    private String tableName;
+    private String domainObjectName;
+    private String alias;
+    private ModelType modelType;
+    private boolean wildcardEscapingEnabled;
+    private String configuredModelType;
+    private boolean delimitIdentifiers;
+
+    private ColumnRenamingRule columnRenamingRule;
+    private boolean isAllColumnDelimitingEnabled;
+
+    public TableConfiguration(Context context) {
+<span class="fc" id="L79">        super();</span>
+
+<span class="fc" id="L81">        this.modelType = context.getDefaultModelType();</span>
+
+<span class="fc" id="L83">        columnOverrides = new ArrayList&lt;ColumnOverride&gt;();</span>
+<span class="fc" id="L84">        ignoredColumns = new HashMap&lt;IgnoredColumn, Boolean&gt;();</span>
+
+<span class="fc" id="L86">        insertStatementEnabled = true;</span>
+<span class="fc" id="L87">        selectByPrimaryKeyStatementEnabled = true;</span>
+<span class="fc" id="L88">        selectByExampleStatementEnabled = true;</span>
+<span class="fc" id="L89">        updateByPrimaryKeyStatementEnabled = true;</span>
+<span class="fc" id="L90">        deleteByPrimaryKeyStatementEnabled = true;</span>
+<span class="fc" id="L91">        deleteByExampleStatementEnabled = true;</span>
+<span class="fc" id="L92">        countByExampleStatementEnabled = true;</span>
+<span class="fc" id="L93">        updateByExampleStatementEnabled = true;</span>
+<span class="fc" id="L94">    }</span>
+
+    public boolean isDeleteByPrimaryKeyStatementEnabled() {
+<span class="nc" id="L97">        return deleteByPrimaryKeyStatementEnabled;</span>
+    }
+
+    public void setDeleteByPrimaryKeyStatementEnabled(
+            boolean deleteByPrimaryKeyStatementEnabled) {
+<span class="nc" id="L102">        this.deleteByPrimaryKeyStatementEnabled = deleteByPrimaryKeyStatementEnabled;</span>
+<span class="nc" id="L103">    }</span>
+
+    public boolean isInsertStatementEnabled() {
+<span class="nc" id="L106">        return insertStatementEnabled;</span>
+    }
+
+    public void setInsertStatementEnabled(boolean insertStatementEnabled) {
+<span class="nc" id="L110">        this.insertStatementEnabled = insertStatementEnabled;</span>
+<span class="nc" id="L111">    }</span>
+
+    public boolean isSelectByPrimaryKeyStatementEnabled() {
+<span class="nc" id="L114">        return selectByPrimaryKeyStatementEnabled;</span>
+    }
+
+    public void setSelectByPrimaryKeyStatementEnabled(
+            boolean selectByPrimaryKeyStatementEnabled) {
+<span class="nc" id="L119">        this.selectByPrimaryKeyStatementEnabled = selectByPrimaryKeyStatementEnabled;</span>
+<span class="nc" id="L120">    }</span>
+
+    public boolean isUpdateByPrimaryKeyStatementEnabled() {
+<span class="nc" id="L123">        return updateByPrimaryKeyStatementEnabled;</span>
+    }
+
+    public void setUpdateByPrimaryKeyStatementEnabled(
+            boolean updateByPrimaryKeyStatementEnabled) {
+<span class="nc" id="L128">        this.updateByPrimaryKeyStatementEnabled = updateByPrimaryKeyStatementEnabled;</span>
+<span class="nc" id="L129">    }</span>
+
+    public boolean isColumnIgnored(String columnName) {
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        for (Map.Entry&lt;IgnoredColumn, Boolean&gt; entry : ignoredColumns</span>
+                .entrySet()) {
+<span class="nc" id="L134">            IgnoredColumn ic = entry.getKey();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">            if (ic.isColumnNameDelimited()) {</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">                if (columnName.equals(ic.getColumnName())) {</span>
+<span class="nc" id="L137">                    entry.setValue(Boolean.TRUE);</span>
+<span class="nc" id="L138">                    return true;</span>
+                }
+            } else {
+<span class="nc bnc" id="L141" title="All 2 branches missed.">                if (columnName.equalsIgnoreCase(ic.getColumnName())) {</span>
+<span class="nc" id="L142">                    entry.setValue(Boolean.TRUE);</span>
+<span class="nc" id="L143">                    return true;</span>
+                }
+            }
+<span class="nc" id="L146">        }</span>
+
+<span class="nc" id="L148">        return false;</span>
+    }
+
+    public void addIgnoredColumn(IgnoredColumn ignoredColumn) {
+<span class="nc" id="L152">        ignoredColumns.put(ignoredColumn, Boolean.FALSE);</span>
+<span class="nc" id="L153">    }</span>
+
+    public void addColumnOverride(ColumnOverride columnOverride) {
+<span class="fc" id="L156">        columnOverrides.add(columnOverride);</span>
+<span class="fc" id="L157">    }</span>
+
+    @Override
+    public boolean equals(Object obj) {
+<span class="nc bnc" id="L161" title="All 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L162">            return true;</span>
+        }
+
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        if (!(obj instanceof TableConfiguration)) {</span>
+<span class="nc" id="L166">            return false;</span>
+        }
+
+<span class="nc" id="L169">        TableConfiguration other = (TableConfiguration) obj;</span>
+
+<span class="nc bnc" id="L171" title="All 6 branches missed.">        return areEqual(this.catalog, other.catalog)</span>
+                &amp;&amp; areEqual(this.schema, other.schema)
+                &amp;&amp; areEqual(this.tableName, other.tableName);
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L178">        int result = SEED;</span>
+<span class="nc" id="L179">        result = hash(result, catalog);</span>
+<span class="nc" id="L180">        result = hash(result, schema);</span>
+<span class="nc" id="L181">        result = hash(result, tableName);</span>
+
+<span class="nc" id="L183">        return result;</span>
+    }
+
+    public boolean isSelectByExampleStatementEnabled() {
+<span class="nc" id="L187">        return selectByExampleStatementEnabled;</span>
+    }
+
+    public void setSelectByExampleStatementEnabled(
+            boolean selectByExampleStatementEnabled) {
+<span class="nc" id="L192">        this.selectByExampleStatementEnabled = selectByExampleStatementEnabled;</span>
+<span class="nc" id="L193">    }</span>
+
+    /**
+     * May return null if the column has not been overridden
+     * 
+     * @param columnName
+     * @return the column override (if any) related to this column
+     */
+    public ColumnOverride getColumnOverride(String columnName) {
+<span class="nc bnc" id="L202" title="All 2 branches missed.">        for (ColumnOverride co : columnOverrides) {</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">            if (co.isColumnNameDelimited()) {</span>
+<span class="nc bnc" id="L204" title="All 2 branches missed.">                if (columnName.equals(co.getColumnName())) {</span>
+<span class="nc" id="L205">                    return co;</span>
+                }
+            } else {
+<span class="nc bnc" id="L208" title="All 2 branches missed.">                if (columnName.equalsIgnoreCase(co.getColumnName())) {</span>
+<span class="nc" id="L209">                    return co;</span>
+                }
+            }
+<span class="nc" id="L212">        }</span>
+
+<span class="nc" id="L214">        return null;</span>
+    }
+
+    public GeneratedKey getGeneratedKey() {
+<span class="nc" id="L218">        return generatedKey;</span>
+    }
+
+    public String getSelectByExampleQueryId() {
+<span class="nc" id="L222">        return selectByExampleQueryId;</span>
+    }
+
+    public void setSelectByExampleQueryId(String selectByExampleQueryId) {
+<span class="nc" id="L226">        this.selectByExampleQueryId = selectByExampleQueryId;</span>
+<span class="nc" id="L227">    }</span>
+
+    public String getSelectByPrimaryKeyQueryId() {
+<span class="nc" id="L230">        return selectByPrimaryKeyQueryId;</span>
+    }
+
+    public void setSelectByPrimaryKeyQueryId(String selectByPrimaryKeyQueryId) {
+<span class="nc" id="L234">        this.selectByPrimaryKeyQueryId = selectByPrimaryKeyQueryId;</span>
+<span class="nc" id="L235">    }</span>
+
+    public boolean isDeleteByExampleStatementEnabled() {
+<span class="nc" id="L238">        return deleteByExampleStatementEnabled;</span>
+    }
+
+    public void setDeleteByExampleStatementEnabled(
+            boolean deleteByExampleStatementEnabled) {
+<span class="nc" id="L243">        this.deleteByExampleStatementEnabled = deleteByExampleStatementEnabled;</span>
+<span class="nc" id="L244">    }</span>
+
+    public boolean areAnyStatementsEnabled() {
+<span class="nc bnc" id="L247" title="All 16 branches missed.">        return selectByExampleStatementEnabled</span>
+                || selectByPrimaryKeyStatementEnabled || insertStatementEnabled
+                || updateByPrimaryKeyStatementEnabled
+                || deleteByExampleStatementEnabled
+                || deleteByPrimaryKeyStatementEnabled
+                || countByExampleStatementEnabled
+                || updateByExampleStatementEnabled;
+    }
+
+    public void setGeneratedKey(GeneratedKey generatedKey) {
+<span class="fc" id="L257">        this.generatedKey = generatedKey;</span>
+<span class="fc" id="L258">    }</span>
+
+    public String getAlias() {
+<span class="nc" id="L261">        return alias;</span>
+    }
+
+    public void setAlias(String alias) {
+<span class="fc" id="L265">        this.alias = alias;</span>
+<span class="fc" id="L266">    }</span>
+
+    public String getCatalog() {
+<span class="nc" id="L269">        return catalog;</span>
+    }
+
+    public void setCatalog(String catalog) {
+<span class="nc" id="L273">        this.catalog = catalog;</span>
+<span class="nc" id="L274">    }</span>
+
+    public String getDomainObjectName() {
+<span class="nc" id="L277">        return domainObjectName;</span>
+    }
+
+    public void setDomainObjectName(String domainObjectName) {
+<span class="nc" id="L281">        this.domainObjectName = domainObjectName;</span>
+<span class="nc" id="L282">    }</span>
+
+    public String getSchema() {
+<span class="nc" id="L285">        return schema;</span>
+    }
+
+    public void setSchema(String schema) {
+<span class="nc" id="L289">        this.schema = schema;</span>
+<span class="nc" id="L290">    }</span>
+
+    public String getTableName() {
+<span class="nc" id="L293">        return tableName;</span>
+    }
+
+    public void setTableName(String tableName) {
+<span class="fc" id="L297">        this.tableName = tableName;</span>
+<span class="fc" id="L298">    }</span>
+
+    public List&lt;ColumnOverride&gt; getColumnOverrides() {
+<span class="nc" id="L301">        return columnOverrides;</span>
+    }
+
+    /**
+     * This method returns a List of Strings. The values are the columns
+     * that were specified to be ignored in the table, but do not exist in the
+     * table.
+     * 
+     * @return a List of Strings - the columns that were improperly configured
+     *         as ignored columns
+     */
+    public List&lt;String&gt; getIgnoredColumnsInError() {
+<span class="nc" id="L313">        List&lt;String&gt; answer = new ArrayList&lt;String&gt;();</span>
+
+<span class="nc bnc" id="L315" title="All 2 branches missed.">        for (Map.Entry&lt;IgnoredColumn, Boolean&gt; entry : ignoredColumns</span>
+                .entrySet()) {
+<span class="nc bnc" id="L317" title="All 2 branches missed.">            if (Boolean.FALSE.equals(entry.getValue())) {</span>
+<span class="nc" id="L318">                answer.add(entry.getKey().getColumnName());</span>
+            }
+<span class="nc" id="L320">        }</span>
+
+<span class="nc" id="L322">        return answer;</span>
+    }
+
+    public ModelType getModelType() {
+<span class="nc" id="L326">        return modelType;</span>
+    }
+
+    public void setConfiguredModelType(String configuredModelType) {
+<span class="nc" id="L330">        this.configuredModelType = configuredModelType;</span>
+<span class="nc" id="L331">        this.modelType = ModelType.getModelType(configuredModelType);</span>
+<span class="nc" id="L332">    }</span>
+
+    public boolean isWildcardEscapingEnabled() {
+<span class="nc" id="L335">        return wildcardEscapingEnabled;</span>
+    }
+
+    public void setWildcardEscapingEnabled(boolean wildcardEscapingEnabled) {
+<span class="nc" id="L339">        this.wildcardEscapingEnabled = wildcardEscapingEnabled;</span>
+<span class="nc" id="L340">    }</span>
+
+    public XmlElement toXmlElement() {
+<span class="nc" id="L343">        XmlElement xmlElement = new XmlElement(&quot;table&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L344">        xmlElement.addAttribute(new Attribute(&quot;tableName&quot;, tableName)); //$NON-NLS-1$</span>
+
+<span class="nc bnc" id="L346" title="All 2 branches missed.">        if (stringHasValue(catalog)) {</span>
+<span class="nc" id="L347">            xmlElement.addAttribute(new Attribute(&quot;catalog&quot;, catalog)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L350" title="All 2 branches missed.">        if (stringHasValue(schema)) {</span>
+<span class="nc" id="L351">            xmlElement.addAttribute(new Attribute(&quot;schema&quot;, schema)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L354" title="All 2 branches missed.">        if (stringHasValue(alias)) {</span>
+<span class="nc" id="L355">            xmlElement.addAttribute(new Attribute(&quot;alias&quot;, alias)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L358" title="All 2 branches missed.">        if (stringHasValue(domainObjectName)) {</span>
+<span class="nc" id="L359">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;domainObjectName&quot;, domainObjectName)); //$NON-NLS-1$
+        }
+
+<span class="nc bnc" id="L363" title="All 2 branches missed.">        if (!insertStatementEnabled) {</span>
+<span class="nc" id="L364">            xmlElement.addAttribute(new Attribute(&quot;enableInsert&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$</span>
+        }
+
+<span class="nc bnc" id="L367" title="All 2 branches missed.">        if (!selectByPrimaryKeyStatementEnabled) {</span>
+<span class="nc" id="L368">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;enableSelectByPrimaryKey&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc bnc" id="L372" title="All 2 branches missed.">        if (!selectByExampleStatementEnabled) {</span>
+<span class="nc" id="L373">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;enableSelectByExample&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc bnc" id="L377" title="All 2 branches missed.">        if (!updateByPrimaryKeyStatementEnabled) {</span>
+<span class="nc" id="L378">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;enableUpdateByPrimaryKey&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc bnc" id="L382" title="All 2 branches missed.">        if (!deleteByPrimaryKeyStatementEnabled) {</span>
+<span class="nc" id="L383">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;enableDeleteByPrimaryKey&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc bnc" id="L387" title="All 2 branches missed.">        if (!deleteByExampleStatementEnabled) {</span>
+<span class="nc" id="L388">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;enableDeleteByExample&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc bnc" id="L392" title="All 2 branches missed.">        if (!countByExampleStatementEnabled) {</span>
+<span class="nc" id="L393">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;enableCountByExample&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc bnc" id="L397" title="All 2 branches missed.">        if (!updateByExampleStatementEnabled) {</span>
+<span class="nc" id="L398">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;enableUpdateByExample&quot;, &quot;false&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc bnc" id="L402" title="All 2 branches missed.">        if (stringHasValue(selectByPrimaryKeyQueryId)) {</span>
+<span class="nc" id="L403">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;selectByPrimaryKeyQueryId&quot;, selectByPrimaryKeyQueryId)); //$NON-NLS-1$
+        }
+
+<span class="nc bnc" id="L407" title="All 2 branches missed.">        if (stringHasValue(selectByExampleQueryId)) {</span>
+<span class="nc" id="L408">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;selectByExampleQueryId&quot;, selectByExampleQueryId)); //$NON-NLS-1$
+        }
+
+<span class="nc bnc" id="L412" title="All 2 branches missed.">        if (configuredModelType != null) {</span>
+<span class="nc" id="L413">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;modelType&quot;, configuredModelType)); //$NON-NLS-1$
+        }
+
+<span class="nc bnc" id="L417" title="All 2 branches missed.">        if (wildcardEscapingEnabled) {</span>
+<span class="nc" id="L418">            xmlElement.addAttribute(new Attribute(&quot;escapeWildcards&quot;, &quot;true&quot;)); //$NON-NLS-1$ //$NON-NLS-2$</span>
+        }
+
+<span class="nc bnc" id="L421" title="All 2 branches missed.">        if (isAllColumnDelimitingEnabled) {</span>
+<span class="nc" id="L422">            xmlElement.addAttribute(new Attribute(&quot;delimitAllColumns&quot;, &quot;true&quot;)); //$NON-NLS-1$ //$NON-NLS-2$</span>
+        }
+
+<span class="nc bnc" id="L425" title="All 2 branches missed.">        if (delimitIdentifiers) {</span>
+<span class="nc" id="L426">            xmlElement</span>
+                    .addAttribute(new Attribute(&quot;delimitIdentifiers&quot;, &quot;true&quot;)); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+<span class="nc" id="L430">        addPropertyXmlElements(xmlElement);</span>
+
+<span class="nc bnc" id="L432" title="All 2 branches missed.">        if (generatedKey != null) {</span>
+<span class="nc" id="L433">            xmlElement.addElement(generatedKey.toXmlElement());</span>
+        }
+
+<span class="nc bnc" id="L436" title="All 2 branches missed.">        if (columnRenamingRule != null) {</span>
+<span class="nc" id="L437">            xmlElement.addElement(columnRenamingRule.toXmlElement());</span>
+        }
+
+<span class="nc bnc" id="L440" title="All 2 branches missed.">        if (ignoredColumns.size() &gt; 0) {</span>
+<span class="nc bnc" id="L441" title="All 2 branches missed.">            for (IgnoredColumn ignoredColumn : ignoredColumns.keySet()) {</span>
+<span class="nc" id="L442">                xmlElement.addElement(ignoredColumn.toXmlElement());</span>
+<span class="nc" id="L443">            }</span>
+        }
+
+<span class="nc bnc" id="L446" title="All 2 branches missed.">        if (columnOverrides.size() &gt; 0) {</span>
+<span class="nc bnc" id="L447" title="All 2 branches missed.">            for (ColumnOverride columnOverride : columnOverrides) {</span>
+<span class="nc" id="L448">                xmlElement.addElement(columnOverride.toXmlElement());</span>
+<span class="nc" id="L449">            }</span>
+        }
+
+<span class="nc" id="L452">        return xmlElement;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L457">        return composeFullyQualifiedTableName(catalog, schema,</span>
+                tableName, '.');
+    }
+
+    public boolean isDelimitIdentifiers() {
+<span class="nc" id="L462">        return delimitIdentifiers;</span>
+    }
+
+    public void setDelimitIdentifiers(boolean delimitIdentifiers) {
+<span class="nc" id="L466">        this.delimitIdentifiers = delimitIdentifiers;</span>
+<span class="nc" id="L467">    }</span>
+
+    public boolean isCountByExampleStatementEnabled() {
+<span class="nc" id="L470">        return countByExampleStatementEnabled;</span>
+    }
+
+    public void setCountByExampleStatementEnabled(
+            boolean countByExampleStatementEnabled) {
+<span class="nc" id="L475">        this.countByExampleStatementEnabled = countByExampleStatementEnabled;</span>
+<span class="nc" id="L476">    }</span>
+
+    public boolean isUpdateByExampleStatementEnabled() {
+<span class="nc" id="L479">        return updateByExampleStatementEnabled;</span>
+    }
+
+    public void setUpdateByExampleStatementEnabled(
+            boolean updateByExampleStatementEnabled) {
+<span class="nc" id="L484">        this.updateByExampleStatementEnabled = updateByExampleStatementEnabled;</span>
+<span class="nc" id="L485">    }</span>
+
+    public void validate(List&lt;String&gt; errors, int listPosition) {
+<span class="pc bpc" id="L488" title="1 of 2 branches missed.">        if (!stringHasValue(tableName)) {</span>
+<span class="nc" id="L489">            errors.add(getString(</span>
+                    &quot;ValidationError.6&quot;, Integer.toString(listPosition))); //$NON-NLS-1$
+        }
+
+<span class="fc" id="L493">        String fqTableName = composeFullyQualifiedTableName(</span>
+                catalog, schema, tableName, '.');
+
+<span class="fc bfc" id="L496" title="All 2 branches covered.">        if (generatedKey != null) {</span>
+<span class="fc" id="L497">            generatedKey.validate(errors, fqTableName);</span>
+        }
+
+<span class="fc bfc" id="L500" title="All 2 branches covered.">        if (isTrue(getProperty(PropertyRegistry.TABLE_USE_COLUMN_INDEXES))) {</span>
+            // when using column indexes, either both or neither query ids
+            // should be set
+<span class="pc bpc" id="L503" title="2 of 4 branches missed.">            if (selectByExampleStatementEnabled</span>
+                    &amp;&amp; selectByPrimaryKeyStatementEnabled) {
+<span class="fc" id="L505">                boolean queryId1Set = stringHasValue(selectByExampleQueryId);</span>
+<span class="fc" id="L506">                boolean queryId2Set = stringHasValue(selectByPrimaryKeyQueryId);</span>
+
+<span class="pc bpc" id="L508" title="1 of 2 branches missed.">                if (queryId1Set != queryId2Set) {</span>
+<span class="nc" id="L509">                    errors.add(getString(&quot;ValidationError.13&quot;, //$NON-NLS-1$</span>
+                            fqTableName));
+                }
+            }
+        }
+
+<span class="pc bpc" id="L515" title="1 of 2 branches missed.">        if (columnRenamingRule != null) {</span>
+<span class="nc" id="L516">            columnRenamingRule.validate(errors, fqTableName);</span>
+        }
+
+<span class="fc bfc" id="L519" title="All 2 branches covered.">        for (ColumnOverride columnOverride : columnOverrides) {</span>
+<span class="fc" id="L520">            columnOverride.validate(errors, fqTableName);</span>
+<span class="fc" id="L521">        }</span>
+
+<span class="pc bpc" id="L523" title="1 of 2 branches missed.">        for (IgnoredColumn ignoredColumn : ignoredColumns.keySet()) {</span>
+<span class="nc" id="L524">            ignoredColumn.validate(errors, fqTableName);</span>
+<span class="nc" id="L525">        }</span>
+<span class="fc" id="L526">    }</span>
+
+    public ColumnRenamingRule getColumnRenamingRule() {
+<span class="nc" id="L529">        return columnRenamingRule;</span>
+    }
+
+    public void setColumnRenamingRule(ColumnRenamingRule columnRenamingRule) {
+<span class="nc" id="L533">        this.columnRenamingRule = columnRenamingRule;</span>
+<span class="nc" id="L534">    }</span>
+
+    public boolean isAllColumnDelimitingEnabled() {
+<span class="nc" id="L537">        return isAllColumnDelimitingEnabled;</span>
+    }
+
+    public void setAllColumnDelimitingEnabled(
+            boolean isAllColumnDelimitingEnabled) {
+<span class="nc" id="L542">        this.isAllColumnDelimitingEnabled = isAllColumnDelimitingEnabled;</span>
+<span class="nc" id="L543">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

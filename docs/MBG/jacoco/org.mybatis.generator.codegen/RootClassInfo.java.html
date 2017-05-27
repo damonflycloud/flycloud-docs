@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RootClassInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.codegen</a> &gt; <span class="el_source">RootClassInfo.java</span></div><h1>RootClassInfo.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2008 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.codegen;
+
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
+
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.internal.ObjectFactory;
+
+/**
+ * 
+ * @author Jeff Butler
+ * 
+ */
+public class RootClassInfo {
+
+    private static Map&lt;String, RootClassInfo&gt; rootClassInfoMap;
+
+    static {
+<span class="nc" id="L41">        rootClassInfoMap = Collections</span>
+                .synchronizedMap(new HashMap&lt;String, RootClassInfo&gt;());
+<span class="nc" id="L43">    }</span>
+
+    public static RootClassInfo getInstance(String className,
+            List&lt;String&gt; warnings) {
+<span class="nc" id="L47">        RootClassInfo classInfo = rootClassInfoMap.get(className);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (classInfo == null) {</span>
+<span class="nc" id="L49">            classInfo = new RootClassInfo(className, warnings);</span>
+<span class="nc" id="L50">            rootClassInfoMap.put(className, classInfo);</span>
+        }
+
+<span class="nc" id="L53">        return classInfo;</span>
+    }
+
+    private PropertyDescriptor[] propertyDescriptors;
+    private String className;
+    private List&lt;String&gt; warnings;
+
+    private RootClassInfo(String className, List&lt;String&gt; warnings) {
+<span class="nc" id="L61">        super();</span>
+<span class="nc" id="L62">        this.className = className;</span>
+<span class="nc" id="L63">        this.warnings = warnings;</span>
+
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (className == null) {</span>
+<span class="nc" id="L66">            return;</span>
+        }
+
+        try {
+<span class="nc" id="L70">            Class&lt;?&gt; clazz = ObjectFactory.externalClassForName(className);</span>
+<span class="nc" id="L71">            BeanInfo bi = Introspector.getBeanInfo(clazz);</span>
+<span class="nc" id="L72">            propertyDescriptors = bi.getPropertyDescriptors();</span>
+<span class="nc" id="L73">        } catch (Exception e) {</span>
+<span class="nc" id="L74">            propertyDescriptors = null;</span>
+<span class="nc" id="L75">            warnings.add(getString(&quot;Warning.20&quot;, className)); //$NON-NLS-1$</span>
+<span class="nc" id="L76">        }</span>
+<span class="nc" id="L77">    }</span>
+
+    public boolean containsProperty(IntrospectedColumn introspectedColumn) {
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (propertyDescriptors == null) {</span>
+<span class="nc" id="L81">            return false;</span>
+        }
+
+<span class="nc" id="L84">        boolean found = false;</span>
+<span class="nc" id="L85">        String propertyName = introspectedColumn.getJavaProperty();</span>
+<span class="nc" id="L86">        String propertyType = introspectedColumn.getFullyQualifiedJavaType()</span>
+                .getFullyQualifiedName();
+
+        // get method names from class and check against this column definition.
+        // better yet, have a map of method Names. check against it.
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        for (int i = 0; i &lt; propertyDescriptors.length; i++) {</span>
+<span class="nc" id="L92">            PropertyDescriptor propertyDescriptor = propertyDescriptors[i];</span>
+
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            if (propertyDescriptor.getName().equals(propertyName)) {</span>
+                // property is in the rootClass...
+
+                // Is it the proper type?
+<span class="nc bnc" id="L98" title="All 2 branches missed.">                if (!propertyDescriptor.getPropertyType().getName().equals(</span>
+                        propertyType)) {
+<span class="nc" id="L100">                    warnings.add(getString(&quot;Warning.21&quot;, //$NON-NLS-1$</span>
+                            propertyName, className, propertyType));
+<span class="nc" id="L102">                    break;</span>
+                }
+
+                // Does it have a getter?
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                if (propertyDescriptor.getReadMethod() == null) {</span>
+<span class="nc" id="L107">                    warnings.add(getString(&quot;Warning.22&quot;, //$NON-NLS-1$</span>
+                            propertyName, className));
+<span class="nc" id="L109">                    break;</span>
+                }
+
+                // Does it have a setter?
+<span class="nc bnc" id="L113" title="All 2 branches missed.">                if (propertyDescriptor.getWriteMethod() == null) {</span>
+<span class="nc" id="L114">                    warnings.add(getString(&quot;Warning.23&quot;, //$NON-NLS-1$</span>
+                            propertyName, className));
+<span class="nc" id="L116">                    break;</span>
+                }
+
+<span class="nc" id="L119">                found = true;</span>
+<span class="nc" id="L120">                break;</span>
+            }
+        }
+
+<span class="nc" id="L124">        return found;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

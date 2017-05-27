@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractDAOTemplate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.codegen.ibatis2.dao.templates</a> &gt; <span class="el_source">AbstractDAOTemplate.java</span></div><h1>AbstractDAOTemplate.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2006 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.codegen.ibatis2.dao.templates;
+
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.generator.api.CommentGenerator;
+import org.mybatis.generator.api.IntrospectedTable;
+import org.mybatis.generator.api.dom.java.Field;
+import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
+import org.mybatis.generator.api.dom.java.Method;
+import org.mybatis.generator.api.dom.java.Parameter;
+
+/**
+ * Base class for DAO templates. Subclasses should override any of the
+ * configureXXX methods to specify the unique properties of the desired DAO
+ * objects.
+ * 
+ * @author Jeff Butler
+ */
+public abstract class AbstractDAOTemplate {
+    private List&lt;FullyQualifiedJavaType&gt; interfaceImports;
+
+    private List&lt;FullyQualifiedJavaType&gt; implementationImports;
+
+    private FullyQualifiedJavaType superClass;
+
+    private List&lt;FullyQualifiedJavaType&gt; checkedExceptions;
+
+    private List&lt;Field&gt; fields;
+
+    private List&lt;Method&gt; methods;
+
+    private Method constructorTemplate;
+
+    private String deleteMethodTemplate;
+
+    private String insertMethodTemplate;
+
+    private String updateMethodTemplate;
+
+    private String queryForObjectMethodTemplate;
+
+    private String queryForListMethodTemplate;
+
+    private boolean configured;
+
+    /**
+     *  
+     */
+    public AbstractDAOTemplate() {
+<span class="nc" id="L67">        super();</span>
+<span class="nc" id="L68">        interfaceImports = new ArrayList&lt;FullyQualifiedJavaType&gt;();</span>
+<span class="nc" id="L69">        implementationImports = new ArrayList&lt;FullyQualifiedJavaType&gt;();</span>
+<span class="nc" id="L70">        fields = new ArrayList&lt;Field&gt;();</span>
+<span class="nc" id="L71">        methods = new ArrayList&lt;Method&gt;();</span>
+<span class="nc" id="L72">        checkedExceptions = new ArrayList&lt;FullyQualifiedJavaType&gt;();</span>
+<span class="nc" id="L73">        configured = false;</span>
+<span class="nc" id="L74">    }</span>
+
+    public final Method getConstructorClone(CommentGenerator commentGenerator,
+            FullyQualifiedJavaType type, IntrospectedTable introspectedTable) {
+<span class="nc" id="L78">        configure();</span>
+<span class="nc" id="L79">        Method answer = new Method();</span>
+<span class="nc" id="L80">        answer.setConstructor(true);</span>
+<span class="nc" id="L81">        answer.setName(type.getShortName());</span>
+<span class="nc" id="L82">        answer.setVisibility(constructorTemplate.getVisibility());</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        for (Parameter parm : constructorTemplate.getParameters()) {</span>
+<span class="nc" id="L84">            answer.addParameter(parm);</span>
+<span class="nc" id="L85">        }</span>
+
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        for (String bodyLine : constructorTemplate.getBodyLines()) {</span>
+<span class="nc" id="L88">            answer.addBodyLine(bodyLine);</span>
+<span class="nc" id="L89">        }</span>
+
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        for (FullyQualifiedJavaType fqjt : constructorTemplate.getExceptions()) {</span>
+<span class="nc" id="L92">            answer.addException(fqjt);</span>
+<span class="nc" id="L93">        }</span>
+
+<span class="nc" id="L95">        commentGenerator.addGeneralMethodComment(answer, introspectedTable);</span>
+
+<span class="nc" id="L97">        return answer;</span>
+    }
+
+    public final String getDeleteMethod(String sqlMapNamespace,
+            String statementId, String parameter) {
+<span class="nc" id="L102">        configure();</span>
+<span class="nc" id="L103">        String answer = MessageFormat.format(deleteMethodTemplate,</span>
+                new Object[] { sqlMapNamespace, statementId, parameter });
+
+<span class="nc" id="L106">        return answer;</span>
+    }
+
+    public final List&lt;FullyQualifiedJavaType&gt; getInterfaceImports() {
+<span class="nc" id="L110">        configure();</span>
+<span class="nc" id="L111">        return interfaceImports;</span>
+    }
+
+    public final List&lt;FullyQualifiedJavaType&gt; getImplementationImports() {
+<span class="nc" id="L115">        configure();</span>
+<span class="nc" id="L116">        return implementationImports;</span>
+    }
+
+    public final String getInsertMethod(String sqlMapNamespace,
+            String statementId, String parameter) {
+<span class="nc" id="L121">        configure();</span>
+<span class="nc" id="L122">        String answer = MessageFormat.format(insertMethodTemplate,</span>
+                new Object[] { sqlMapNamespace, statementId, parameter });
+
+<span class="nc" id="L125">        return answer;</span>
+    }
+
+    public final String getQueryForListMethod(String sqlMapNamespace,
+            String statementId, String parameter) {
+<span class="nc" id="L130">        configure();</span>
+<span class="nc" id="L131">        String answer = MessageFormat.format(queryForListMethodTemplate,</span>
+                new Object[] { sqlMapNamespace, statementId, parameter });
+
+<span class="nc" id="L134">        return answer;</span>
+    }
+
+    public final String getQueryForObjectMethod(String sqlMapNamespace,
+            String statementId, String parameter) {
+<span class="nc" id="L139">        configure();</span>
+<span class="nc" id="L140">        String answer = MessageFormat.format(queryForObjectMethodTemplate,</span>
+                new Object[] { sqlMapNamespace, statementId, parameter });
+
+<span class="nc" id="L143">        return answer;</span>
+    }
+
+    public final FullyQualifiedJavaType getSuperClass() {
+<span class="nc" id="L147">        configure();</span>
+<span class="nc" id="L148">        return superClass;</span>
+    }
+
+    public final String getUpdateMethod(String sqlMapNamespace,
+            String statementId, String parameter) {
+<span class="nc" id="L153">        configure();</span>
+<span class="nc" id="L154">        String answer = MessageFormat.format(updateMethodTemplate,</span>
+                new Object[] { sqlMapNamespace, statementId, parameter });
+
+<span class="nc" id="L157">        return answer;</span>
+    }
+
+    public final List&lt;FullyQualifiedJavaType&gt; getCheckedExceptions() {
+<span class="nc" id="L161">        configure();</span>
+<span class="nc" id="L162">        return checkedExceptions;</span>
+    }
+
+    public final List&lt;Field&gt; getFieldClones(CommentGenerator commentGenerator,
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L167">        configure();</span>
+<span class="nc" id="L168">        List&lt;Field&gt; answer = new ArrayList&lt;Field&gt;();</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        for (Field oldField : fields) {</span>
+<span class="nc" id="L170">            Field field = new Field();</span>
+
+<span class="nc" id="L172">            field.setInitializationString(oldField.getInitializationString());</span>
+<span class="nc" id="L173">            field.setFinal(oldField.isFinal());</span>
+<span class="nc" id="L174">            field.setStatic(oldField.isStatic());</span>
+<span class="nc" id="L175">            field.setName(oldField.getName());</span>
+<span class="nc" id="L176">            field.setType(oldField.getType());</span>
+<span class="nc" id="L177">            field.setVisibility(oldField.getVisibility());</span>
+<span class="nc" id="L178">            commentGenerator.addFieldComment(field, introspectedTable);</span>
+<span class="nc" id="L179">            answer.add(field);</span>
+<span class="nc" id="L180">        }</span>
+
+<span class="nc" id="L182">        return answer;</span>
+    }
+
+    public final List&lt;Method&gt; getMethodClones(
+            CommentGenerator commentGenerator,
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L188">        configure();</span>
+<span class="nc" id="L189">        List&lt;Method&gt; answer = new ArrayList&lt;Method&gt;();</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">        for (Method oldMethod : methods) {</span>
+<span class="nc" id="L191">            Method method = new Method();</span>
+
+<span class="nc bnc" id="L193" title="All 2 branches missed.">            for (String bodyLine : oldMethod.getBodyLines()) {</span>
+<span class="nc" id="L194">                method.addBodyLine(bodyLine);</span>
+<span class="nc" id="L195">            }</span>
+
+<span class="nc bnc" id="L197" title="All 2 branches missed.">            for (FullyQualifiedJavaType fqjt : oldMethod.getExceptions()) {</span>
+<span class="nc" id="L198">                method.addException(fqjt);</span>
+<span class="nc" id="L199">            }</span>
+
+<span class="nc bnc" id="L201" title="All 2 branches missed.">            for (Parameter parm : oldMethod.getParameters()) {</span>
+<span class="nc" id="L202">                method.addParameter(parm);</span>
+<span class="nc" id="L203">            }</span>
+
+<span class="nc" id="L205">            method.setConstructor(oldMethod.isConstructor());</span>
+<span class="nc" id="L206">            method.setFinal(oldMethod.isFinal());</span>
+<span class="nc" id="L207">            method.setStatic(oldMethod.isStatic());</span>
+<span class="nc" id="L208">            method.setName(oldMethod.getName());</span>
+<span class="nc" id="L209">            method.setReturnType(oldMethod.getReturnType());</span>
+<span class="nc" id="L210">            method.setVisibility(oldMethod.getVisibility());</span>
+
+<span class="nc" id="L212">            commentGenerator.addGeneralMethodComment(method, introspectedTable);</span>
+
+<span class="nc" id="L214">            answer.add(method);</span>
+<span class="nc" id="L215">        }</span>
+
+<span class="nc" id="L217">        return answer;</span>
+    }
+
+    protected void setConstructorTemplate(Method constructorTemplate) {
+<span class="nc" id="L221">        this.constructorTemplate = constructorTemplate;</span>
+<span class="nc" id="L222">    }</span>
+
+    protected void setDeleteMethodTemplate(String deleteMethodTemplate) {
+<span class="nc" id="L225">        this.deleteMethodTemplate = deleteMethodTemplate;</span>
+<span class="nc" id="L226">    }</span>
+
+    protected void addField(Field field) {
+<span class="nc" id="L229">        fields.add(field);</span>
+<span class="nc" id="L230">    }</span>
+
+    protected void setInsertMethodTemplate(String insertMethodTemplate) {
+<span class="nc" id="L233">        this.insertMethodTemplate = insertMethodTemplate;</span>
+<span class="nc" id="L234">    }</span>
+
+    protected void addMethod(Method method) {
+<span class="nc" id="L237">        methods.add(method);</span>
+<span class="nc" id="L238">    }</span>
+
+    protected void setQueryForListMethodTemplate(
+            String queryForListMethodTemplate) {
+<span class="nc" id="L242">        this.queryForListMethodTemplate = queryForListMethodTemplate;</span>
+<span class="nc" id="L243">    }</span>
+
+    protected void setQueryForObjectMethodTemplate(
+            String queryForObjectMethodTemplate) {
+<span class="nc" id="L247">        this.queryForObjectMethodTemplate = queryForObjectMethodTemplate;</span>
+<span class="nc" id="L248">    }</span>
+
+    protected void setSuperClass(FullyQualifiedJavaType superClass) {
+<span class="nc" id="L251">        this.superClass = superClass;</span>
+<span class="nc" id="L252">    }</span>
+
+    protected void setUpdateMethodTemplate(String updateMethodTemplate) {
+<span class="nc" id="L255">        this.updateMethodTemplate = updateMethodTemplate;</span>
+<span class="nc" id="L256">    }</span>
+
+    protected void addInterfaceImport(FullyQualifiedJavaType type) {
+<span class="nc" id="L259">        interfaceImports.add(type);</span>
+<span class="nc" id="L260">    }</span>
+
+    protected void addImplementationImport(FullyQualifiedJavaType type) {
+<span class="nc" id="L263">        implementationImports.add(type);</span>
+<span class="nc" id="L264">    }</span>
+
+    protected void addCheckedException(FullyQualifiedJavaType type) {
+<span class="nc" id="L267">        checkedExceptions.add(type);</span>
+<span class="nc" id="L268">    }</span>
+
+    /**
+     * This method is called in the constructor to configure the DAO template.
+     * Subclasses should implement the individual configureXXX methods to setup
+     * the relevant parts of the DAO template (super class, extra methods, etc.)
+     * that are relevant for this specific type of DAO.
+     */
+    private void configure() {
+<span class="nc bnc" id="L277" title="All 2 branches missed.">        if (!configured) {</span>
+<span class="nc" id="L278">            configureCheckedExceptions();</span>
+<span class="nc" id="L279">            configureConstructorTemplate();</span>
+<span class="nc" id="L280">            configureDeleteMethodTemplate();</span>
+<span class="nc" id="L281">            configureFields();</span>
+<span class="nc" id="L282">            configureImplementationImports();</span>
+<span class="nc" id="L283">            configureInsertMethodTemplate();</span>
+<span class="nc" id="L284">            configureInterfaceImports();</span>
+<span class="nc" id="L285">            configureMethods();</span>
+<span class="nc" id="L286">            configureQueryForListMethodTemplate();</span>
+<span class="nc" id="L287">            configureQueryForObjectMethodTemplate();</span>
+<span class="nc" id="L288">            configureSuperClass();</span>
+<span class="nc" id="L289">            configureUpdateMethodTemplate();</span>
+<span class="nc" id="L290">            configured = true;</span>
+        }
+<span class="nc" id="L292">    }</span>
+
+    /**
+     * Override this method to add checked exceptions to the throws clause of
+     * any generated DAO method. When overriding this method, call
+     * &lt;code&gt;addCheckedException(FullyQualifiedJavaType)&lt;/code&gt; one or more
+     * times to add checked exception(s) to all generated DAO methods.
+     */
+    protected void configureCheckedExceptions() {
+<span class="nc" id="L301">    }</span>
+
+    /**
+     * Override this method to add fields to any generated DAO implementation
+     * class. When overriding this method, call &lt;code&gt;addField(Field)&lt;/code&gt; one
+     * or more times to add field(s) to the generated DAO implementation class.
+     */
+    protected void configureFields() {
+<span class="nc" id="L309">    }</span>
+
+    /**
+     * Override this method to add imports to generated DAO implementation
+     * classes. When overriding this method, call
+     * &lt;code&gt;addImplementationImport(FullyQualifiedJavaType)&lt;/code&gt; one or more
+     * times to add import(s) to generated DAO implementation classes.
+     */
+    protected void configureImplementationImports() {
+<span class="nc" id="L318">    }</span>
+
+    /**
+     * Override this method to add imports to generated DAO interface classes.
+     * When overriding this method, call
+     * &lt;code&gt;addInterfaceImport(FullyQualifiedJavaType)&lt;/code&gt; one or more times
+     * to add import(s) to generated DAO interface classes.
+     */
+    protected void configureInterfaceImports() {
+<span class="nc" id="L327">    }</span>
+
+    /**
+     * Override this method to add methods to generated DAO implementation
+     * classes. When overriding this method, call &lt;code&gt;addMethod(Method)&lt;/code&gt;
+     * one or more times to add method(s) to generated DAO implementation
+     * classes.
+     */
+    protected void configureMethods() {
+<span class="nc" id="L336">    }</span>
+
+    /**
+     * Override this method to set the superclass for any generated DAO
+     * implementation class. When overriding this method call
+     * &lt;code&gt;setSuperClass(FullyQualifiedJavaType)&lt;/code&gt; to set the superclass
+     * for generated DAO implementation classes.
+     */
+    protected void configureSuperClass() {
+<span class="nc" id="L345">    }</span>
+
+    /**
+     * Override this method to configure a constructor for generated DAO
+     * implementation classes. During code generation, we will build a new
+     * constructor using the visibility, parameters, body lines, and exceptions
+     * set on the constructor template. When overriding this method, call
+     * &lt;code&gt;setConstructorTemplate(Method)&lt;/code&gt; to set the constructor
+     * template.
+     */
+    protected abstract void configureConstructorTemplate();
+
+    /**
+     * Override this method to configure an insert method template. A method
+     * template is a string with three substitution markers that we will
+     * fill in when generating code. The substitution markers will be:
+     * &lt;ul&gt;
+     * &lt;li&gt;{0} - The SqlMap namespace&lt;/li&gt;
+     * &lt;li&gt;{1} - The SqlMap statement id&lt;/li&gt;
+     * &lt;li&gt;{2} - The parameter object&lt;/li&gt;
+     * &lt;/ul&gt;
+     * 
+     * For example, when calling methods in the SqlMapClient interface, the
+     * template would be:
+     * 
+     * sqlMapClient.insert(\&quot;{0}.{1}\&quot;, {2});
+     * 
+     * Overriding methods should call the
+     * &lt;code&gt;setInsertMethodTemplate(String)&lt;/code method to set the template.
+     * 
+     */
+    protected abstract void configureInsertMethodTemplate();
+
+    /**
+     * Override this method to configure a queryForList method template. A
+     * method template is a string with three substitution markers that we
+     * will fill in when generating code. The substitution markers will be:
+     * &lt;ul&gt;
+     * &lt;li&gt;{0} - The SqlMap namespace&lt;/li&gt;
+     * &lt;li&gt;{1} - The SqlMap statement id&lt;/li&gt;
+     * &lt;li&gt;{2} - The parameter object&lt;/li&gt;
+     * &lt;/ul&gt;
+     * 
+     * For example, when calling methods in the SqlMapClient interface, the
+     * template would be:
+     * 
+     * sqlMapClient.queryForList(\&quot;{0}.{1}\&quot;, {2});
+     * 
+     * Overriding methods should call the
+     * &lt;code&gt;setQueryForListMethodTemplate(String)&lt;/code method to set the
+     * template.
+     */
+    protected abstract void configureQueryForListMethodTemplate();
+
+    /**
+     * Override this method to configure a queryForObject method template. A
+     * method template is a string with three substitution markers that we
+     * will fill in when generating code. The substitution markers will be:
+     * &lt;ul&gt;
+     * &lt;li&gt;{0} - The SqlMap namespace&lt;/li&gt;
+     * &lt;li&gt;{1} - The SqlMap statement id&lt;/li&gt;
+     * &lt;li&gt;{2} - The parameter object&lt;/li&gt;
+     * &lt;/ul&gt;
+     * 
+     * For example, when calling methods in the SqlMapClient interface, the
+     * template would be:
+     * 
+     * sqlMapClient.queryForObject(\&quot;{0}.{1}\&quot;, {2});
+     * 
+     * Overriding methods should call the
+     * &lt;code&gt;setQueryForObjectMethodTemplate(String)&lt;/code method to set the
+     * template.
+     */
+    protected abstract void configureQueryForObjectMethodTemplate();
+
+    /**
+     * Override this method to configure an update method template. A method
+     * template is a string with three substitution markers that we will
+     * fill in when generating code. The substitution markers will be:
+     * &lt;ul&gt;
+     * &lt;li&gt;{0} - The SqlMap namespace&lt;/li&gt;
+     * &lt;li&gt;{1} - The SqlMap statement id&lt;/li&gt;
+     * &lt;li&gt;{2} - The parameter object&lt;/li&gt;
+     * &lt;/ul&gt;
+     * 
+     * For example, when calling methods in the SqlMapClient interface, the
+     * template would be:
+     * 
+     * sqlMapClient.update(\&quot;{0}.{1}\&quot;, {2});
+     * 
+     * Overriding methods should call the
+     * &lt;code&gt;setUpdateMethodTemplate(String)&lt;/code method to set the template.
+     */
+    protected abstract void configureUpdateMethodTemplate();
+
+    /**
+     * Override this method to configure a delete method template. A method
+     * template is a string with three substitution markers that we will
+     * fill in when generating code. The substitution markers will be:
+     * &lt;ul&gt;
+     * &lt;li&gt;{0} - The SqlMap namespace&lt;/li&gt;
+     * &lt;li&gt;{1} - The SqlMap statement id&lt;/li&gt;
+     * &lt;li&gt;{2} - The parameter object&lt;/li&gt;
+     * &lt;/ul&gt;
+     * 
+     * For example, when calling methods in the SqlMapClient interface, the
+     * template would be:
+     * 
+     * sqlMapClient.delete(\&quot;{0}.{1}\&quot;, {2});
+     * 
+     * Overriding methods should call the
+     * &lt;code&gt;setDeleteMethodTemplate(String)&lt;/code method to set the template.
+     */
+    protected abstract void configureDeleteMethodTemplate();
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

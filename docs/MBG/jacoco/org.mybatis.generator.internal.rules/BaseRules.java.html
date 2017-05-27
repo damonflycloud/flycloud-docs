@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseRules.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.internal.rules</a> &gt; <span class="el_source">BaseRules.java</span></div><h1>BaseRules.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2006 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.internal.rules;
+
+import org.mybatis.generator.api.IntrospectedTable;
+import org.mybatis.generator.api.IntrospectedTable.TargetRuntime;
+import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
+import org.mybatis.generator.config.PropertyRegistry;
+import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.internal.util.StringUtility;
+
+/**
+ * This class centralizes all the rules related to code generation - including
+ * the methods and objects to create, and certain attributes related to those
+ * objects.
+ * 
+ * @author Jeff Butler
+ */
+public abstract class BaseRules implements Rules {
+
+    protected TableConfiguration tableConfiguration;
+    protected IntrospectedTable introspectedTable;
+    protected final boolean isModelOnly;
+
+    /**
+     * 
+     */
+    public BaseRules(IntrospectedTable introspectedTable) {
+<span class="nc" id="L42">        super();</span>
+<span class="nc" id="L43">        this.introspectedTable = introspectedTable;</span>
+<span class="nc" id="L44">        this.tableConfiguration = introspectedTable.getTableConfiguration();</span>
+<span class="nc" id="L45">        String modelOnly = tableConfiguration.getProperty(PropertyRegistry.TABLE_MODEL_ONLY);</span>
+<span class="nc" id="L46">        isModelOnly = StringUtility.isTrue(modelOnly);</span>
+<span class="nc" id="L47">    }</span>
+
+    /**
+     * Implements the rule for generating the insert SQL Map element and DAO
+     * method. If the insert statement is allowed, then generate the element and
+     * method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateInsert() {
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L58">            return false;</span>
+        }
+        
+<span class="nc" id="L61">        return tableConfiguration.isInsertStatementEnabled();</span>
+    }
+
+    /**
+     * Implements the rule for generating the insert selective SQL Map element
+     * and DAO method. If the insert statement is allowed, then generate the
+     * element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateInsertSelective() {
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L73">            return false;</span>
+        }
+        
+<span class="nc" id="L76">        return tableConfiguration.isInsertStatementEnabled();</span>
+    }
+
+    /**
+     * Calculates the class that contains all fields. This class is used as the
+     * insert statement parameter, as well as the returned value from the select
+     * by primary key method. The actual class depends on how the domain model
+     * is generated.
+     * 
+     * @return the type of the class that holds all fields
+     */
+    public FullyQualifiedJavaType calculateAllFieldsClass() {
+
+        String answer;
+
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if (generateRecordWithBLOBsClass()) {</span>
+<span class="nc" id="L92">            answer = introspectedTable.getRecordWithBLOBsType();</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        } else if (generateBaseRecordClass()) {</span>
+<span class="nc" id="L94">            answer = introspectedTable.getBaseRecordType();</span>
+        } else {
+<span class="nc" id="L96">            answer = introspectedTable.getPrimaryKeyType();</span>
+        }
+
+<span class="nc" id="L99">        return new FullyQualifiedJavaType(answer);</span>
+    }
+
+    /**
+     * Implements the rule for generating the update by primary key without
+     * BLOBs SQL Map element and DAO method. If the table has a primary key as
+     * well as other non-BLOB fields, and the updateByPrimaryKey statement is
+     * allowed, then generate the element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateUpdateByPrimaryKeyWithoutBLOBs() {
+<span class="nc bnc" id="L111" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L112">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L115" title="All 6 branches missed.">        boolean rc = tableConfiguration.isUpdateByPrimaryKeyStatementEnabled()</span>
+                &amp;&amp; introspectedTable.hasPrimaryKeyColumns()
+                &amp;&amp; introspectedTable.hasBaseColumns();
+
+<span class="nc" id="L119">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the update by primary key with BLOBs
+     * SQL Map element and DAO method. If the table has a primary key as well as
+     * other BLOB fields, and the updateByPrimaryKey statement is allowed, then
+     * generate the element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateUpdateByPrimaryKeyWithBLOBs() {
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L132">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L135" title="All 6 branches missed.">        boolean rc = tableConfiguration.isUpdateByPrimaryKeyStatementEnabled()</span>
+                &amp;&amp; introspectedTable.hasPrimaryKeyColumns()
+                &amp;&amp; introspectedTable.hasBLOBColumns();
+
+<span class="nc" id="L139">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the update by primary key selective
+     * SQL Map element and DAO method. If the table has a primary key as well as
+     * other fields, and the updateByPrimaryKey statement is allowed, then
+     * generate the element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateUpdateByPrimaryKeySelective() {
+<span class="nc bnc" id="L151" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L152">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L155" title="All 8 branches missed.">        boolean rc = tableConfiguration.isUpdateByPrimaryKeyStatementEnabled()</span>
+                &amp;&amp; introspectedTable.hasPrimaryKeyColumns()
+                &amp;&amp; (introspectedTable.hasBLOBColumns() || introspectedTable
+                        .hasBaseColumns());
+
+<span class="nc" id="L160">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the delete by primary key SQL Map
+     * element and DAO method. If the table has a primary key, and the
+     * deleteByPrimaryKey statement is allowed, then generate the element and
+     * method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateDeleteByPrimaryKey() {
+<span class="nc bnc" id="L172" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L173">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L176" title="All 4 branches missed.">        boolean rc = tableConfiguration.isDeleteByPrimaryKeyStatementEnabled()</span>
+                &amp;&amp; introspectedTable.hasPrimaryKeyColumns();
+
+<span class="nc" id="L179">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the delete by example SQL Map element
+     * and DAO method. If the deleteByExample statement is allowed, then
+     * generate the element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateDeleteByExample() {
+<span class="nc bnc" id="L190" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L191">            return false;</span>
+        }
+        
+<span class="nc" id="L194">        boolean rc = tableConfiguration.isDeleteByExampleStatementEnabled();</span>
+
+<span class="nc" id="L196">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the result map without BLOBs. If
+     * either select method is allowed, then generate the result map.
+     * 
+     * @return true if the result map should be generated
+     */
+    public boolean generateBaseResultMap() {
+<span class="nc bnc" id="L206" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L207">            return true;</span>
+        }
+        
+<span class="nc bnc" id="L210" title="All 4 branches missed.">        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()</span>
+                || tableConfiguration.isSelectByPrimaryKeyStatementEnabled();
+
+<span class="nc" id="L213">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the result map with BLOBs. If the
+     * table has BLOB columns, and either select method is allowed, then
+     * generate the result map.
+     * 
+     * @return true if the result map should be generated
+     */
+    public boolean generateResultMapWithBLOBs() {
+        boolean rc;
+        
+<span class="nc bnc" id="L226" title="All 2 branches missed.">        if (introspectedTable.hasBLOBColumns()) {</span>
+<span class="nc bnc" id="L227" title="All 2 branches missed.">            if (isModelOnly) {</span>
+<span class="nc" id="L228">                rc = true;</span>
+            } else {
+<span class="nc bnc" id="L230" title="All 4 branches missed.">                rc = tableConfiguration.isSelectByExampleStatementEnabled() </span>
+                        || tableConfiguration.isSelectByPrimaryKeyStatementEnabled();
+            }
+        } else {
+<span class="nc" id="L234">            rc = false;</span>
+        }
+        
+<span class="nc" id="L237">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the SQL example where clause element.
+     * 
+     * In iBATIS2, generate the element if the selectByExample, deleteByExample,
+     * updateByExample, or countByExample statements are allowed.
+     * 
+     * In MyBatis3, generate the element if the selectByExample,
+     * deleteByExample, or countByExample statements are allowed.
+     * 
+     * @return true if the SQL where clause element should be generated
+     */
+    public boolean generateSQLExampleWhereClause() {
+<span class="nc bnc" id="L252" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L253">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L256" title="All 6 branches missed.">        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()</span>
+                || tableConfiguration.isDeleteByExampleStatementEnabled()
+                || tableConfiguration.isCountByExampleStatementEnabled();
+
+<span class="nc bnc" id="L260" title="All 2 branches missed.">        if (introspectedTable.getTargetRuntime() == TargetRuntime.IBATIS2) {</span>
+<span class="nc" id="L261">            rc |= tableConfiguration.isUpdateByExampleStatementEnabled();</span>
+        }
+
+<span class="nc" id="L264">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the SQL example where clause element
+     * specifically for use in the update by example methods.
+     * 
+     * In iBATIS2, do not generate the element.
+     * 
+     * In MyBatis3, generate the element if the updateByExample statements are
+     * allowed.
+     * 
+     * @return true if the SQL where clause element should be generated
+     */
+    public boolean generateMyBatis3UpdateByExampleWhereClause() {
+<span class="nc bnc" id="L279" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L280">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L283" title="All 4 branches missed.">        return introspectedTable.getTargetRuntime() == TargetRuntime.MYBATIS3</span>
+                &amp;&amp; tableConfiguration.isUpdateByExampleStatementEnabled();
+    }
+
+    /**
+     * Implements the rule for generating the select by primary key SQL Map
+     * element and DAO method. If the table has a primary key as well as other
+     * fields, and the selectByPrimaryKey statement is allowed, then generate
+     * the element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateSelectByPrimaryKey() {
+<span class="nc bnc" id="L296" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L297">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L300" title="All 8 branches missed.">        boolean rc = tableConfiguration.isSelectByPrimaryKeyStatementEnabled()</span>
+                &amp;&amp; introspectedTable.hasPrimaryKeyColumns()
+                &amp;&amp; (introspectedTable.hasBaseColumns() || introspectedTable
+                        .hasBLOBColumns());
+
+<span class="nc" id="L305">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating the select by example without BLOBs
+     * SQL Map element and DAO method. If the selectByExample statement is
+     * allowed, then generate the element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateSelectByExampleWithoutBLOBs() {
+<span class="nc bnc" id="L316" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L317">            return false;</span>
+        }
+        
+<span class="nc" id="L320">        return tableConfiguration.isSelectByExampleStatementEnabled();</span>
+    }
+
+    /**
+     * Implements the rule for generating the select by example with BLOBs SQL
+     * Map element and DAO method. If the table has BLOB fields and the
+     * selectByExample statement is allowed, then generate the element and
+     * method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateSelectByExampleWithBLOBs() {
+<span class="nc bnc" id="L332" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L333">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L336" title="All 4 branches missed.">        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()</span>
+                &amp;&amp; introspectedTable.hasBLOBColumns();
+
+<span class="nc" id="L339">        return rc;</span>
+    }
+
+    /**
+     * Implements the rule for generating an example class. The class should be
+     * generated if the selectByExample or deleteByExample or countByExample
+     * methods are allowed.
+     * 
+     * @return true if the example class should be generated
+     */
+    public boolean generateExampleClass() {
+<span class="nc bnc" id="L350" title="All 4 branches missed.">        if (introspectedTable.getContext().getSqlMapGeneratorConfiguration() == null</span>
+                &amp;&amp; introspectedTable.getContext().getJavaClientGeneratorConfiguration() == null) {
+            // this is a model only context - don't generate the example class
+<span class="nc" id="L353">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L357">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L360" title="All 8 branches missed.">        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()</span>
+                || tableConfiguration.isDeleteByExampleStatementEnabled()
+                || tableConfiguration.isCountByExampleStatementEnabled()
+                || tableConfiguration.isUpdateByExampleStatementEnabled();
+
+<span class="nc" id="L365">        return rc;</span>
+    }
+
+    public boolean generateCountByExample() {
+<span class="nc bnc" id="L369" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L370">            return false;</span>
+        }
+        
+<span class="nc" id="L373">        boolean rc = tableConfiguration.isCountByExampleStatementEnabled();</span>
+
+<span class="nc" id="L375">        return rc;</span>
+    }
+
+    public boolean generateUpdateByExampleSelective() {
+<span class="nc bnc" id="L379" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L380">            return false;</span>
+        }
+        
+<span class="nc" id="L383">        boolean rc = tableConfiguration.isUpdateByExampleStatementEnabled();</span>
+
+<span class="nc" id="L385">        return rc;</span>
+    }
+
+    public boolean generateUpdateByExampleWithoutBLOBs() {
+<span class="nc bnc" id="L389" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L390">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L393" title="All 6 branches missed.">        boolean rc = tableConfiguration.isUpdateByExampleStatementEnabled()</span>
+                &amp;&amp; (introspectedTable.hasPrimaryKeyColumns() || introspectedTable
+                        .hasBaseColumns());
+
+<span class="nc" id="L397">        return rc;</span>
+    }
+
+    public boolean generateUpdateByExampleWithBLOBs() {
+<span class="nc bnc" id="L401" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L402">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L405" title="All 4 branches missed.">        boolean rc = tableConfiguration.isUpdateByExampleStatementEnabled()</span>
+                &amp;&amp; introspectedTable.hasBLOBColumns();
+
+<span class="nc" id="L408">        return rc;</span>
+    }
+
+    public IntrospectedTable getIntrospectedTable() {
+<span class="nc" id="L412">        return introspectedTable;</span>
+    }
+
+    public boolean generateBaseColumnList() {
+<span class="nc bnc" id="L416" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L417">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L420" title="All 4 branches missed.">        return generateSelectByPrimaryKey()</span>
+                || generateSelectByExampleWithoutBLOBs();
+    }
+
+    public boolean generateBlobColumnList() {
+<span class="nc bnc" id="L425" title="All 2 branches missed.">        if (isModelOnly) {</span>
+<span class="nc" id="L426">            return false;</span>
+        }
+        
+<span class="nc bnc" id="L429" title="All 6 branches missed.">        return introspectedTable.hasBLOBColumns()</span>
+                &amp;&amp; (tableConfiguration.isSelectByExampleStatementEnabled() || tableConfiguration
+                        .isSelectByPrimaryKeyStatementEnabled());
+    }
+
+    public boolean generateJavaClient() {
+<span class="nc bnc" id="L435" title="All 2 branches missed.">        return !isModelOnly;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

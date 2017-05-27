@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ColumnOverride.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.config</a> &gt; <span class="el_source">ColumnOverride.java</span></div><h1>ColumnOverride.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2005 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.config;
+
+import static org.mybatis.generator.internal.util.StringUtility.stringContainsSpace;
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
+
+import java.util.List;
+
+import org.mybatis.generator.api.dom.xml.Attribute;
+import org.mybatis.generator.api.dom.xml.XmlElement;
+
+/**
+ * @author Jeff Butler
+ */
+public class ColumnOverride extends PropertyHolder {
+
+    private String columnName;
+
+    private String javaProperty;
+
+    private String jdbcType;
+
+    private String javaType;
+
+    private String typeHandler;
+
+    private boolean isColumnNameDelimited;
+
+    private String configuredDelimitedColumnName;
+
+    /**
+	 *  
+	 */
+    public ColumnOverride(String columnName) {
+<span class="fc" id="L50">        super();</span>
+
+<span class="fc" id="L52">        this.columnName = columnName;</span>
+<span class="fc" id="L53">        isColumnNameDelimited = stringContainsSpace(columnName);</span>
+<span class="fc" id="L54">    }</span>
+
+    public String getColumnName() {
+<span class="nc" id="L57">        return columnName;</span>
+    }
+
+    public String getJavaProperty() {
+<span class="nc" id="L61">        return javaProperty;</span>
+    }
+
+    public void setJavaProperty(String javaProperty) {
+<span class="fc" id="L65">        this.javaProperty = javaProperty;</span>
+<span class="fc" id="L66">    }</span>
+
+    public String getJavaType() {
+<span class="nc" id="L69">        return javaType;</span>
+    }
+
+    public void setJavaType(String javaType) {
+<span class="fc" id="L73">        this.javaType = javaType;</span>
+<span class="fc" id="L74">    }</span>
+
+    public String getJdbcType() {
+<span class="nc" id="L77">        return jdbcType;</span>
+    }
+
+    public void setJdbcType(String jdbcType) {
+<span class="nc" id="L81">        this.jdbcType = jdbcType;</span>
+<span class="nc" id="L82">    }</span>
+
+    public String getTypeHandler() {
+<span class="nc" id="L85">        return typeHandler;</span>
+    }
+
+    public void setTypeHandler(String typeHandler) {
+<span class="nc" id="L89">        this.typeHandler = typeHandler;</span>
+<span class="nc" id="L90">    }</span>
+
+    public XmlElement toXmlElement() {
+<span class="nc" id="L93">        XmlElement xmlElement = new XmlElement(&quot;columnOverride&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L94">        xmlElement.addAttribute(new Attribute(&quot;column&quot;, columnName)); //$NON-NLS-1$</span>
+
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        if (stringHasValue(javaProperty)) {</span>
+<span class="nc" id="L97">            xmlElement.addAttribute(new Attribute(&quot;property&quot;, javaProperty)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        if (stringHasValue(javaType)) {</span>
+<span class="nc" id="L101">            xmlElement.addAttribute(new Attribute(&quot;javaType&quot;, javaType)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        if (stringHasValue(jdbcType)) {</span>
+<span class="nc" id="L105">            xmlElement.addAttribute(new Attribute(&quot;jdbcType&quot;, jdbcType)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        if (stringHasValue(typeHandler)) {</span>
+<span class="nc" id="L109">            xmlElement.addAttribute(new Attribute(&quot;typeHandler&quot;, typeHandler)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        if (stringHasValue(configuredDelimitedColumnName)) {</span>
+<span class="nc" id="L113">            xmlElement.addAttribute(new Attribute(</span>
+                    &quot;delimitedColumnName&quot;, configuredDelimitedColumnName)); //$NON-NLS-1$
+        }
+
+<span class="nc" id="L117">        addPropertyXmlElements(xmlElement);</span>
+
+<span class="nc" id="L119">        return xmlElement;</span>
+    }
+
+    public boolean isColumnNameDelimited() {
+<span class="nc" id="L123">        return isColumnNameDelimited;</span>
+    }
+
+    public void setColumnNameDelimited(boolean isColumnNameDelimited) {
+<span class="fc" id="L127">        this.isColumnNameDelimited = isColumnNameDelimited;</span>
+
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">        configuredDelimitedColumnName = isColumnNameDelimited ? &quot;true&quot; : &quot;false&quot;; //$NON-NLS-1$ //$NON-NLS-2$</span>
+<span class="fc" id="L130">    }</span>
+
+    public void validate(List&lt;String&gt; errors, String tableName) {
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        if (!stringHasValue(columnName)) {</span>
+<span class="nc" id="L134">            errors.add(getString(&quot;ValidationError.22&quot;, //$NON-NLS-1$</span>
+                    tableName));
+        }
+<span class="fc" id="L137">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

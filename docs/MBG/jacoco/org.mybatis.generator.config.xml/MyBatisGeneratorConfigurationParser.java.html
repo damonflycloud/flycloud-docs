@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyBatisGeneratorConfigurationParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.config.xml</a> &gt; <span class="el_source">MyBatisGeneratorConfigurationParser.java</span></div><h1>MyBatisGeneratorConfigurationParser.java</h1><pre class="source lang-java linenums">/*
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.mybatis.generator.config.xml;
+
+import static org.mybatis.generator.internal.util.StringUtility.isTrue;
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Properties;
+
+import org.mybatis.generator.config.ColumnOverride;
+import org.mybatis.generator.config.ColumnRenamingRule;
+import org.mybatis.generator.config.CommentGeneratorConfiguration;
+import org.mybatis.generator.config.Configuration;
+import org.mybatis.generator.config.Context;
+import org.mybatis.generator.config.GeneratedKey;
+import org.mybatis.generator.config.IgnoredColumn;
+import org.mybatis.generator.config.JDBCConnectionConfiguration;
+import org.mybatis.generator.config.JavaClientGeneratorConfiguration;
+import org.mybatis.generator.config.JavaModelGeneratorConfiguration;
+import org.mybatis.generator.config.JavaTypeResolverConfiguration;
+import org.mybatis.generator.config.ModelType;
+import org.mybatis.generator.config.PluginConfiguration;
+import org.mybatis.generator.config.PropertyHolder;
+import org.mybatis.generator.config.SqlMapGeneratorConfiguration;
+import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.exception.XMLParserException;
+import org.mybatis.generator.internal.ObjectFactory;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+/**
+ * This class parses configuration files into the new Configuration API
+ * 
+ * @author Jeff Butler
+ */
+public class MyBatisGeneratorConfigurationParser {
+    private Properties properties;
+
+    public MyBatisGeneratorConfigurationParser(Properties properties) {
+<span class="fc" id="L57">        super();</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if (properties == null) {</span>
+<span class="nc" id="L59">            this.properties = System.getProperties();</span>
+        } else {
+<span class="fc" id="L61">            this.properties = properties;</span>
+        }
+<span class="fc" id="L63">    }</span>
+
+    public Configuration parseConfiguration(Element rootNode)
+            throws XMLParserException {
+
+<span class="fc" id="L68">        Configuration configuration = new Configuration();</span>
+
+<span class="fc" id="L70">        NodeList nodeList = rootNode.getChildNodes();</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="fc" id="L72">            Node childNode = nodeList.item(i);</span>
+
+<span class="fc bfc" id="L74" title="All 2 branches covered.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="fc" id="L75">                continue;</span>
+            }
+
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">            if (&quot;properties&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L79">                parseProperties(configuration, childNode);</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">            } else if (&quot;classPathEntry&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L81">                parseClassPathEntry(configuration, childNode);</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">            } else if (&quot;context&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L83">                parseContext(configuration, childNode);</span>
+            }
+        }
+
+<span class="fc" id="L87">        return configuration;</span>
+    }
+
+    private void parseProperties(Configuration configuration, Node node)
+            throws XMLParserException {
+<span class="nc" id="L92">        Properties attributes = parseAttributes(node);</span>
+<span class="nc" id="L93">        String resource = attributes.getProperty(&quot;resource&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L94">        String url = attributes.getProperty(&quot;url&quot;); //$NON-NLS-1$</span>
+
+<span class="nc bnc" id="L96" title="All 4 branches missed.">        if (!stringHasValue(resource)</span>
+                &amp;&amp; !stringHasValue(url)) {
+<span class="nc" id="L98">            throw new XMLParserException(getString(&quot;RuntimeError.14&quot;)); //$NON-NLS-1$</span>
+        }
+
+<span class="nc bnc" id="L101" title="All 4 branches missed.">        if (stringHasValue(resource)</span>
+                &amp;&amp; stringHasValue(url)) {
+<span class="nc" id="L103">            throw new XMLParserException(getString(&quot;RuntimeError.14&quot;)); //$NON-NLS-1$</span>
+        }
+
+        URL resourceUrl;
+
+        try {
+<span class="nc bnc" id="L109" title="All 2 branches missed.">            if (stringHasValue(resource)) {</span>
+<span class="nc" id="L110">                resourceUrl = ObjectFactory.getResource(resource);</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                if (resourceUrl == null) {</span>
+<span class="nc" id="L112">                    throw new XMLParserException(getString(</span>
+                            &quot;RuntimeError.15&quot;, resource)); //$NON-NLS-1$
+                }
+            } else {
+<span class="nc" id="L116">                resourceUrl = new URL(url);</span>
+            }
+
+<span class="nc" id="L119">            InputStream inputStream = resourceUrl.openConnection()</span>
+                    .getInputStream();
+
+<span class="nc" id="L122">            properties.load(inputStream);</span>
+<span class="nc" id="L123">            inputStream.close();</span>
+<span class="nc" id="L124">        } catch (IOException e) {</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">            if (stringHasValue(resource)) {</span>
+<span class="nc" id="L126">                throw new XMLParserException(getString(</span>
+                        &quot;RuntimeError.16&quot;, resource)); //$NON-NLS-1$
+            } else {
+<span class="nc" id="L129">                throw new XMLParserException(getString(</span>
+                        &quot;RuntimeError.17&quot;, url)); //$NON-NLS-1$
+            }
+<span class="nc" id="L132">        }</span>
+<span class="nc" id="L133">    }</span>
+
+    private void parseContext(Configuration configuration, Node node) {
+
+<span class="fc" id="L137">        Properties attributes = parseAttributes(node);</span>
+<span class="fc" id="L138">        String defaultModelType = attributes.getProperty(&quot;defaultModelType&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L139">        String targetRuntime = attributes.getProperty(&quot;targetRuntime&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L140">        String introspectedColumnImpl = attributes</span>
+                .getProperty(&quot;introspectedColumnImpl&quot;); //$NON-NLS-1$
+<span class="fc" id="L142">        String id = attributes.getProperty(&quot;id&quot;); //$NON-NLS-1$</span>
+
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        ModelType mt = defaultModelType == null ? null : ModelType</span>
+                .getModelType(defaultModelType);
+
+<span class="fc" id="L147">        Context context = new Context(mt);</span>
+<span class="fc" id="L148">        context.setId(id);</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">        if (stringHasValue(introspectedColumnImpl)) {</span>
+<span class="nc" id="L150">            context.setIntrospectedColumnImpl(introspectedColumnImpl);</span>
+        }
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        if (stringHasValue(targetRuntime)) {</span>
+<span class="fc" id="L153">            context.setTargetRuntime(targetRuntime);</span>
+        }
+
+<span class="fc" id="L156">        configuration.addContext(context);</span>
+
+<span class="fc" id="L158">        NodeList nodeList = node.getChildNodes();</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="fc" id="L160">            Node childNode = nodeList.item(i);</span>
+
+<span class="fc bfc" id="L162" title="All 2 branches covered.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="fc" id="L163">                continue;</span>
+            }
+
+<span class="pc bpc" id="L166" title="1 of 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L167">                parseProperty(context, childNode);</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">            } else if (&quot;plugin&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L169">                parsePlugin(context, childNode);</span>
+<span class="pc bpc" id="L170" title="1 of 2 branches missed.">            } else if (&quot;commentGenerator&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L171">                parseCommentGenerator(context, childNode);</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">            } else if (&quot;jdbcConnection&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L173">                parseJdbcConnection(context, childNode);</span>
+<span class="fc bfc" id="L174" title="All 2 branches covered.">            } else if (&quot;javaModelGenerator&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L175">                parseJavaModelGenerator(context, childNode);</span>
+<span class="pc bpc" id="L176" title="1 of 2 branches missed.">            } else if (&quot;javaTypeResolver&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L177">                parseJavaTypeResolver(context, childNode);</span>
+<span class="pc bpc" id="L178" title="1 of 2 branches missed.">            } else if (&quot;sqlMapGenerator&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L179">                parseSqlMapGenerator(context, childNode);</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">            } else if (&quot;javaClientGenerator&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L181">                parseJavaClientGenerator(context, childNode);</span>
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">            } else if (&quot;table&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L183">                parseTable(context, childNode);</span>
+            }
+        }
+<span class="fc" id="L186">    }</span>
+
+    private void parseSqlMapGenerator(Context context, Node node) {
+<span class="nc" id="L189">        SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();</span>
+
+<span class="nc" id="L191">        context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);</span>
+
+<span class="nc" id="L193">        Properties attributes = parseAttributes(node);</span>
+<span class="nc" id="L194">        String targetPackage = attributes.getProperty(&quot;targetPackage&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L195">        String targetProject = attributes.getProperty(&quot;targetProject&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L197">        sqlMapGeneratorConfiguration.setTargetPackage(targetPackage);</span>
+<span class="nc" id="L198">        sqlMapGeneratorConfiguration.setTargetProject(targetProject);</span>
+
+<span class="nc" id="L200">        NodeList nodeList = node.getChildNodes();</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="nc" id="L202">            Node childNode = nodeList.item(i);</span>
+
+<span class="nc bnc" id="L204" title="All 2 branches missed.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="nc" id="L205">                continue;</span>
+            }
+
+<span class="nc bnc" id="L208" title="All 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L209">                parseProperty(sqlMapGeneratorConfiguration, childNode);</span>
+            }
+        }
+<span class="nc" id="L212">    }</span>
+
+    private void parseTable(Context context, Node node) {
+<span class="fc" id="L215">        TableConfiguration tc = new TableConfiguration(context);</span>
+<span class="fc" id="L216">        context.addTableConfiguration(tc);</span>
+
+<span class="fc" id="L218">        Properties attributes = parseAttributes(node);</span>
+<span class="fc" id="L219">        String catalog = attributes.getProperty(&quot;catalog&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L220">        String schema = attributes.getProperty(&quot;schema&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L221">        String tableName = attributes.getProperty(&quot;tableName&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L222">        String domainObjectName = attributes.getProperty(&quot;domainObjectName&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L223">        String alias = attributes.getProperty(&quot;alias&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L224">        String enableInsert = attributes.getProperty(&quot;enableInsert&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L225">        String enableSelectByPrimaryKey = attributes</span>
+                .getProperty(&quot;enableSelectByPrimaryKey&quot;); //$NON-NLS-1$
+<span class="fc" id="L227">        String enableSelectByExample = attributes</span>
+                .getProperty(&quot;enableSelectByExample&quot;); //$NON-NLS-1$
+<span class="fc" id="L229">        String enableUpdateByPrimaryKey = attributes</span>
+                .getProperty(&quot;enableUpdateByPrimaryKey&quot;); //$NON-NLS-1$
+<span class="fc" id="L231">        String enableDeleteByPrimaryKey = attributes</span>
+                .getProperty(&quot;enableDeleteByPrimaryKey&quot;); //$NON-NLS-1$
+<span class="fc" id="L233">        String enableDeleteByExample = attributes</span>
+                .getProperty(&quot;enableDeleteByExample&quot;); //$NON-NLS-1$
+<span class="fc" id="L235">        String enableCountByExample = attributes</span>
+                .getProperty(&quot;enableCountByExample&quot;); //$NON-NLS-1$
+<span class="fc" id="L237">        String enableUpdateByExample = attributes</span>
+                .getProperty(&quot;enableUpdateByExample&quot;); //$NON-NLS-1$
+<span class="fc" id="L239">        String selectByPrimaryKeyQueryId = attributes</span>
+                .getProperty(&quot;selectByPrimaryKeyQueryId&quot;); //$NON-NLS-1$
+<span class="fc" id="L241">        String selectByExampleQueryId = attributes</span>
+                .getProperty(&quot;selectByExampleQueryId&quot;); //$NON-NLS-1$
+<span class="fc" id="L243">        String modelType = attributes.getProperty(&quot;modelType&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L244">        String escapeWildcards = attributes.getProperty(&quot;escapeWildcards&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L245">        String delimitIdentifiers = attributes</span>
+                .getProperty(&quot;delimitIdentifiers&quot;); //$NON-NLS-1$
+<span class="fc" id="L247">        String delimitAllColumns = attributes.getProperty(&quot;delimitAllColumns&quot;); //$NON-NLS-1$</span>
+
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">        if (stringHasValue(catalog)) {</span>
+<span class="nc" id="L250">            tc.setCatalog(catalog);</span>
+        }
+
+<span class="pc bpc" id="L253" title="1 of 2 branches missed.">        if (stringHasValue(schema)) {</span>
+<span class="nc" id="L254">            tc.setSchema(schema);</span>
+        }
+
+<span class="pc bpc" id="L257" title="1 of 2 branches missed.">        if (stringHasValue(tableName)) {</span>
+<span class="fc" id="L258">            tc.setTableName(tableName);</span>
+        }
+
+<span class="pc bpc" id="L261" title="1 of 2 branches missed.">        if (stringHasValue(domainObjectName)) {</span>
+<span class="nc" id="L262">            tc.setDomainObjectName(domainObjectName);</span>
+        }
+
+<span class="fc bfc" id="L265" title="All 2 branches covered.">        if (stringHasValue(alias)) {</span>
+<span class="fc" id="L266">            tc.setAlias(alias);</span>
+        }
+
+<span class="pc bpc" id="L269" title="1 of 2 branches missed.">        if (stringHasValue(enableInsert)) {</span>
+<span class="nc" id="L270">            tc.setInsertStatementEnabled(isTrue(enableInsert));</span>
+        }
+
+<span class="pc bpc" id="L273" title="1 of 2 branches missed.">        if (stringHasValue(enableSelectByPrimaryKey)) {</span>
+<span class="nc" id="L274">            tc.setSelectByPrimaryKeyStatementEnabled(</span>
+                    isTrue(enableSelectByPrimaryKey));
+        }
+
+<span class="pc bpc" id="L278" title="1 of 2 branches missed.">        if (stringHasValue(enableSelectByExample)) {</span>
+<span class="nc" id="L279">            tc.setSelectByExampleStatementEnabled(</span>
+                    isTrue(enableSelectByExample));
+        }
+
+<span class="pc bpc" id="L283" title="1 of 2 branches missed.">        if (stringHasValue(enableUpdateByPrimaryKey)) {</span>
+<span class="nc" id="L284">            tc.setUpdateByPrimaryKeyStatementEnabled(</span>
+                    isTrue(enableUpdateByPrimaryKey));
+        }
+
+<span class="pc bpc" id="L288" title="1 of 2 branches missed.">        if (stringHasValue(enableDeleteByPrimaryKey)) {</span>
+<span class="nc" id="L289">            tc.setDeleteByPrimaryKeyStatementEnabled(</span>
+                    isTrue(enableDeleteByPrimaryKey));
+        }
+
+<span class="pc bpc" id="L293" title="1 of 2 branches missed.">        if (stringHasValue(enableDeleteByExample)) {</span>
+<span class="nc" id="L294">            tc.setDeleteByExampleStatementEnabled(</span>
+                    isTrue(enableDeleteByExample));
+        }
+
+<span class="pc bpc" id="L298" title="1 of 2 branches missed.">        if (stringHasValue(enableCountByExample)) {</span>
+<span class="nc" id="L299">            tc.setCountByExampleStatementEnabled(</span>
+                    isTrue(enableCountByExample));
+        }
+
+<span class="pc bpc" id="L303" title="1 of 2 branches missed.">        if (stringHasValue(enableUpdateByExample)) {</span>
+<span class="nc" id="L304">            tc.setUpdateByExampleStatementEnabled(</span>
+                    isTrue(enableUpdateByExample));
+        }
+
+<span class="pc bpc" id="L308" title="1 of 2 branches missed.">        if (stringHasValue(selectByPrimaryKeyQueryId)) {</span>
+<span class="nc" id="L309">            tc.setSelectByPrimaryKeyQueryId(selectByPrimaryKeyQueryId);</span>
+        }
+
+<span class="pc bpc" id="L312" title="1 of 2 branches missed.">        if (stringHasValue(selectByExampleQueryId)) {</span>
+<span class="nc" id="L313">            tc.setSelectByExampleQueryId(selectByExampleQueryId);</span>
+        }
+
+<span class="pc bpc" id="L316" title="1 of 2 branches missed.">        if (stringHasValue(modelType)) {</span>
+<span class="nc" id="L317">            tc.setConfiguredModelType(modelType);</span>
+        }
+
+<span class="pc bpc" id="L320" title="1 of 2 branches missed.">        if (stringHasValue(escapeWildcards)) {</span>
+<span class="nc" id="L321">            tc.setWildcardEscapingEnabled(isTrue(escapeWildcards));</span>
+        }
+
+<span class="pc bpc" id="L324" title="1 of 2 branches missed.">        if (stringHasValue(delimitIdentifiers)) {</span>
+<span class="nc" id="L325">            tc.setDelimitIdentifiers(isTrue(delimitIdentifiers));</span>
+        }
+
+<span class="pc bpc" id="L328" title="1 of 2 branches missed.">        if (stringHasValue(delimitAllColumns)) {</span>
+<span class="nc" id="L329">            tc.setAllColumnDelimitingEnabled(isTrue(delimitAllColumns));</span>
+        }
+
+<span class="fc" id="L332">        NodeList nodeList = node.getChildNodes();</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="fc" id="L334">            Node childNode = nodeList.item(i);</span>
+
+<span class="fc bfc" id="L336" title="All 2 branches covered.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="fc" id="L337">                continue;</span>
+            }
+
+<span class="fc bfc" id="L340" title="All 2 branches covered.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L341">                parseProperty(tc, childNode);</span>
+<span class="fc bfc" id="L342" title="All 2 branches covered.">            } else if (&quot;columnOverride&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L343">                parseColumnOverride(tc, childNode);</span>
+<span class="pc bpc" id="L344" title="1 of 2 branches missed.">            } else if (&quot;ignoreColumn&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L345">                parseIgnoreColumn(tc, childNode);</span>
+<span class="pc bpc" id="L346" title="1 of 2 branches missed.">            } else if (&quot;generatedKey&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L347">                parseGeneratedKey(tc, childNode);</span>
+<span class="nc bnc" id="L348" title="All 2 branches missed.">            } else if (&quot;columnRenamingRule&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L349">                parseColumnRenamingRule(tc, childNode);</span>
+            }
+        }
+<span class="fc" id="L352">    }</span>
+
+    private void parseColumnOverride(TableConfiguration tc, Node node) {
+<span class="fc" id="L355">        Properties attributes = parseAttributes(node);</span>
+<span class="fc" id="L356">        String column = attributes.getProperty(&quot;column&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L357">        String property = attributes.getProperty(&quot;property&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L358">        String javaType = attributes.getProperty(&quot;javaType&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L359">        String jdbcType = attributes.getProperty(&quot;jdbcType&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L360">        String typeHandler = attributes.getProperty(&quot;typeHandler&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L361">        String delimitedColumnName = attributes</span>
+                .getProperty(&quot;delimitedColumnName&quot;); //$NON-NLS-1$
+
+<span class="fc" id="L364">        ColumnOverride co = new ColumnOverride(column);</span>
+
+<span class="fc bfc" id="L366" title="All 2 branches covered.">        if (stringHasValue(property)) {</span>
+<span class="fc" id="L367">            co.setJavaProperty(property);</span>
+        }
+
+<span class="fc bfc" id="L370" title="All 2 branches covered.">        if (stringHasValue(javaType)) {</span>
+<span class="fc" id="L371">            co.setJavaType(javaType);</span>
+        }
+
+<span class="pc bpc" id="L374" title="1 of 2 branches missed.">        if (stringHasValue(jdbcType)) {</span>
+<span class="nc" id="L375">            co.setJdbcType(jdbcType);</span>
+        }
+
+<span class="pc bpc" id="L378" title="1 of 2 branches missed.">        if (stringHasValue(typeHandler)) {</span>
+<span class="nc" id="L379">            co.setTypeHandler(typeHandler);</span>
+        }
+
+<span class="fc bfc" id="L382" title="All 2 branches covered.">        if (stringHasValue(delimitedColumnName)) {</span>
+<span class="fc" id="L383">            co.setColumnNameDelimited(isTrue(delimitedColumnName));</span>
+        }
+
+<span class="fc" id="L386">        NodeList nodeList = node.getChildNodes();</span>
+<span class="fc bfc" id="L387" title="All 2 branches covered.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="fc" id="L388">            Node childNode = nodeList.item(i);</span>
+
+<span class="fc bfc" id="L390" title="All 2 branches covered.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="fc" id="L391">                continue;</span>
+            }
+
+<span class="pc bpc" id="L394" title="1 of 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L395">                parseProperty(co, childNode);</span>
+            }
+        }
+
+<span class="fc" id="L399">        tc.addColumnOverride(co);</span>
+<span class="fc" id="L400">    }</span>
+
+    private void parseGeneratedKey(TableConfiguration tc, Node node) {
+<span class="fc" id="L403">        Properties attributes = parseAttributes(node);</span>
+
+<span class="fc" id="L405">        String column = attributes.getProperty(&quot;column&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L406">        boolean identity = isTrue(attributes</span>
+                .getProperty(&quot;identity&quot;)); //$NON-NLS-1$
+<span class="fc" id="L408">        String sqlStatement = attributes.getProperty(&quot;sqlStatement&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L409">        String type = attributes.getProperty(&quot;type&quot;); //$NON-NLS-1$</span>
+
+<span class="fc" id="L411">        GeneratedKey gk = new GeneratedKey(column, sqlStatement, identity, type);</span>
+
+<span class="fc" id="L413">        tc.setGeneratedKey(gk);</span>
+<span class="fc" id="L414">    }</span>
+
+    private void parseIgnoreColumn(TableConfiguration tc, Node node) {
+<span class="nc" id="L417">        Properties attributes = parseAttributes(node);</span>
+<span class="nc" id="L418">        String column = attributes.getProperty(&quot;column&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L419">        String delimitedColumnName = attributes</span>
+                .getProperty(&quot;delimitedColumnName&quot;); //$NON-NLS-1$
+
+<span class="nc" id="L422">        IgnoredColumn ic = new IgnoredColumn(column);</span>
+
+<span class="nc bnc" id="L424" title="All 2 branches missed.">        if (stringHasValue(delimitedColumnName)) {</span>
+<span class="nc" id="L425">            ic.setColumnNameDelimited(isTrue(delimitedColumnName));</span>
+        }
+
+<span class="nc" id="L428">        tc.addIgnoredColumn(ic);</span>
+<span class="nc" id="L429">    }</span>
+
+    private void parseColumnRenamingRule(TableConfiguration tc, Node node) {
+<span class="nc" id="L432">        Properties attributes = parseAttributes(node);</span>
+<span class="nc" id="L433">        String searchString = attributes.getProperty(&quot;searchString&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L434">        String replaceString = attributes.getProperty(&quot;replaceString&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L436">        ColumnRenamingRule crr = new ColumnRenamingRule();</span>
+
+<span class="nc" id="L438">        crr.setSearchString(searchString);</span>
+
+<span class="nc bnc" id="L440" title="All 2 branches missed.">        if (stringHasValue(replaceString)) {</span>
+<span class="nc" id="L441">            crr.setReplaceString(replaceString);</span>
+        }
+
+<span class="nc" id="L444">        tc.setColumnRenamingRule(crr);</span>
+<span class="nc" id="L445">    }</span>
+
+    private void parseJavaTypeResolver(Context context, Node node) {
+<span class="nc" id="L448">        JavaTypeResolverConfiguration javaTypeResolverConfiguration = new JavaTypeResolverConfiguration();</span>
+
+<span class="nc" id="L450">        context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);</span>
+
+<span class="nc" id="L452">        Properties attributes = parseAttributes(node);</span>
+<span class="nc" id="L453">        String type = attributes.getProperty(&quot;type&quot;); //$NON-NLS-1$</span>
+
+<span class="nc bnc" id="L455" title="All 2 branches missed.">        if (stringHasValue(type)) {</span>
+<span class="nc" id="L456">            javaTypeResolverConfiguration.setConfigurationType(type);</span>
+        }
+
+<span class="nc" id="L459">        NodeList nodeList = node.getChildNodes();</span>
+<span class="nc bnc" id="L460" title="All 2 branches missed.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="nc" id="L461">            Node childNode = nodeList.item(i);</span>
+
+<span class="nc bnc" id="L463" title="All 2 branches missed.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="nc" id="L464">                continue;</span>
+            }
+
+<span class="nc bnc" id="L467" title="All 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L468">                parseProperty(javaTypeResolverConfiguration, childNode);</span>
+            }
+        }
+<span class="nc" id="L471">    }</span>
+
+    private void parsePlugin(Context context, Node node) {
+<span class="fc" id="L474">        PluginConfiguration pluginConfiguration = new PluginConfiguration();</span>
+
+<span class="fc" id="L476">        context.addPluginConfiguration(pluginConfiguration);</span>
+
+<span class="fc" id="L478">        Properties attributes = parseAttributes(node);</span>
+<span class="fc" id="L479">        String type = attributes.getProperty(&quot;type&quot;); //$NON-NLS-1$</span>
+
+<span class="fc" id="L481">        pluginConfiguration.setConfigurationType(type);</span>
+
+<span class="fc" id="L483">        NodeList nodeList = node.getChildNodes();</span>
+<span class="pc bpc" id="L484" title="1 of 2 branches missed.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="nc" id="L485">            Node childNode = nodeList.item(i);</span>
+
+<span class="nc bnc" id="L487" title="All 2 branches missed.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="nc" id="L488">                continue;</span>
+            }
+
+<span class="nc bnc" id="L491" title="All 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L492">                parseProperty(pluginConfiguration, childNode);</span>
+            }
+        }
+<span class="fc" id="L495">    }</span>
+
+    private void parseJavaModelGenerator(Context context, Node node) {
+<span class="fc" id="L498">        JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();</span>
+
+<span class="fc" id="L500">        context</span>
+                .setJavaModelGeneratorConfiguration(javaModelGeneratorConfiguration);
+
+<span class="fc" id="L503">        Properties attributes = parseAttributes(node);</span>
+<span class="fc" id="L504">        String targetPackage = attributes.getProperty(&quot;targetPackage&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L505">        String targetProject = attributes.getProperty(&quot;targetProject&quot;); //$NON-NLS-1$</span>
+
+<span class="fc" id="L507">        javaModelGeneratorConfiguration.setTargetPackage(targetPackage);</span>
+<span class="fc" id="L508">        javaModelGeneratorConfiguration.setTargetProject(targetProject);</span>
+
+<span class="fc" id="L510">        NodeList nodeList = node.getChildNodes();</span>
+<span class="fc bfc" id="L511" title="All 2 branches covered.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="fc" id="L512">            Node childNode = nodeList.item(i);</span>
+
+<span class="fc bfc" id="L514" title="All 2 branches covered.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="fc" id="L515">                continue;</span>
+            }
+
+<span class="pc bpc" id="L518" title="1 of 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L519">                parseProperty(javaModelGeneratorConfiguration, childNode);</span>
+            }
+        }
+<span class="fc" id="L522">    }</span>
+
+    private void parseJavaClientGenerator(Context context, Node node) {
+<span class="fc" id="L525">        JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();</span>
+
+<span class="fc" id="L527">        context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);</span>
+
+<span class="fc" id="L529">        Properties attributes = parseAttributes(node);</span>
+<span class="fc" id="L530">        String type = attributes.getProperty(&quot;type&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L531">        String targetPackage = attributes.getProperty(&quot;targetPackage&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L532">        String targetProject = attributes.getProperty(&quot;targetProject&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L533">        String implementationPackage = attributes</span>
+                .getProperty(&quot;implementationPackage&quot;); //$NON-NLS-1$
+
+<span class="fc" id="L536">        javaClientGeneratorConfiguration.setConfigurationType(type);</span>
+<span class="fc" id="L537">        javaClientGeneratorConfiguration.setTargetPackage(targetPackage);</span>
+<span class="fc" id="L538">        javaClientGeneratorConfiguration.setTargetProject(targetProject);</span>
+<span class="fc" id="L539">        javaClientGeneratorConfiguration</span>
+                .setImplementationPackage(implementationPackage);
+
+<span class="fc" id="L542">        NodeList nodeList = node.getChildNodes();</span>
+<span class="fc bfc" id="L543" title="All 2 branches covered.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="fc" id="L544">            Node childNode = nodeList.item(i);</span>
+
+<span class="fc bfc" id="L546" title="All 2 branches covered.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="fc" id="L547">                continue;</span>
+            }
+
+<span class="pc bpc" id="L550" title="1 of 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="fc" id="L551">                parseProperty(javaClientGeneratorConfiguration, childNode);</span>
+            }
+        }
+<span class="fc" id="L554">    }</span>
+
+    private void parseJdbcConnection(Context context, Node node) {
+<span class="fc" id="L557">        JDBCConnectionConfiguration jdbcConnectionConfiguration = new JDBCConnectionConfiguration();</span>
+
+<span class="fc" id="L559">        context.setJdbcConnectionConfiguration(jdbcConnectionConfiguration);</span>
+
+<span class="fc" id="L561">        Properties attributes = parseAttributes(node);</span>
+<span class="fc" id="L562">        String driverClass = attributes.getProperty(&quot;driverClass&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L563">        String connectionURL = attributes.getProperty(&quot;connectionURL&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L564">        String userId = attributes.getProperty(&quot;userId&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L565">        String password = attributes.getProperty(&quot;password&quot;); //$NON-NLS-1$</span>
+
+<span class="fc" id="L567">        jdbcConnectionConfiguration.setDriverClass(driverClass);</span>
+<span class="fc" id="L568">        jdbcConnectionConfiguration.setConnectionURL(connectionURL);</span>
+
+<span class="pc bpc" id="L570" title="1 of 2 branches missed.">        if (stringHasValue(userId)) {</span>
+<span class="fc" id="L571">            jdbcConnectionConfiguration.setUserId(userId);</span>
+        }
+
+<span class="pc bpc" id="L574" title="1 of 2 branches missed.">        if (stringHasValue(password)) {</span>
+<span class="nc" id="L575">            jdbcConnectionConfiguration.setPassword(password);</span>
+        }
+
+<span class="fc" id="L578">        NodeList nodeList = node.getChildNodes();</span>
+<span class="pc bpc" id="L579" title="1 of 2 branches missed.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="nc" id="L580">            Node childNode = nodeList.item(i);</span>
+
+<span class="nc bnc" id="L582" title="All 2 branches missed.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="nc" id="L583">                continue;</span>
+            }
+
+<span class="nc bnc" id="L586" title="All 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L587">                parseProperty(jdbcConnectionConfiguration, childNode);</span>
+            }
+        }
+<span class="fc" id="L590">    }</span>
+
+    private void parseClassPathEntry(Configuration configuration, Node node) {
+<span class="nc" id="L593">        Properties attributes = parseAttributes(node);</span>
+
+<span class="nc" id="L595">        configuration.addClasspathEntry(attributes.getProperty(&quot;location&quot;)); //$NON-NLS-1$</span>
+<span class="nc" id="L596">    }</span>
+
+    private void parseProperty(PropertyHolder propertyHolder, Node node) {
+<span class="fc" id="L599">        Properties attributes = parseAttributes(node);</span>
+
+<span class="fc" id="L601">        String name = attributes.getProperty(&quot;name&quot;); //$NON-NLS-1$</span>
+<span class="fc" id="L602">        String value = attributes.getProperty(&quot;value&quot;); //$NON-NLS-1$</span>
+
+<span class="fc" id="L604">        propertyHolder.addProperty(name, value);</span>
+<span class="fc" id="L605">    }</span>
+
+    private Properties parseAttributes(Node node) {
+<span class="fc" id="L608">        Properties attributes = new Properties();</span>
+<span class="fc" id="L609">        NamedNodeMap nnm = node.getAttributes();</span>
+<span class="fc bfc" id="L610" title="All 2 branches covered.">        for (int i = 0; i &lt; nnm.getLength(); i++) {</span>
+<span class="fc" id="L611">            Node attribute = nnm.item(i);</span>
+<span class="fc" id="L612">            String value = parsePropertyTokens(attribute.getNodeValue());</span>
+<span class="fc" id="L613">            attributes.put(attribute.getNodeName(), value);</span>
+        }
+
+<span class="fc" id="L616">        return attributes;</span>
+    }
+
+    private String parsePropertyTokens(String string) {
+<span class="fc" id="L620">        final String OPEN = &quot;${&quot;; //$NON-NLS-1$</span>
+<span class="fc" id="L621">        final String CLOSE = &quot;}&quot;; //$NON-NLS-1$</span>
+
+<span class="fc" id="L623">        String newString = string;</span>
+<span class="pc bpc" id="L624" title="1 of 2 branches missed.">        if (newString != null) {</span>
+<span class="fc" id="L625">            int start = newString.indexOf(OPEN);</span>
+<span class="fc" id="L626">            int end = newString.indexOf(CLOSE);</span>
+
+<span class="pc bpc" id="L628" title="3 of 4 branches missed.">            while (start &gt; -1 &amp;&amp; end &gt; start) {</span>
+<span class="nc" id="L629">                String prepend = newString.substring(0, start);</span>
+<span class="nc" id="L630">                String append = newString.substring(end + CLOSE.length());</span>
+<span class="nc" id="L631">                String propName = newString.substring(start + OPEN.length(),</span>
+                        end);
+<span class="nc" id="L633">                String propValue = properties.getProperty(propName);</span>
+<span class="nc bnc" id="L634" title="All 2 branches missed.">                if (propValue != null) {</span>
+<span class="nc" id="L635">                    newString = prepend + propValue + append;</span>
+                }
+
+<span class="nc" id="L638">                start = newString.indexOf(OPEN, end);</span>
+<span class="nc" id="L639">                end = newString.indexOf(CLOSE, end);</span>
+<span class="nc" id="L640">            }</span>
+        }
+
+<span class="fc" id="L643">        return newString;</span>
+    }
+
+    private void parseCommentGenerator(Context context, Node node) {
+<span class="nc" id="L647">        CommentGeneratorConfiguration commentGeneratorConfiguration = new CommentGeneratorConfiguration();</span>
+
+<span class="nc" id="L649">        context.setCommentGeneratorConfiguration(commentGeneratorConfiguration);</span>
+
+<span class="nc" id="L651">        Properties attributes = parseAttributes(node);</span>
+<span class="nc" id="L652">        String type = attributes.getProperty(&quot;type&quot;); //$NON-NLS-1$</span>
+
+<span class="nc bnc" id="L654" title="All 2 branches missed.">        if (stringHasValue(type)) {</span>
+<span class="nc" id="L655">            commentGeneratorConfiguration.setConfigurationType(type);</span>
+        }
+
+<span class="nc" id="L658">        NodeList nodeList = node.getChildNodes();</span>
+<span class="nc bnc" id="L659" title="All 2 branches missed.">        for (int i = 0; i &lt; nodeList.getLength(); i++) {</span>
+<span class="nc" id="L660">            Node childNode = nodeList.item(i);</span>
+
+<span class="nc bnc" id="L662" title="All 2 branches missed.">            if (childNode.getNodeType() != Node.ELEMENT_NODE) {</span>
+<span class="nc" id="L663">                continue;</span>
+            }
+
+<span class="nc bnc" id="L666" title="All 2 branches missed.">            if (&quot;property&quot;.equals(childNode.getNodeName())) { //$NON-NLS-1$</span>
+<span class="nc" id="L667">                parseProperty(commentGeneratorConfiguration, childNode);</span>
+            }
+        }
+<span class="nc" id="L670">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExtendedDAOMethodNameCalculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MyBatis Generator Core</a> &gt; <a href="index.source.html" class="el_package">org.mybatis.generator.internal</a> &gt; <span class="el_source">ExtendedDAOMethodNameCalculator.java</span></div><h1>ExtendedDAOMethodNameCalculator.java</h1><pre class="source lang-java linenums">/*
+ *  Copyright 2006 The Apache Software Foundation
+ *
+ *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+package org.mybatis.generator.internal;
+
+import org.mybatis.generator.api.DAOMethodNameCalculator;
+import org.mybatis.generator.api.IntrospectedTable;
+import org.mybatis.generator.internal.rules.Rules;
+
+/**
+ * @author Jeff Butler
+ * 
+ */
+public class ExtendedDAOMethodNameCalculator implements DAOMethodNameCalculator {
+
+    /**
+     * 
+     */
+    public ExtendedDAOMethodNameCalculator() {
+<span class="nc" id="L33">        super();</span>
+<span class="nc" id="L34">    }</span>
+
+    public String getInsertMethodName(IntrospectedTable introspectedTable) {
+<span class="nc" id="L37">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L38">        sb.append(&quot;insert&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L39">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+
+<span class="nc" id="L42">        return sb.toString();</span>
+    }
+
+    /**
+     * 1. if this will be the only updateByPrimaryKey, then the result should be
+     * updateByPrimaryKey. 2. If the other method is enabled, but there are
+     * seperate base and blob classes, then the method name should be
+     * updateByPrimaryKey 3. Else the method name should be
+     * updateByPrimaryKeyWithoutBLOBs
+     */
+    public String getUpdateByPrimaryKeyWithoutBLOBsMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L54">        StringBuilder sb = new StringBuilder();</span>
+
+<span class="nc" id="L56">        sb.append(&quot;update&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L57">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+
+<span class="nc" id="L60">        Rules rules = introspectedTable.getRules();</span>
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (!rules.generateUpdateByPrimaryKeyWithBLOBs()) {</span>
+<span class="nc" id="L63">            sb.append(&quot;ByPrimaryKey&quot;); //$NON-NLS-1$</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        } else if (rules.generateRecordWithBLOBsClass()) {</span>
+<span class="nc" id="L65">            sb.append(&quot;ByPrimaryKey&quot;); //$NON-NLS-1$</span>
+        } else {
+<span class="nc" id="L67">            sb.append(&quot;ByPrimaryKeyWithoutBLOBs&quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L70">        return sb.toString();</span>
+    }
+
+    /**
+     * 1. if this will be the only updateByPrimaryKey, then the result should be
+     * updateByPrimaryKey. 2. If the other method is enabled, but there are
+     * seperate base and blob classes, then the method name should be
+     * updateByPrimaryKey 3. Else the method name should be
+     * updateByPrimaryKeyWithBLOBs
+     */
+    public String getUpdateByPrimaryKeyWithBLOBsMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L82">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L83">        sb.append(&quot;update&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L84">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+
+<span class="nc" id="L87">        Rules rules = introspectedTable.getRules();</span>
+
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if (!rules.generateUpdateByPrimaryKeyWithoutBLOBs()) {</span>
+<span class="nc" id="L90">            sb.append(&quot;ByPrimaryKey&quot;); //$NON-NLS-1$</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        } else if (rules.generateRecordWithBLOBsClass()) {</span>
+<span class="nc" id="L92">            sb.append(&quot;ByPrimaryKey&quot;); //$NON-NLS-1$</span>
+        } else {
+<span class="nc" id="L94">            sb.append(&quot;ByPrimaryKeyWithBLOBs&quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L97">        return sb.toString();</span>
+    }
+
+    public String getDeleteByExampleMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L102">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L103">        sb.append(&quot;delete&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L104">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L106">        sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L108">        return sb.toString();</span>
+    }
+
+    public String getDeleteByPrimaryKeyMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L113">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L114">        sb.append(&quot;delete&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L115">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L117">        sb.append(&quot;ByPrimaryKey&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L119">        return sb.toString();</span>
+    }
+
+    /**
+     * 1. if this will be the only selectByExample, then the result should be
+     * selectByExample. 2. Else the method name should be
+     * selectByExampleWithoutBLOBs
+     */
+    public String getSelectByExampleWithoutBLOBsMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L129">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L130">        sb.append(&quot;select&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L131">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L133">        sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L135">        Rules rules = introspectedTable.getRules();</span>
+
+<span class="nc bnc" id="L137" title="All 2 branches missed.">        if (rules.generateSelectByExampleWithBLOBs()) {</span>
+<span class="nc" id="L138">            sb.append(&quot;WithoutBLOBs&quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L141">        return sb.toString();</span>
+    }
+
+    /**
+     * 1. if this will be the only selectByExample, then the result should be
+     * selectByExample. 2. Else the method name should be
+     * selectByExampleWithBLOBs
+     */
+    public String getSelectByExampleWithBLOBsMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L151">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L152">        sb.append(&quot;select&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L153">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L155">        sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L157">        Rules rules = introspectedTable.getRules();</span>
+
+<span class="nc bnc" id="L159" title="All 2 branches missed.">        if (rules.generateSelectByExampleWithoutBLOBs()) {</span>
+<span class="nc" id="L160">            sb.append(&quot;WithBLOBs&quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L163">        return sb.toString();</span>
+    }
+
+    public String getSelectByPrimaryKeyMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L168">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L169">        sb.append(&quot;select&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L170">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L172">        sb.append(&quot;ByPrimaryKey&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L174">        return sb.toString();</span>
+    }
+
+    public String getUpdateByPrimaryKeySelectiveMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L179">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L180">        sb.append(&quot;update&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L181">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L183">        sb.append(&quot;ByPrimaryKeySelective&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L185">        return sb.toString();</span>
+    }
+
+    public String getCountByExampleMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L190">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L191">        sb.append(&quot;count&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L192">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L194">        sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L196">        return sb.toString();</span>
+    }
+
+    public String getUpdateByExampleSelectiveMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L201">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L202">        sb.append(&quot;update&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L203">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L205">        sb.append(&quot;ByExampleSelective&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L207">        return sb.toString();</span>
+    }
+
+    public String getUpdateByExampleWithBLOBsMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L212">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L213">        sb.append(&quot;update&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L214">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+
+<span class="nc" id="L217">        Rules rules = introspectedTable.getRules();</span>
+
+<span class="nc bnc" id="L219" title="All 2 branches missed.">        if (!rules.generateUpdateByExampleWithoutBLOBs()) {</span>
+<span class="nc" id="L220">            sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+<span class="nc bnc" id="L221" title="All 2 branches missed.">        } else if (rules.generateRecordWithBLOBsClass()) {</span>
+<span class="nc" id="L222">            sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+        } else {
+<span class="nc" id="L224">            sb.append(&quot;ByExampleWithBLOBs&quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L227">        return sb.toString();</span>
+    }
+
+    public String getUpdateByExampleWithoutBLOBsMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L232">        StringBuilder sb = new StringBuilder();</span>
+
+<span class="nc" id="L234">        sb.append(&quot;update&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L235">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+
+<span class="nc" id="L238">        Rules rules = introspectedTable.getRules();</span>
+
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        if (!rules.generateUpdateByExampleWithBLOBs()) {</span>
+<span class="nc" id="L241">            sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">        } else if (rules.generateRecordWithBLOBsClass()) {</span>
+<span class="nc" id="L243">            sb.append(&quot;ByExample&quot;); //$NON-NLS-1$</span>
+        } else {
+<span class="nc" id="L245">            sb.append(&quot;ByExampleWithoutBLOBs&quot;); //$NON-NLS-1$</span>
+        }
+
+<span class="nc" id="L248">        return sb.toString();</span>
+    }
+
+    public String getInsertSelectiveMethodName(
+            IntrospectedTable introspectedTable) {
+<span class="nc" id="L253">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L254">        sb.append(&quot;insert&quot;); //$NON-NLS-1$</span>
+<span class="nc" id="L255">        sb.append(introspectedTable.getFullyQualifiedTable()</span>
+                .getDomainObjectName());
+<span class="nc" id="L257">        sb.append(&quot;Selective&quot;); //$NON-NLS-1$</span>
+
+<span class="nc" id="L259">        return sb.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
