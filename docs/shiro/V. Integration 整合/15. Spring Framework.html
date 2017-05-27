@@ -1,0 +1,876 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>15. Spring Framework | ES6 教程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="flycloud &lt;damonflycloud@126.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../V. Integration 整合/16. Guice.html" />
+    
+    
+    <link rel="prev" href="../IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.1"
+        data-chapter-title="15. Spring Framework"
+        data-filepath="V. Integration 整合/15. Spring Framework.md"
+        data-basepath=".."
+        data-revision="Tue Apr 25 2017 23:07:19 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+            <span><b>1.</b> I. Overview 总览</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="I. Overview 总览/1. Introduction 介绍.html">
+            
+                
+                    <a href="../I. Overview 总览/1. Introduction 介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1. Introduction 介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="I. Overview 总览/2. Tutorial 教程.html">
+            
+                
+                    <a href="../I. Overview 总览/2. Tutorial 教程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        2. Tutorial 教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="I. Overview 总览/3. Architecture 架构.html">
+            
+                
+                    <a href="../I. Overview 总览/3. Architecture 架构.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        3. Architecture 架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="I. Overview 总览/4. Configuration 配置.html">
+            
+                
+                    <a href="../I. Overview 总览/4. Configuration 配置.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        4. Configuration 配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" >
+            
+            <span><b>2.</b> II. Core 核心</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="II. Core 核心/5. Authentication 认证.html">
+            
+                
+                    <a href="../II. Core 核心/5. Authentication 认证.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        5. Authentication 认证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="II. Core 核心/6. Authorization 授权.html">
+            
+                
+                    <a href="../II. Core 核心/6. Authorization 授权.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        6. Authorization 授权
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="II. Core 核心/6.1. Permissions 权限.html">
+            
+                
+                    <a href="../II. Core 核心/6.1. Permissions 权限.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        6.1. Permissions 权限
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="II. Core 核心/7. Realms.html">
+            
+                
+                    <a href="../II. Core 核心/7. Realms.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        7. Realms
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="II. Core 核心/8. Session Management.html">
+            
+                
+                    <a href="../II. Core 核心/8. Session Management.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        8. Session Management
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="II. Core 核心/9. Cryptography 密码.html">
+            
+                
+                    <a href="../II. Core 核心/9. Cryptography 密码.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        9. Cryptography 密码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" >
+            
+            <span><b>3.</b> III. Web Applications</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="III. Web Applications/10. Web.html">
+            
+                
+                    <a href="../III. Web Applications/10. Web.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        10. Web
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="III. Web Applications/10.1. Configuration 配置.html">
+            
+                
+                    <a href="../III. Web Applications/10.1. Configuration 配置.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.1.</b>
+                        
+                        10.1. Configuration 配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="III. Web Applications/10.2. urls Path based security 基于路径的安全.html">
+            
+                
+                    <a href="../III. Web Applications/10.2. urls Path based security 基于路径的安全.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.2.</b>
+                        
+                        10.2. 基于路径的 url 安全
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="III. Web Applications/10.3. Default Filters 默认过滤器.html">
+            
+                
+                    <a href="../III. Web Applications/10.3. Default Filters 默认过滤器.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.3.</b>
+                        
+                        10.3. Default Filters 默认过滤器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="III. Web Applications/10.4. Session Management.html">
+            
+                
+                    <a href="../III. Web Applications/10.4. Session Management.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.4.</b>
+                        
+                        10.4. Session Management
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="III. Web Applications/10.5. JSP Tag Library.html">
+            
+                
+                    <a href="../III. Web Applications/10.5. JSP Tag Library.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.5.</b>
+                        
+                        10.5. JSP Tag Library
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" >
+            
+            <span><b>4.</b> IV. Auxiliary Support 辅助支持</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="IV. Auxiliary Support 辅助支持/11. Caching 缓存.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/11. Caching 缓存.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        11. Caching 缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="IV. Auxiliary Support 辅助支持/12. Concurrency &amp; Multithreading 并发与多线程.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/12. Concurrency &amp; Multithreading 并发与多线程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        12. Concurrency &amp; Multithreading 并发与多线程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="IV. Auxiliary Support 辅助支持/13. Testing 测试.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/13. Testing 测试.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        13. Testing 测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        14. Custom Subjects 自定义 Subject
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" >
+            
+            <span><b>5.</b> V. Integration 整合</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="5.1" data-path="V. Integration 整合/15. Spring Framework.html">
+            
+                
+                    <a href="../V. Integration 整合/15. Spring Framework.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        15. Spring Framework
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="V. Integration 整合/16. Guice.html">
+            
+                
+                    <a href="../V. Integration 整合/16. Guice.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        16. Guice
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="V. Integration 整合/17. CAS.html">
+            
+                
+                    <a href="../V. Integration 整合/17. CAS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        17. CAS
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" >
+            
+            <span><b>6.</b> VI. Tools 工具</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="VI. Tools 工具/18. Command Line Hasher.html">
+            
+                
+                    <a href="../VI. Tools 工具/18. Command Line Hasher.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        18. Command Line Hasher
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" >
+            
+            <span><b>7.</b> VII. Index 目录</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="VII. Index 目录/19. Terminology 术语.html">
+            
+                
+                    <a href="../VII. Index 目录/19. Terminology 术语.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        19. Terminology 术语
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" >
+            
+            <span><b>8.</b> VIII. Other 其他</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="VIII. Other 其他/20. 10 Minute Tutorial 十分钟教程.html">
+            
+                
+                    <a href="../VIII. Other 其他/20. 10 Minute Tutorial 十分钟教程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        20. 10 Minute Tutorial 十分钟教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="VIII. Other 其他/21. Beginner&#39;s Webapp Tutorial 初学者web应用教程.html">
+            
+                
+                    <a href="../VIII. Other 其他/21. Beginner&#39;s Webapp Tutorial 初学者web应用教程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        21. Beginner&#39;s Webapp Tutorial 初学者web应用教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="VIII. Other 其他/22. Application Security With Apache Shiro 用Shiro保护你的应用安全 .html">
+            
+                
+                    <a href="../VIII. Other 其他/22. Application Security With Apache Shiro 用Shiro保护你的应用安全 .html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        22. Application Security With Apache Shiro 用Shiro保护你的应用安全
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="VIII. Other 其他/23. CacheManager 缓存管理.html">
+            
+                
+                    <a href="../VIII. Other 其他/23. CacheManager 缓存管理.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        23. CacheManager 缓存管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="VIII. Other 其他/24. Apache Shiro Cryptography Features 加密功能.html">
+            
+                
+                    <a href="../VIII. Other 其他/24. Apache Shiro Cryptography Features 加密功能.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        24. Apache Shiro Cryptography Features 加密功能
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >ES6 教程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="15-spring-framework">15. Spring Framework</h1>
+<p>&#x672C;&#x9875;&#x6DB5;&#x76D6;&#x4E86;&#x5C06; Shiro &#x96C6;&#x6210;&#x5230;&#x57FA;&#x4E8E; <a href="http://www.springframework.org/" target="_blank">Spring</a> &#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>Shiro &#x7684; JavaBean &#x517C;&#x5BB9;&#x6027;&#x4F7F;&#x5F97;&#x5B83;&#x975E;&#x5E38;&#x9002;&#x5408;&#x901A;&#x8FC7; Spring XML &#x6216;&#x5176;&#x4ED6;&#x57FA;&#x4E8E; Spring &#x7684;&#x914D;&#x7F6E;&#x673A;&#x5236;&#x3002; Shiro &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x5355;&#x4F8B;SecurityManager &#x5B9E;&#x4F8B;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x4E0D;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x5355;&#x4F8B;&#xFF0C;&#x4F46;&#x5E94;&#x8BE5;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x80FD;&#x591F;&#x4F7F;&#x7528;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x65E0;&#x8BBA;&#x5B83;&#x662F;&#x5426;&#x662F;&#x9759;&#x6001;&#x5355;&#x4F8B;&#x7684;&#x3002;</p>
+<h2 id="standalone-applications">Standalone Applications</h2>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x5728; Spring &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x542F;&#x7528;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5355;&#x4F8B; SecurityManager &#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>&lt;!-- &#x5B9A;&#x4E49;&#x8FDE;&#x63A5;&#x540E;&#x53F0;&#x5B89;&#x5168;&#x6570;&#x636E;&#x6E90;&#x7684;realm --&gt;
+&lt;bean id=&quot;myRealm&quot; class=&quot;...&quot;&gt;
+   ...
+&lt;/bean&gt;
+&lt;bean id=&quot;securityManager&quot; class=&quot;org.apache.shiro.mgt.DefaultSecurityManager&quot;&gt;
+   &lt;!-- &#x5355;realm&#x5E94;&#x7528;&#x3002;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;realm&#xFF0C;&#x4F7F;&#x7528;&#x2018;realms&#x2019;&#x5C5E;&#x6027;&#x4EE3;&#x66FF; --&gt;
+   &lt;property name=&quot;realm&quot; ref=&quot;myRealm&quot;/&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;lifecycleBeanPostProcessor&quot; class=&quot;org.apache.shiro.spring.LifecycleBeanPostProcessor&quot;/&gt;
+&lt;!-- &#x6700;&#x7B80;&#x5355;&#x7684;&#x96C6;&#x6210;&#xFF0C;&#x662F;&#x5C06;securityManager bean&#x914D;&#x7F6E;&#x6210;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x5355;&#x4F8B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BA9;            SecurityUtils.* 
+&#x4E0B;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x5728;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x4E0B;&#x90FD;&#x8D77;&#x4F5C;&#x7528;&#x3002;&#x5728;web&#x5E94;&#x7528;&#x4E2D;&#x4E0D;&#x8981;&#x5C06;securityManager bean&#x914D;&#x7F6E;&#x4E3A;&#x9759;&#x6001;&#x5355;&#x4F8B;&#xFF0C;
+&#x5177;&#x4F53;&#x65B9;&#x5F0F;&#x8BF7;&#x53C2;&#x9605;&#x4E0B;&#x6587;&#x4E2D;&#x7684;&#x2018;Web Application&#x2019;&#x90E8;&#x5206; --&gt;
+&lt;bean class=&quot;org.springframework.beans.factory.config.MethodInvokingFactoryBean&quot;&gt;
+   &lt;property name=&quot;staticMethod&quot; value=&quot;org.apache.shiro.SecurityUtils.setSecurityManager&quot;/&gt;
+   &lt;property name=&quot;arguments&quot; ref=&quot;securityManager&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h2 id="web-applications">Web Applications</h2>
+<p>Shiro &#x62E5;&#x6709;&#x5BF9; Spring Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x4E00;&#x6D41;&#x652F;&#x6301;&#x3002;&#x5728; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x6240;&#x6709; Shiro &#x53EF;&#x8BBF;&#x95EE;&#x7684; web &#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x7684; Shiro &#x8FC7;&#x6EE4;&#x5668;&#x3002;&#x8BE5;&#x8FC7;&#x6EE4;&#x5668;&#x672C;&#x8EAB;&#x662F;&#x6781;&#x4E3A;&#x5F3A;&#x5927;&#x7684;&#xFF0C;&#x5141;&#x8BB8;&#x4E34;&#x65F6;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6EE4;&#x5668;&#x94FE;&#x57FA;&#x4E8E;&#x4EFB;&#x4F55; URL &#x8DEF;&#x5F84;&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x5728;Shiro 1.0 &#x4E4B;&#x524D;&#xFF0C;&#x4F60;&#x4E0D;&#x5F97;&#x4E0D;&#x5728; Spring web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x6DF7;&#x5408;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6765;&#x5B9A;&#x4E49; Shiro &#x8FC7;&#x6EE4;&#x5668;&#x53CA;&#x6240;&#x6709;&#x5B83;&#x5728; web.xml &#x4E2D;&#x7684;&#x914D;&#x7F6E;&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x5728;Spring XML &#x4E2D;&#x5B9A;&#x4E49; SecurityManager&#x3002;&#x8FD9;&#x6709;&#x4E9B;&#x4EE4;&#x4EBA;&#x6CAE;&#x4E27;&#xFF0C;&#x7531;&#x4E8E;&#x4F60;&#x4E0D;&#x80FD;&#x628A;&#x4F60;&#x7684;&#x914D;&#x7F6E;&#x56FA;&#x5B9A;&#x5728;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#xFF0C;&#x4EE5;&#x53CA;&#x5229;&#x7528;&#x66F4;&#x4E3A;&#x5148;&#x8FDB;&#x7684; Spring &#x529F;&#x80FD;&#x7684;&#x914D;&#x7F6E;&#x80FD;&#x529B;&#xFF0C;&#x5982; PropertyPlaceholderConfigurer &#x6216;&#x62BD;&#x8C61; bean &#x6765;&#x56FA;&#x5B9A;&#x901A;&#x7528;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x5728; Shiro 1.0 &#x53CA;&#x4EE5;&#x540E;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x6240;&#x6709; Shiro &#x914D;&#x7F6E;&#x90FD;&#x662F;&#x5728; Spring XML &#x4E2D;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x7528;&#x6765;&#x63D0;&#x4F9B;&#x66F4;&#x4E3A;&#x5F3A;&#x5065;&#x7684; Spring &#x914D;&#x7F6E;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x5982;&#x4F55;&#x5728;&#x57FA;&#x4E8E; Spring web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x914D;&#x7F6E; Shiro&#xFF1A;</p>
+<h3 id="webxml">web.xml</h3>
+<p>&#x9664;&#x4E86;&#x5176;&#x4ED6; Spring web.xml &#x4E2D;&#x7684;&#x5143;&#x7D20;&#xFF08; ContextLoaderListener&#xFF0C;Log4jConfigListener &#x7B49;&#x7B49;&#xFF09;&#xFF0C;&#x5B9A;&#x4E49;&#x4E0B;&#x9762;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x53CA;&#x8FC7;&#x6EE4;&#x5668;&#x6620;&#x5C04;&#xFF1A;</p>
+<pre><code>&lt;!-- filter-name&#x5BF9;&#x5E94;applicationContext.xml&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x540D;&#x5B57;&#x4E3A;&#x201C;shiroFilter&#x201D;&#x7684;bean --&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;targetFilterLifecycle&lt;/param-name&gt;
+        &lt;param-value&gt;true&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+...
+&lt;!-- &#x4F7F;&#x7528;&#x201C;/*&#x201D;&#x5339;&#x914D;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#xFF0C;&#x4FDD;&#x8BC1;&#x6240;&#x6709;&#x7684;&#x53EF;&#x63A7;&#x8BF7;&#x6C42;&#x90FD;&#x7ECF;&#x8FC7;Shiro&#x7684;&#x8FC7;&#x6EE4;&#x3002;&#x901A;&#x5E38;&#x8FD9;&#x4E2A;filter-mapping
+&#x653E;&#x7F6E;&#x5230;&#x6700;&#x524D;&#x9762;(&#x5176;&#x4ED6;filter-mapping&#x524D;&#x9762;)&#xFF0C;&#x4FDD;&#x8BC1;&#x5B83;&#x662F;&#x8FC7;&#x6EE4;&#x5668;&#x94FE;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x8D77;&#x4F5C;&#x7528;&#x7684; --&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre><h3 id="applicationcontextxml">applicationContext.xml</h3>
+<p>&#x5728;&#x4F60;&#x7684; applicationContext.xml &#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5B9A;&#x4E49; web &#x652F;&#x6301;&#x7684;SecurityManager &#x548C; &apos;shiroFilter&apos; bean &#x5C06;&#x4F1A;&#x88AB; web.xml &#x5F15;&#x7528;&#x3002;</p>
+<pre><code>&lt;bean id=&quot;shiroFilter&quot; class=&quot;org.apache.shiro.spring.web.ShiroFilterFactoryBean&quot;&gt;
+    &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot;/&gt;
+    &lt;!-- &#x53EF;&#x6839;&#x636E;&#x9879;&#x76EE;&#x7684;URL&#x8FDB;&#x884C;&#x66FF;&#x6362; --&gt;
+    &lt;property name=&quot;loginUrl&quot; value=&quot;/login.jsp&quot;/&gt;
+    &lt;property name=&quot;successUrl&quot; value=&quot;/home.jsp&quot;/&gt;
+    &lt;property name=&quot;unauthorizedUrl&quot; value=&quot;/unauthorized.jsp&quot;/&gt; 
+    &lt;!-- &#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x5DF2;&#x7ECF;&#x5B9A;&#x4E49;&#x7684;javax.servlet.Filter&#x7C7B;&#x578B;&#x7684;bean&#x90FD;&#x53EF;&#x4EE5;&#x5728;&#x94FE;&#x7684;&#x5B9A;&#x4E49;&#x4E2D;&#x901A;&#x8FC7;bean&#x540D;
+    &#x79F0;&#x83B7;&#x53D6;&#xFF0C;&#x6240;&#x4EE5;filters&#x5C5E;&#x6027;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x51FA;&#x73B0;&#x7684;&#x3002;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x901A;&#x8FC7;filters&#x5C5E;&#x6027;&#x66FF;&#x6362;filter
+    &#x5B9E;&#x4F8B;&#x6216;&#x8005;&#x4E3A;filter&#x8D77;&#x522B;&#x540D; --&gt;
+    &lt;property name=&quot;filters&quot;&gt;
+        &lt;util:map&gt;
+            &lt;entry key=&quot;anAlias&quot; value-ref=&quot;someFilter&quot;/&gt;
+        &lt;/util:map&gt;
+    &lt;/property&gt; 
+    &lt;property name=&quot;filterChainDefinitions&quot;&gt;
+        &lt;value&gt;
+            # some example chain definitions:
+            /admin/** = authc, roles[admin]
+            /docs/** = authc, perms[document:read]
+            /** = authc
+            # more URL-to-FilterChain definitions here
+        &lt;/value&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- &#x5B9A;&#x4E49;&#x5E94;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x7684; javax.servlet.Filter beans&#x3002;&#x8FD9;&#x4E9B;beans &#x4F1A;&#x88AB;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;shiroFilter&#x81EA;
+&#x52A8;&#x611F;&#x77E5;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x7ED9;&#x201C;filterChainDefinitions&#x201D;&#x5C5E;&#x6027;&#x4F7F;&#x7528;&#x3002;&#x6216;&#x8005;&#x4E5F;&#x53EF;&#x6839;&#x636E;&#x9700;&#x8981;&#x624B;&#x52A8;&#x7684;&#x5C06;&#x4ED6;&#x4EEC;&#x6DFB;&#x52A0;&#x5728;
+shiroFilter bean&#x7684;&#x201C;filters&#x201D;&#x5C5E;&#x6027;&#x4E0B;&#x7684;Map&#x6807;&#x7B7E;&#x4E2D;&#x3002; --&gt;
+&lt;bean id=&quot;someFilter&quot; class=&quot;...&quot;/&gt;
+&lt;bean id=&quot;anotherFilter&quot; class=&quot;...&quot;&gt; ... &lt;/bean&gt;
+...
+&lt;bean id=&quot;securityManager&quot; class=&quot;org.apache.shiro.web.mgt.DefaultWebSecurityManager&quot;&gt;
+    &lt;!-- &#x5355;realm&#x5E94;&#x7528;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x591A;&#x4E2A;realm&#xFF0C;&#x4F7F;&#x7528;&#x201C;realms&#x201D;&#x5C5E;&#x6027; --&gt;
+    &lt;property name=&quot;realm&quot; ref=&quot;myRealm&quot;/&gt;
+    &lt;!-- &#x9ED8;&#x8BA4;&#x4F7F;&#x7528;servlet&#x5BB9;&#x5668;session&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4F7F;&#x7528;shiro &#x539F;&#x751F;session&#x7684;&#x4F8B;&#x5B50;(&#x7EC6;&#x8282;&#x8BF7;&#x53C2;&#x8003;&#x5E2E;&#x52A9;&#x6587;&#x6863;)--&gt;
+    &lt;!-- &lt;property name=&quot;sessionMode&quot; value=&quot;native&quot;/&gt; --&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;lifecycleBeanPostProcessor&quot; class=&quot;org.apache.shiro.spring.LifecycleBeanPostProcessor&quot;/&gt;
+&lt;!-- &#x5B9A;&#x4E49;&#x8FDE;&#x63A5;&#x540E;&#x53F0;&#x5B89;&#x5168;&#x6570;&#x636E;&#x6E90;&#x7684;realm --&gt;
+&lt;bean id=&quot;myRealm&quot; class=&quot;...&quot;&gt;
+...
+&lt;/bean&gt;
+</code></pre><h2 id="enabling-shiro-annotations-&#x542F;&#x7528;&#x6CE8;&#x89E3;">Enabling Shiro Annotations &#x542F;&#x7528;&#x6CE8;&#x89E3;</h2>
+<p>&#x4E0D;&#x8BBA;&#x72EC;&#x7ACB;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FD8;&#x662F; web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Shiro &#x63D0;&#x4F9B;&#x7684;&#x6CE8;&#x89E3;&#x8FDB;&#x884C;&#x5B89;&#x5168;&#x68C0;&#x67E5;&#x3002;&#x6BD4;&#x5982; @RequiresRoles, @RequiresPermissions &#x7B49;&#x3002;&#x8FD9;&#x4E9B;&#x6CE8;&#x89E3;&#x9700;&#x8981;&#x501F;&#x52A9; Spring &#x7684; AOP&#x626B;&#x63CF;&#x4F7F;&#x7528; Shiro &#x6CE8;&#x89E3;&#x7684;&#x7C7B;&#xFF0C;&#x5E76;&#x5728;&#x5FC5;&#x8981;&#x65F6;&#x8FDB;&#x884C;&#x5B89;&#x5168;&#x903B;&#x8F91;&#x9A8C;&#x8BC1;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E0B;&#x5982;&#x4F55;&#x5F00;&#x542F;&#x6CE8;&#x89E3;&#xFF0C;&#x5176;&#x5B9E;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x8981;&#x5728;applicationContext.xml &#x4E2D;&#x5B9A;&#x4E49;&#x4E24;&#x4E2A; bean &#x5373;&#x53EF;&#x3002;</p>
+<pre><code>&lt;!-- &#x5F00;&#x542F;Shiro&#x6CE8;&#x89E3;&#x7684;Spring&#x914D;&#x7F6E;&#x65B9;&#x5F0F;&#x7684;beans&#x3002;&#x5728;lifecycleBeanPostProcessor&#x4E4B;&#x540E;&#x8FD0;&#x884C; --&gt;
+&lt;bean class=&quot;org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator&quot; depends-on=&quot;lifecycleBeanPostProcessor&quot;/&gt;
+&lt;bean class=&quot;org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor&quot;&gt;
+    &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h2 id="secure-spring-remoting-&#x8FDC;&#x7A0B;&#x5B89;&#x5168;">Secure Spring Remoting &#x8FDC;&#x7A0B;&#x5B89;&#x5168;</h2>
+<p>Shiro &#x7684; Spring &#x8FDC;&#x7A0B;&#x652F;&#x6301;&#x6709;&#x4E24;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF1A;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x914D;&#x7F6E;&#x548C;&#x63A5;&#x6536;&#x3001;&#x5904;&#x7406;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x7684;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x914D;&#x7F6E;&#x3002;</p>
+<h3 id="serverside-configuration-&#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;">Server-side Configuration &#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;</h3>
+<p>&#x5F53; Shiro &#x7684; Server &#x7AEF;&#x63A5;&#x6536;&#x5230;&#x4E00;&#x4E2A;&#x8FDC;&#x7A0B;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4E0E;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x76F8;&#x5173;&#x7684;Subject &#x5FC5;&#x987B;&#x5728;&#x63A5;&#x6536;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#x7ED1;&#x5B9A;&#x5230;&#x63A5;&#x6536;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF0C;&#x8FD9;&#x9879;&#x5DE5;&#x4F5C;&#x901A;&#x8FC7;&#x5728;applicationContext.xml &#x4E2D;&#x5B9A;&#x4E49; SecureRemoteInvocationExecutor bean &#x5B8C;&#x6210;&#x3002;</p>
+<pre><code>&lt;!-- Spring&#x8FDC;&#x7A0B;&#x5B89;&#x5168;&#x786E;&#x4FDD;&#x6BCF;&#x4E2A;&#x8FDC;&#x7A0B;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x90FD;&#x4E0E;&#x4E00;&#x4E2A;&#x8D1F;&#x8D23;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;&#x7684;Subject&#x7ED1;&#x5B9A; --&gt;
+&lt;!-- can be associated with a Subject for security checks. --&gt;
+&lt;bean id=&quot;secureRemoteInvocationExecutor&quot; class=&quot;org.apache.shiro.spring.remoting.SecureRemoteInvocationExecutor&quot;&gt;
+    &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><p>SecureRemoteInvocationExecutor &#x5B9A;&#x4E49;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x5B83;&#x52A0;&#x5165;&#x5230;Exporter &#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A; Exporter &#x7528;&#x4E8E;&#x66B4;&#x9732;&#x5411;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x4E14; Exporter &#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x7531;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x673A;&#x5236;&#x548C;&#x534F;&#x8BAE;&#x51B3;&#x5B9A;&#x3002;&#x5B9A;&#x4E49; Exporter beans &#x8BF7;&#x53C2;&#x7167; Spring &#x7684; <a href="http://static.springsource.org/spring/docs/2.5.x/reference/remoting.html" target="_blank">Remoting</a> &#x7AE0;&#x8282;&#x3002;</p>
+<p>&#x4EE5;&#x57FA;&#x4E8E; HTTP &#x7684;&#x8FDC;&#x7A0B; SecureRemoteInvocationExecutor &#x4E3A;&#x4F8B;&#x3002;( remoteInvocationExecutor &#x5C5E;&#x6027;&#x5F15;&#x7528;&#x81EA;secureRemoteInvocationExecutor)</p>
+<pre><code>&lt;bean name=&quot;/someService&quot; class=&quot;org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter&quot;&gt;
+    &lt;property name=&quot;service&quot; ref=&quot;someService&quot;/&gt;
+    &lt;property name=&quot;serviceInterface&quot; value=&quot;com.pkg.service.SomeService&quot;/&gt;
+    &lt;property name=&quot;remoteInvocationExecutor&quot; ref=&quot;secureRemoteInvocationExecutor&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h3 id="clientside-configuration-&#x5BA2;&#x6237;&#x7AEF;&#x914D;&#x7F6E;">Client-side Configuration &#x5BA2;&#x6237;&#x7AEF;&#x914D;&#x7F6E;</h3>
+<p>&#x5F53;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x8D1F;&#x8D23;&#x9274;&#x522B;&#x4FE1;&#x606F;&#x7684;Subject&#x9700;&#x8981;&#x544A;&#x77E5;server&#x8FDC;&#x7A0B;&#x65B9;&#x6CD5;&#x662F;&#x8C01;&#x53D1;&#x8D77;&#x7684; &#x3002;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x662F;&#x57FA;&#x4E8E;Spring&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x79CD;&#x5173;&#x8054;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Shiro&#x7684;SecureRemoteInvocationFactory &#x5B8C;&#x6210;&#x3002;</p>
+<pre><code>&lt;bean id=&quot;secureRemoteInvocationFactory&quot; class=&quot;org.apache.shiro.spring.remoting.SecureRemoteInvocationFactory&quot;/&gt;
+</code></pre><p>&#x7136;&#x540E;&#x5C06;SecureRemoteInvocationFactory &#x6DFB;&#x52A0;&#x5230;&#x4E0E;&#x534F;&#x8BAE;&#x76F8;&#x5173;&#x7684;Spring&#x8FDC;&#x7A0B;ProxyFactoryBean &#x4E2D;&#x3002;</p>
+<p>&#x4EE5;&#x57FA;&#x4E8E;HTTP&#x534F;&#x8BAE;&#x7684;&#x8FDC;&#x7A0B;ProxyFactoryBean&#x4E3A;&#x4F8B;&#x3002;(remoteInvocationExecutor &#x5C5E;&#x6027;&#x5F15;&#x7528;&#x81EA;secureRemoteInvocationExecutor)</p>
+<pre><code>&lt;bean id=&quot;someService&quot; class=&quot;org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean&quot;&gt;
+    &lt;property name=&quot;serviceUrl&quot; value=&quot;http://host:port/remoting/someService&quot;/&gt;
+    &lt;property name=&quot;serviceInterface&quot; value=&quot;com.pkg.service.SomeService&quot;/&gt;
+    &lt;property name=&quot;remoteInvocationFactory&quot; ref=&quot;secureRemoteInvocationFactory&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h2 id="&#x4E3A;&#x6587;&#x6863;&#x52A0;&#x628A;&#x624B;">&#x4E3A;&#x6587;&#x6863;&#x52A0;&#x628A;&#x624B;</h2>
+<p>&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x8FD9;&#x7BC7;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x4F60;&#x4F7F;&#x7528; Apache Shiro &#x8FDB;&#x884C;&#x5DE5;&#x4F5C;&#xFF0C;&#x793E;&#x533A;&#x4E00;&#x76F4;&#x5728;&#x4E0D;&#x65AD;&#x5730;&#x5B8C;&#x5584;&#x548C;&#x6269;&#x5C55;&#x6587;&#x6863;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x5E2E;&#x52A9; Shiro &#x9879;&#x76EE;&#xFF0C;&#x8BF7;&#x5728;&#x4F60;&#x8BA4;&#x4E3A;&#x9700;&#x8981;&#x7684;&#x5730;&#x65B9;&#x8003;&#x8651;&#x66F4;&#x6B63;&#x3001;&#x6269;&#x5C55;&#x6216;&#x6DFB;&#x52A0;&#x6587;&#x6863;&#xFF0C;&#x4F60;&#x63D0;&#x4F9B;&#x7684;&#x4EFB;&#x4F55;&#x70B9;&#x6EF4;&#x5E2E;&#x52A9;&#x90FD;&#x5C06;&#x6269;&#x5145;&#x793E;&#x533A;&#x5E76;&#x4E14;&#x63D0;&#x5347; Shiro&#x3002;</p>
+<p>&#x63D0;&#x4F9B;&#x4F60;&#x7684;&#x6587;&#x6863;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x9014;&#x5F84;&#x662F;&#x5C06;&#x5B83;&#x53D1;&#x9001;&#x5230;&#x7528;&#x6237;<a href="http://shiro-user.582556.n2.nabble.com/" target="_blank">&#x8BBA;&#x575B;</a>&#x6216;<a href="http://shiro.apache.org/mailing-lists.html" target="_blank">&#x90AE;&#x4EF6;&#x5217;&#x8868;</a></p>
+<p><em>&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;</em>&#x5982;&#x679C;&#x5BF9;&#x672C;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x6709;&#x7591;&#x8BAE;&#x7684;&#x6216;&#x53D1;&#x73B0;&#x52D8;&#x8BEF;&#x6B22;&#x8FCE;&#x6307;&#x6B63;&#xFF0C;<a href="https://github.com/waylau/apache-shiro-1.2.x-reference/issues" target="_blank">&#x70B9;&#x6B64;</a>&#x63D0;&#x95EE;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html" class="navigation navigation-prev " aria-label="Previous page: 14. Custom Subjects 自定义 Subject"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../V. Integration 整合/16. Guice.html" class="navigation navigation-next " aria-label="Next page: 16. Guice"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"search":{"maxIndexSize":100000},"fontsettings":{"theme":"white","family":"sans","size":2},"splitter":{},"anchors":{},"codeblock-filename":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

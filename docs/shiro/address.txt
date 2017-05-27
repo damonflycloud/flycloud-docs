@@ -1,0 +1,1 @@
+https://github.com/waylau/apache-shiro-1.2.x-reference

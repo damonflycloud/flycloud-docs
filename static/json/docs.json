@@ -1,5 +1,7 @@
 [
   {"href":"/docs/design-patterns","img":"./static/img/java patterns.jpg","title":"java patterns","middle":"false"},
   {"href":"/docs/javascript-patterns","img":"./static/img/javascript patterns.jpg","title":"javascript patterns","middle":"false"},
-  {"href":"/docs/ELKStack","img":"./static/img/ELK.jpg","title":"ELKStack","middle":"false"}
+  {"href":"/docs/ELKStack","img":"./static/img/ELK.jpg","title":"ELKStack","middle":"false"},
+  {"href":"/docs/shiro","img":"./static/img/shiro.jpg","title":"shiro教程","middle":"false"},
+  {"href":"/docs/ES6","img":"./static/img/ES6.jpg","title":"ES6教程","middle":"false"}
 ]

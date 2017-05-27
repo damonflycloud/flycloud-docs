@@ -1,0 +1,948 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>13. Testing 测试 | ES6 教程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="flycloud &lt;damonflycloud@126.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html" />
+    
+    
+    <link rel="prev" href="../IV. Auxiliary Support 辅助支持/12. Concurrency &amp; Multithreading 并发与多线程.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4.3"
+        data-chapter-title="13. Testing 测试"
+        data-filepath="IV. Auxiliary Support 辅助支持/13. Testing 测试.md"
+        data-basepath=".."
+        data-revision="Tue Apr 25 2017 23:07:19 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+            <span><b>1.</b> I. Overview 总览</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="I. Overview 总览/1. Introduction 介绍.html">
+            
+                
+                    <a href="../I. Overview 总览/1. Introduction 介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1. Introduction 介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="I. Overview 总览/2. Tutorial 教程.html">
+            
+                
+                    <a href="../I. Overview 总览/2. Tutorial 教程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        2. Tutorial 教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="I. Overview 总览/3. Architecture 架构.html">
+            
+                
+                    <a href="../I. Overview 总览/3. Architecture 架构.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        3. Architecture 架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="I. Overview 总览/4. Configuration 配置.html">
+            
+                
+                    <a href="../I. Overview 总览/4. Configuration 配置.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        4. Configuration 配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" >
+            
+            <span><b>2.</b> II. Core 核心</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="II. Core 核心/5. Authentication 认证.html">
+            
+                
+                    <a href="../II. Core 核心/5. Authentication 认证.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        5. Authentication 认证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="II. Core 核心/6. Authorization 授权.html">
+            
+                
+                    <a href="../II. Core 核心/6. Authorization 授权.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        6. Authorization 授权
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="II. Core 核心/6.1. Permissions 权限.html">
+            
+                
+                    <a href="../II. Core 核心/6.1. Permissions 权限.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        6.1. Permissions 权限
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="II. Core 核心/7. Realms.html">
+            
+                
+                    <a href="../II. Core 核心/7. Realms.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        7. Realms
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="II. Core 核心/8. Session Management.html">
+            
+                
+                    <a href="../II. Core 核心/8. Session Management.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        8. Session Management
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="II. Core 核心/9. Cryptography 密码.html">
+            
+                
+                    <a href="../II. Core 核心/9. Cryptography 密码.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        9. Cryptography 密码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" >
+            
+            <span><b>3.</b> III. Web Applications</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="III. Web Applications/10. Web.html">
+            
+                
+                    <a href="../III. Web Applications/10. Web.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        10. Web
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="III. Web Applications/10.1. Configuration 配置.html">
+            
+                
+                    <a href="../III. Web Applications/10.1. Configuration 配置.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.1.</b>
+                        
+                        10.1. Configuration 配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="III. Web Applications/10.2. urls Path based security 基于路径的安全.html">
+            
+                
+                    <a href="../III. Web Applications/10.2. urls Path based security 基于路径的安全.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.2.</b>
+                        
+                        10.2. 基于路径的 url 安全
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="III. Web Applications/10.3. Default Filters 默认过滤器.html">
+            
+                
+                    <a href="../III. Web Applications/10.3. Default Filters 默认过滤器.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.3.</b>
+                        
+                        10.3. Default Filters 默认过滤器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="III. Web Applications/10.4. Session Management.html">
+            
+                
+                    <a href="../III. Web Applications/10.4. Session Management.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.4.</b>
+                        
+                        10.4. Session Management
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="III. Web Applications/10.5. JSP Tag Library.html">
+            
+                
+                    <a href="../III. Web Applications/10.5. JSP Tag Library.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.5.</b>
+                        
+                        10.5. JSP Tag Library
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" >
+            
+            <span><b>4.</b> IV. Auxiliary Support 辅助支持</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="IV. Auxiliary Support 辅助支持/11. Caching 缓存.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/11. Caching 缓存.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        11. Caching 缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="IV. Auxiliary Support 辅助支持/12. Concurrency &amp; Multithreading 并发与多线程.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/12. Concurrency &amp; Multithreading 并发与多线程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        12. Concurrency &amp; Multithreading 并发与多线程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.3" data-path="IV. Auxiliary Support 辅助支持/13. Testing 测试.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/13. Testing 测试.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        13. Testing 测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html">
+            
+                
+                    <a href="../IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        14. Custom Subjects 自定义 Subject
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" >
+            
+            <span><b>5.</b> V. Integration 整合</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="V. Integration 整合/15. Spring Framework.html">
+            
+                
+                    <a href="../V. Integration 整合/15. Spring Framework.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        15. Spring Framework
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="V. Integration 整合/16. Guice.html">
+            
+                
+                    <a href="../V. Integration 整合/16. Guice.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        16. Guice
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="V. Integration 整合/17. CAS.html">
+            
+                
+                    <a href="../V. Integration 整合/17. CAS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        17. CAS
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" >
+            
+            <span><b>6.</b> VI. Tools 工具</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="VI. Tools 工具/18. Command Line Hasher.html">
+            
+                
+                    <a href="../VI. Tools 工具/18. Command Line Hasher.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        18. Command Line Hasher
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" >
+            
+            <span><b>7.</b> VII. Index 目录</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="VII. Index 目录/19. Terminology 术语.html">
+            
+                
+                    <a href="../VII. Index 目录/19. Terminology 术语.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        19. Terminology 术语
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" >
+            
+            <span><b>8.</b> VIII. Other 其他</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="VIII. Other 其他/20. 10 Minute Tutorial 十分钟教程.html">
+            
+                
+                    <a href="../VIII. Other 其他/20. 10 Minute Tutorial 十分钟教程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        20. 10 Minute Tutorial 十分钟教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="VIII. Other 其他/21. Beginner&#39;s Webapp Tutorial 初学者web应用教程.html">
+            
+                
+                    <a href="../VIII. Other 其他/21. Beginner&#39;s Webapp Tutorial 初学者web应用教程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        21. Beginner&#39;s Webapp Tutorial 初学者web应用教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="VIII. Other 其他/22. Application Security With Apache Shiro 用Shiro保护你的应用安全 .html">
+            
+                
+                    <a href="../VIII. Other 其他/22. Application Security With Apache Shiro 用Shiro保护你的应用安全 .html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        22. Application Security With Apache Shiro 用Shiro保护你的应用安全
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="VIII. Other 其他/23. CacheManager 缓存管理.html">
+            
+                
+                    <a href="../VIII. Other 其他/23. CacheManager 缓存管理.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        23. CacheManager 缓存管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="VIII. Other 其他/24. Apache Shiro Cryptography Features 加密功能.html">
+            
+                
+                    <a href="../VIII. Other 其他/24. Apache Shiro Cryptography Features 加密功能.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        24. Apache Shiro Cryptography Features 加密功能
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >ES6 教程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="13-testing-&#x6D4B;&#x8BD5;">13. Testing &#x6D4B;&#x8BD5;</h1>
+<p>&#x6587;&#x6863;&#x7684;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x4ECB;&#x7ECD;&#x4E86;&#x5728;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4E2D;&#x5982;&#x4F55;&#x4F7F;&#x7528;Shiro&#x3002;</p>
+<h2 id="what-to-know-for-tests">What to know for tests</h2>
+<p>&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6D89;&#x53CA;&#x5230;&#x4E86; <a href="https://github.com/waylau/apache-shiro-1.2.x-reference/blob/master/IV.%20Auxiliary%20Support%20%E8%BE%85%E5%8A%A9%E6%94%AF%E6%8C%81/14.%20Custom%20Subjects%20%E8%87%AA%E5%AE%9A%E4%B9%89%20Subject.md" target="_blank">Subject</a> reference&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053; Subject &#x662F;&#x201C;&#x5F53;&#x524D;&#x6267;&#x884C;&#x201D;&#x7528;&#x6237;&#x7684;&#x7279;&#x5B9A;&#x5B89;&#x5168;&#x89C6;&#x56FE;&#xFF0C;&#x4E14;&#x8BE5; Subject &#x5B9E;&#x4F8B;&#x7ED1;&#x5B9A;&#x5230;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6765;&#x786E;&#x4FDD;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5728;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x671F;&#x95F4;&#x7684;&#x4EFB;&#x4F55;&#x65F6;&#x95F4;&#x662F;&#x8C01;&#x5728;&#x6267;&#x884C;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4E09;&#x4E2A;&#x57FA;&#x672C;&#x7684;&#x4E1C;&#x897F;&#x5FC5;&#x987B;&#x59CB;&#x7EC8;&#x51FA;&#x73B0;&#xFF0C;&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x652F;&#x6301;&#x8BBF;&#x95EE;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;Subject&#xFF1A;</p>
+<ol>
+<li>&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Subject &#x5B9E;&#x4F8B;</li>
+<li>Subject &#x5B9E;&#x4F8B;&#x5FC5;&#x987B;&#x7ED1;&#x5B9A;&#x5F53;&#x524D;&#x6267;&#x884C;&#x7684;&#x7EBF;&#x7A0B;&#x3002;</li>
+<li>&#x5728;&#x7EBF;&#x7A0B;&#x5B8C;&#x6210;&#x6267;&#x884C;&#x540E;&#xFF08;&#x6216;&#x5982;&#x679C;&#x8BE5;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF09;&#xFF0C;&#x8BE5; Subject &#x5FC5;&#x987B;&#x89E3;&#x9664;&#x7ED1;&#x5B9A;&#x6765;&#x786E;&#x4FDD;&#x8BE5;&#x7EBF;&#x7A0B;&#x5728;&#x4EFB;&#x4F55;&#x7EBF;&#x7A0B;&#x6C60;&#x73AF;&#x5883;&#x4E2D;&#x4FDD;&#x6301;&apos;clean&apos;&#x3002;</li>
+</ol>
+<p>Shiro &#x62E5;&#x6709;&#x4E3A;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x81EA;&#x52A8;&#x5730;&#x6267;&#x884C; &#x7ED1;&#x5B9A;/&#x89E3;&#x9664;&#x7ED1;&#x5B9A; &#x903B;&#x8F91;&#x7684;&#x6784;&#x5EFA;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x5F53;&#x8FC7;&#x6EE4;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;Shiro &#x7684;&#x6839;&#x8FC7;&#x6EE4;&#x5668;&#x6267;&#x884C;&#x8BE5;&#x903B;&#x8F91;&#x3002;&#x4F46;&#x7531;&#x4E8E;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x548C;&#x6846;&#x67B6;&#x4E0D;&#x540C;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x7684;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;&#x6765;&#x6267;&#x884C;&#x6B64; &#x7ED1;&#x5B9A;/&#x89E3;&#x9664;&#x7ED1;&#x5B9A; &#x903B;&#x8F91;&#x3002;</p>
+<h2 id="test-setup-&#x8BBE;&#x7F6E;">Test Setup &#x8BBE;&#x7F6E;</h2>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5728;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Subject &#x5B9E;&#x4F8B;&#x540E;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x88AB;&#x7ED1;&#x5B9A;&#x7EBF;&#x7A0B;&#x3002;&#x5728;&#x8BE5;&#x7EBF;&#x7A0B;&#xFF08;&#x6216;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x662F;&#x4E00;&#x4E2A; test &#xFF09;&#x5B8C;&#x6210;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x89E3;&#x9664; Subject &#x7684;&#x7ED1;&#x5B9A;&#x6765;&#x4FDD;&#x6301;&#x7EBF;&#x7A0B;&#x7684; &apos;clean&apos;.</p>
+<p>&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;&#x73B0;&#x4EE3;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;&#x5982; JUnit &#x548C; TestNG &#x5DF2;&#x7ECF;&#x80FD;&#x591F;&#x5728;&#x672C;&#x5730;&#x652F;&#x6301;&apos;setup&apos;&#x548C;&apos;teardown&apos;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E00;&#x652F;&#x6301;&#x6765;&#x6A21;&#x62DF; Shiro &#x5728;&#x4E00;&#x4E2A;&#x201C;&#x5B8C;&#x6574;&#x7684;&#x201D;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F1A;&#x505A;&#x4E9B;&#x4EC0;&#x4E48;&#x3002;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5728;&#x4E0B;&#x9762;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x4F60;&#x80FD;&#x591F;&#x5728;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x6D4B;&#x8BD5;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x62BD;&#x8C61;&#x57FA;&#x7C7B;&#x2014;&#x2014;&#x968F;&#x610F;&#x590D;&#x5236;&#x548C;&#x4FEE;&#x6539;&#x5982;&#x679C;&#x4F60;&#x89C9;&#x5F97;&#x5408;&#x9002;&#x7684;&#x8BDD;&#x3002;&#x5B83;&#x80FD;&#x591F;&#x5728;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x548C;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#x4E2D;&#x4F7F;&#x7528;&#xFF08;&#x6211;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#x4F7F;&#x7528; JUnit&#xFF0C;
+&#x4F46; TestNG &#x4E5F;&#x80FD;&#x591F;&#x5DE5;&#x4F5C;&#x5F97;&#x5F88;&#x597D;&#xFF09;&#xFF1A;</p>
+<h3 id="abstractshirotest">AbstractShiroTest</h3>
+<pre><code>import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.UnavailableSecurityManagerException;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.subject.support.SubjectThreadState;
+import org.apache.shiro.util.LifecycleUtils;
+import org.apache.shiro.util.ThreadState;
+import org.junit.AfterClass;
+
+/**
+ * Abstract test case enabling Shiro in test environments.
+ */
+public abstract class AbstractShiroTest {
+
+    private static ThreadState subjectThreadState;
+
+    public AbstractShiroTest() {
+    }
+
+    /**
+     * Allows subclasses to set the currently executing {@link Subject} instance.
+     *
+     * @param subject the Subject instance
+     */
+    protected void setSubject(Subject subject) {
+        clearSubject();
+        subjectThreadState = createThreadState(subject);
+        subjectThreadState.bind();
+    }
+
+    protected Subject getSubject() {
+        return SecurityUtils.getSubject();
+    }
+
+    protected ThreadState createThreadState(Subject subject) {
+        return new SubjectThreadState(subject);
+    }
+
+    /**
+     * Clears Shiro&apos;s thread state, ensuring the thread remains clean for future test execution.
+     */
+    protected void clearSubject() {
+        doClearSubject();
+    }
+
+    private static void doClearSubject() {
+        if (subjectThreadState != null) {
+            subjectThreadState.clear();
+            subjectThreadState = null;
+        }
+    }
+
+    protected static void setSecurityManager(SecurityManager securityManager) {
+        SecurityUtils.setSecurityManager(securityManager);
+    }
+
+    protected static SecurityManager getSecurityManager() {
+        return SecurityUtils.getSecurityManager();
+    }
+
+    @AfterClass
+    public static void tearDownShiro() {
+        doClearSubject();
+        try {
+            SecurityManager securityManager = getSecurityManager();
+            LifecycleUtils.destroy(securityManager);
+        } catch (UnavailableSecurityManagerException e) {
+            //we don&apos;t care about this when cleaning up the test environment
+            //(for example, maybe the subclass is a unit test and it didn&apos;t
+            // need a SecurityManager instance because it was using only 
+            // mock Subject instances)
+        }
+        setSecurityManager(null);
+    }
+}
+</code></pre><p><em>Testing &amp; Frameworks</em></p>
+<p><em>&#x5728;AbstractShiroTest &#x7C7B;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x4F7F;&#x7528; Shiro &#x7684; ThreadState &#x6982;&#x5FF5;&#x53CA;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;S ecurityManager&#x3002;&#x8FD9;&#x4E9B;&#x6280;&#x672F;&#x5728;&#x6D4B;&#x8BD5;&#x548C;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x4E2D;&#x662F;&#x5F88;&#x6709;&#x7528;&#x7684;&#xFF0C;&#x4F46;&#x51E0;&#x4E4E;&#x4E0D;&#x66FE;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;&#x3002;</em></p>
+<p><em>&#x5927;&#x591A;&#x6570;&#x4F7F;&#x7528; Shiro &#x5DE5;&#x4F5C;&#x7684;&#x9700;&#x8981;&#x786E;&#x4FDD;&#x7EBF;&#x7A0B;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x7EC8;&#x7AEF;&#x7528;&#x6237;&#xFF0C;&#x51E0;&#x4E4E;&#x603B;&#x662F;&#x4F7F;&#x7528; Shiro &#x7684;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF0C;&#x5373; Subject.associateWith &#x548C;Subject.execute &#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5305;&#x542B;&#x5728; <a href="http://shiro.apache.org/subject.html#Subject-ThreadAssociation" target="_blank">Subject thread  association</a> &#x53C2;&#x8003;&#x6587;&#x732E;&#x4E2D;&#x3002;</em></p>
+<h2 id="unit-testing">Unit Testing</h2>
+<p>&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4E3B;&#x8981;&#x662F;&#x6D4B;&#x8BD5;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E14;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x5728;&#x6709;&#x9650;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x5185;&#x3002;&#x5F53;&#x4F60;&#x8003;&#x8651;&#x5230; Shiro &#x65F6;&#xFF0C;&#x4F60;&#x771F;&#x6B63;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x662F;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x80FD;&#x591F;&#x4E0E; Shiro &#x7684;API &#x6B63;&#x786E;&#x7684;&#x8FD0;&#x884C;&#x2014;&#x2014;&#x4F60;&#x4E0D;&#x4F1A;&#x60F3;&#x505A;&#x5173;&#x4E8E;Shiro &#x7684;&#x5B9E;&#x73B0;&#x662F;&#x5426;&#x5DE5;&#x4F5C;&#x6B63;&#x5E38;&#xFF08;&#x8FD9;&#x662F; Shiro &#x5F00;&#x53D1;&#x56E2;&#x961F;&#x5728;Shiro &#x7684;&#x4EE3;&#x7801;&#x5E93;&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x7684;&#x4E1C;&#x897F;&#xFF09;&#x7684;&#x5FC5;&#x8981;&#x6D4B;&#x8BD5;&#x3002;</p>
+<p>&#x6D4B;&#x8BD5; Shiro &#x7684;&#x5B9E;&#x73B0;&#x662F;&#x5426;&#x4E0E;&#x4F60;&#x7684;&#x5B9E;&#x73B0;&#x534F;&#x540C;&#x5DE5;&#x4F5C;&#x662F;&#x771F;&#x5B9E;&#x7684;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#xFF08;&#x4E0B;&#x9762;&#x8BA8;&#x8BBA;&#xFF09;&#x3002;</p>
+<h3 id="exampleshirounittest">ExampleShiroUnitTest</h3>
+<p>&#x7531;&#x4E8E;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x9002;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x4F60;&#x7684;&#x903B;&#x8F91;&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x4F60;&#x53EF;&#x80FD;&#x8C03;&#x7528;&#x7684;&#x4EFB;&#x4F55;&#x5B9E;&#x73B0;&#xFF09;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x6A21;&#x62DF;&#x4F60;&#x903B;&#x8F91;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x4EFB;&#x4F55; API &#x6765;&#x8BF4;&#x662F;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x4E3B;&#x610F;&#x3002;&#x8FD9;&#x80FD;&#x591F;&#x4E0E; Shiro &#x5DE5;&#x4F5C;&#x5F97;&#x5F88;&#x597D;&#x2014;&#x2014;&#x4F60;&#x53EF;&#x4EE5;&#x6A21;&#x62DF; Subject &#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x4F7F;&#x5B83;&#x53CD;&#x6620;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x4E0B;&#x4F60;&#x6240;&#x9700;&#x7684;&#x53CD;&#x5E94;&#xFF0C;&#x8FD9;&#x4E9B;&#x53CD;&#x5E94;&#x662F;&#x5904;&#x4E8E;&#x6D4B;&#x8BD5;&#x7684;&#x4EE3;&#x7801;&#x505A;&#x51FA;&#x7684;&#x3002;</p>
+<p>&#x4F46;&#x6B63;&#x5982;&#x4E0A;&#x6587;&#x6240;&#x8FF0;&#xFF0C;&#x5728; Shiro &#x6D4B;&#x8BD5;&#x4E2D;&#x5173;&#x952E;&#x662F;&#x8981;&#x8BB0;&#x4F4F;&#x5728;&#x6D4B;&#x8BD5;&#x6267;&#x884C;&#x671F;&#x95F4;&#x4EFB;&#x4F55;Subject &#x5B9E;&#x4F8B;&#xFF08;&#x6A21;&#x62DF;&#x7684;&#x6216;&#x771F;&#x5B9E;&#x7684;&#xFF09;&#x5FC5;&#x987B;&#x7ED1;&#x5B9A;&#x5230;&#x7EBF;&#x7A0B;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x8981;&#x505A;&#x7684;&#x662F;&#x7ED1;&#x5B9A;&#x6A21;&#x62DF;&#x7684; Subject &#x4EE5;&#x786E;&#x4FDD;&#x5982;&#x9884;&#x671F;&#x8FDB;&#x884C;&#x3002;</p>
+<p>&#xFF08;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4F7F;&#x7528; EasyMock&#xFF0C;&#x4F46; Mockito &#x4E5F;&#x540C;&#x6837;&#x5730;&#x5DE5;&#x4F5C;&#x5F97;&#x5F88;&#x597D;&#xFF09;&#xFF1A;</p>
+<pre><code>import org.apache.shiro.subject.Subject;
+import org.junit.After;
+import org.junit.Test;
+
+import static org.easymock.EasyMock.*;
+
+/**
+ * Simple example test class showing how one may perform unit tests for code that requires Shiro APIs.
+ */
+public class ExampleShiroUnitTest extends AbstractShiroTest {
+
+    @Test
+    public void testSimple() {
+
+        //1.  Create a mock authenticated Subject instance for the test to run:
+        Subject subjectUnderTest = createNiceMock(Subject.class);
+        expect(subjectUnderTest.isAuthenticated()).andReturn(true);
+
+        //2. Bind the subject to the current thread:
+        setSubject(subjectUnderTest);
+
+        //perform test logic here.  Any call to 
+        //SecurityUtils.getSubject() directly (or nested in the 
+        //call stack) will work properly.
+    }
+
+    @After
+    public void tearDownSubject() {
+        //3. Unbind the subject from the current thread:
+        clearSubject();
+    }
+
+}
+</code></pre><p>&#x6B63;&#x5982;&#x4F60;&#x6240;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x8BBE;&#x7ACB;&#x4E00;&#x4E2A; Shiro SecurityManager &#x5B9E;&#x4F8B;&#x6216;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;Realm &#x6216;&#x4EFB;&#x4F55;&#x50CF;&#x8FD9;&#x6837;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x6211;&#x4EEC;&#x7B80;&#x5355;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6A21;&#x62DF;Subject &#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x8C03;&#x7528;setSubject &#x65B9;&#x6CD5;&#x5C06;&#x5B83;&#x7ED1;&#x5B9A;&#x5230;&#x7EBF;&#x7A0B;&#x3002;&#x8FD9;&#x5C06;&#x786E;&#x4FDD;&#x4EFB;&#x4F55;&#x5728;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x8C03;&#x7528;&#x6216;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x4EEC;&#x6B63;&#x6D4B;&#x8BD5;&#x7684;SecurityUtils.getSubject()&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;setSubject &#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x5C06;&#x7ED1;&#x5B9A;&#x4F60;&#x7684;&#x6A21;&#x62DF; Subject &#x5230;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E14;&#x5B83;&#x4ECD;&#x5C06;&#x5B58;&#x5728;&#xFF0C;&#x76F4;&#x5230;&#x4F60;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x7684; Subject &#x8C03;&#x7528; setSubject &#x6216;&#x76F4;&#x5230;&#x4F60;&#x660E;&#x786E;&#x5730;&#x901A;&#x8FC7;&#x8C03;&#x7528; clearSubject() &#x5C06;&#x5B83;&#x4ECE;&#x7EBF;&#x7A0B;&#x4E2D;&#x6E05;&#x9664;&#x3002;
+&#x4FDD;&#x6301; Subject &#x7ED1;&#x5B9A;&#x5230;&#x8BE5;&#x7EBF;&#x7A0B;&#x591A;&#x957F;&#x65F6;&#x95F4;&#xFF08;&#x6216;&#x5728;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x6D4B;&#x8BD5;&#x4E2D;&#x7528;&#x6765;&#x4EA4;&#x6362;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B9E;&#x4F8B;&#xFF09;&#x53D6;&#x51B3;&#x4E8E;&#x4F60;&#x53CA;&#x4F60;&#x7684;&#x6D4B;&#x8BD5;&#x9700;&#x6C42;&#x3002;</p>
+<h3 id="teardownsubject">tearDownSubject()</h3>
+<p>&#x5728;&#x5B9E;&#x4F8B;&#x4E2D;&#x7684; tearDownSubject() &#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x4E86; Junit 4 &#x7684;&#x6CE8;&#x91CA;&#x6765;&#x786E;&#x4FDD;&#x8BE5;Subject &#x5728;&#x6BCF;&#x4E2A;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x540E;&#x88AB;&#x6E05;&#x9664;&#xFF0C;&#x4E0D;&#x7BA1;&#x53D1;&#x751F;
+&#x4EC0;&#x4E48;&#x3002;&#x8FD9;&#x8981;&#x6C42;&#x4F60;&#x8BBE;&#x7ACB;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Subject &#x5B9E;&#x4F8B;&#x5E76;&#x5C06;&#x5B83;&#x8BBE;&#x7F6E;&#x5230;&#x6BCF;&#x4E2A;&#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x6D4B;&#x8BD5;&#x4E2D;&#x3002;</p>
+<p>&#x7136;&#x800C;&#x8FD9;&#x4E5F;&#x4E0D;&#x662F;&#x7EDD;&#x5BF9;&#x5FC5;&#x8981;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x53EA;&#x6BCF;&#x4E2A;&#x6D4B;&#x8BD5;&#x5F00;&#x59CB;&#x65F6;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Subject &#x5B9E;&#x4F8B;&#xFF08;&#x901A;&#x8FC7;setSubject&#xFF09;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4F7F;&#x7528; @Before-annotated &#x65B9;&#x6CD5;&#x3002;&#x4F46;&#x5982;&#x679C;&#x4F60;&#x5C06;&#x8981;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x4F7F;&#x7528; @After tearDownSubject() &#x65B9;&#x6CD5;&#x6765;&#x4FDD;&#x6301;&#x5BF9;&#x79F0;&#x53CA;&apos;clean&apos;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x5730;&#x5728;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x6DF7;&#x5408;&#x53CA;&#x5339;&#x914D;&#x8BE5; setup/teardown &#x903B;&#x8F91;&#x6216;&#x4F7F;&#x7528;@Before &#x548C; @After &#x6CE8;&#x91CA;&#x53EA;&#x8981;&#x4F60;&#x8BA4;&#x4E3A;&#x5408;&#x9002;&#x3002;&#x6240;&#x6709;&#x6D4B;&#x8BD5;&#x5B8C;&#x6210;&#x540E;&#xFF0C;AbstractShiroTest &#x8D85;&#x7C7B;&#x5728;&#x65E0;&#x8BBA;&#x600E;&#x6837;&#x90FD;&#x4F1A;&#x5C06; Subject &#x4ECE;&#x7EBF;&#x7A0B;&#x89E3;&#x9664;&#x7ED1;&#x5B9A;&#xFF0C;&#x56E0;&#x4E3A; @After &#x6CE8;&#x91CA;&#x5728;&#x5B83;&#x7684; tearDownShiro() &#x65B9;&#x6CD5;&#x4E2D;&#x3002;</p>
+<h2 id="integration-testing">Integration Testing</h2>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x8BA8;&#x8BBA;&#x4E86;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x8BA8;&#x8BBA;&#x4E00;&#x4E9B;&#x5173;&#x4E8E;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#x662F;&#x6307;&#x6D4B;&#x8BD5;&#x8DE8;API &#x8FB9;&#x754C;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6D4B;&#x8BD5;&#x5F53;&#x8C03;&#x7528;B &#x5B9E;&#x73B0;&#x65F6;A &#x5B9E;&#x73B0;&#x662F;&#x5426;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E14;B &#x5B9E;&#x73B0;&#x662F;&#x5426;&#x505A;&#x5B83;&#x8BE5;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x3002;&#x4F60;&#x540C;&#x6837;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;Shiro &#x4E2D;&#x8F7B;&#x677E;&#x5730;&#x6267;&#x884C;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#x3002;Shiro &#x7684;SecurityManager &#x5B9E;&#x4F8B;&#x53CA;&#x5B83;&#x6240;&#x5305;&#x542B;&#x7684;&#x4E1C;&#x897F;&#xFF08;&#x5982; Realms &#x548C; SessionManager &#x7B49;&#xFF09;&#x90FD;&#x662F;&#x5360;&#x7528;&#x5F88;&#x5C11;&#x5185;&#x5B58;&#x7684;&#x975E;&#x5E38;&#x8F7B;&#x91CF;&#x7EA7;&#x7684;POJO&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4F60;&#x53EF;&#x4EE5;&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x4F60;&#x6267;&#x884C;&#x7684;&#x6D4B;&#x8BD5;&#x7C7B;&#x521B;&#x5EFA;&#x5E76;&#x9500;&#x6BC1;&#x4E00;&#x4E2A;SecurityManager &#x5B9E;&#x4F8B;&#x3002;&#x5F53;&#x4F60;&#x7684;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x5B83;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x201C;&#x771F;&#x5B9E;&#x7684;&#x201D; SecurityManager&#xFF0C;&#x4E14;&#x4E0E;&#x4F60;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x76F8;&#x50CF;&#x7684; Subject &#x5B9E;&#x4F8B;&#x5C06;&#x4F1A;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4F7F;&#x7528;&#x3002;</p>
+<h3 id="exampleshirointegrationtest">ExampleShiroIntegrationTest</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x5B9E;&#x4F8B;&#x4EE3;&#x7801;&#x770B;&#x8D77;&#x6765;&#x4E0E;&#x4E0A;&#x9762;&#x7684;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x5B9E;&#x4F8B;&#x51E0;&#x4E4E;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x8FD9;3 &#x4E2A;&#x6B65;&#x9AA4;&#x5374;&#x6709;&#x4E9B;&#x4E0D;&#x540C;&#xFF1A;</p>
+<ol>
+<li>&#x73B0;&#x5728;&#x6709;&#x4E86;step &apos;0&apos;&#xFF0C;&#x5B83;&#x7528;&#x6765;&#x8BBE;&#x7ACB;&#x4E00;&#x4E2A;&#x201C;&#x771F;&#x5B9E;&#x7684;&#x201D; SecurityManager &#x5B9E;&#x4F8B;&#x3002;</li>
+<li>Step 1 &#x73B0;&#x5728;&#x901A;&#x8FC7;Subject.Builder &#x6784;&#x9020;&#x4E00;&#x4E2A;&#x201C;&#x771F;&#x5B9E;&#x7684;&#x201D; Subject &#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x7ED1;&#x5B9A;&#x5230;&#x7EBF;&#x7A0B;&#x3002;</li>
+</ol>
+<p>&#x7EBF;&#x7A0B;&#x7684;&#x7ED1;&#x5B9A;&#x4E0E;&#x89E3;&#x9664;&#x7ED1;&#x5B9A;&#xFF08;step 2 &#x548C; 3 &#xFF09;&#x4E0E;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x5B9E;&#x4F8B;&#x4E2D;&#x7684;&#x4F5C;&#x7528;&#x4E00;&#x6837;&#x3002;</p>
+<pre><code>import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.Factory;
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class ExampleShiroIntegrationTest extends AbstractShiroTest {
+
+    @BeforeClass
+    public static void beforeClass() {
+        //0.  Build and set the SecurityManager used to build Subject instances used in your tests
+        //    This typically only needs to be done once per class if your shiro.ini doesn&apos;t change,
+        //    otherwise, you&apos;ll need to do this logic in each test that is different
+        Factory&lt;SecurityManager&gt; factory = new IniSecurityManagerFactory(&quot;classpath:test.shiro.ini&quot;);
+        setSecurityManager(factory.getInstance());
+    }
+
+    @Test
+    public void testSimple() {
+        //1.  Build the Subject instance for the test to run:
+        Subject subjectUnderTest = new Subject.Builder(getSecurityManager()).buildSubject();
+
+        //2. Bind the subject to the current thread:
+        setSubject(subjectUnderTest);
+
+        //perform test logic here.  Any call to 
+        //SecurityUtils.getSubject() directly (or nested in the 
+        //call stack) will work properly.
+    }
+
+    @AfterClass
+    public void tearDownSubject() {
+        //3. Unbind the subject from the current thread:
+        clearSubject();
+    }
+}
+</code></pre><p>&#x6B63;&#x5982;&#x4F60;&#x6240;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684; SecurityManager &#x5B9E;&#x73B0;&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;setSecurityManager &#x65B9;&#x6CD5;&#x4F7F;&#x5176;&#x4F59;&#x7684;&#x6D4B;&#x8BD5;&#x80FD;&#x591F;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x3002;&#x7136;&#x540E;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x4F7F;&#x7528;&#x8BE5; SecurityManager&#xFF0C;&#x5F53;&#x4F7F;&#x7528; Subject.Builder &#x540E;&#x901A;&#x8FC7;&#x8C03;&#x7528;getSecurityManager() &#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x8FD8;&#x8981;&#x6CE8;&#x610F; SecurityManager &#x5B9E;&#x4F8B;&#x5728; @BeforeClass &#x8BBE;&#x7F6E;&#x65B9;&#x6CD5;&#x4E2D;&#x53EA;&#x88AB;&#x8BBE;&#x7F6E;&#x4E00;&#x6B21;&#x2014;&#x2014;&#x4E00;&#x4E2A;&#x5BF9;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x6D4B;&#x8BD5;&#x7C7B;&#x8F83;&#x4E3A;&#x666E;&#x904D;&#x7684;&#x505A;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; SecurityManager &#x5B9E;&#x4F8B;&#x5E76;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x4ECE;&#x4EFB;&#x4F55;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x901A;&#x8FC7;setSerurityManager &#x6765;&#x8BBE;&#x7F6E;&#x5B83;&#x2014;&#x2014;&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x5F15;&#x7528;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;.ini &#x6587;&#x4EF6;&#x6765;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x6839;&#x636E;&#x4F60;&#x7684;&#x6D4B;&#x8BD5;&#x9700;&#x6C42;&#x800C;&#x6765;&#x7684;&#x65B0; SecurityManager&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x4E0E;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4F8B;&#x5B50;&#x4E00;&#x6837;&#xFF0C;AbstractShiroTest &#x8D85;&#x7C7B;&#x5C06;&#x4F1A;&#x6E05;&#x9664;&#x6240;&#x6709;Shiro &#x4EA7;&#x7269;&#xFF08;&#x4EFB;&#x4F55;&#x5B58;&#x5728;&#x7684; SecurityManager &#x53CA; Subject
+&#x5B9E;&#x4F8B;&#xFF09;&#x901A;&#x8FC7;&#x5B83;&#x7684; @AfterClass tearDownShiro() &#x65B9;&#x6CD5;&#x6765;&#x786E;&#x4FDD;&#x8BE5;&#x7EBF;&#x7A0B;&#x5728;&#x4E0B;&#x4E2A;&#x6D4B;&#x8BD5;&#x7C7B;&#x8FD0;&#x884C;&#x65F6;&#x662F; &apos;clean&apos; &#x7684;&#x3002;</p>
+<h2 id="&#x4E3A;&#x6587;&#x6863;&#x52A0;&#x628A;&#x624B;">&#x4E3A;&#x6587;&#x6863;&#x52A0;&#x628A;&#x624B;</h2>
+<p>&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x8FD9;&#x7BC7;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x4F60;&#x4F7F;&#x7528; Apache Shiro &#x8FDB;&#x884C;&#x5DE5;&#x4F5C;&#xFF0C;&#x793E;&#x533A;&#x4E00;&#x76F4;&#x5728;&#x4E0D;&#x65AD;&#x5730;&#x5B8C;&#x5584;&#x548C;&#x6269;&#x5C55;&#x6587;&#x6863;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x5E2E;&#x52A9; Shiro &#x9879;&#x76EE;&#xFF0C;&#x8BF7;&#x5728;&#x4F60;&#x8BA4;&#x4E3A;&#x9700;&#x8981;&#x7684;&#x5730;&#x65B9;&#x8003;&#x8651;&#x66F4;&#x6B63;&#x3001;&#x6269;&#x5C55;&#x6216;&#x6DFB;&#x52A0;&#x6587;&#x6863;&#xFF0C;&#x4F60;&#x63D0;&#x4F9B;&#x7684;&#x4EFB;&#x4F55;&#x70B9;&#x6EF4;&#x5E2E;&#x52A9;&#x90FD;&#x5C06;&#x6269;&#x5145;&#x793E;&#x533A;&#x5E76;&#x4E14;&#x63D0;&#x5347; Shiro&#x3002;</p>
+<p>&#x63D0;&#x4F9B;&#x4F60;&#x7684;&#x6587;&#x6863;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x9014;&#x5F84;&#x662F;&#x5C06;&#x5B83;&#x53D1;&#x9001;&#x5230;&#x7528;&#x6237;<a href="http://shiro-user.582556.n2.nabble.com/" target="_blank">&#x8BBA;&#x575B;</a>&#x6216;<a href="http://shiro.apache.org/mailing-lists.html" target="_blank">&#x90AE;&#x4EF6;&#x5217;&#x8868;</a></p>
+<p><em>&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;</em>&#x5982;&#x679C;&#x5BF9;&#x672C;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x6709;&#x7591;&#x8BAE;&#x7684;&#x6216;&#x53D1;&#x73B0;&#x52D8;&#x8BEF;&#x6B22;&#x8FCE;&#x6307;&#x6B63;&#xFF0C;<a href="https://github.com/waylau/apache-shiro-1.2.x-reference/issues" target="_blank">&#x70B9;&#x6B64;</a>&#x63D0;&#x95EE;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../IV. Auxiliary Support 辅助支持/12. Concurrency &amp; Multithreading 并发与多线程.html" class="navigation navigation-prev " aria-label="Previous page: 12. Concurrency &amp; Multithreading 并发与多线程"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../IV. Auxiliary Support 辅助支持/14. Custom Subjects 自定义 Subject.html" class="navigation navigation-next " aria-label="Next page: 14. Custom Subjects 自定义 Subject"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"search":{"maxIndexSize":100000},"fontsettings":{"theme":"white","family":"sans","size":2},"splitter":{},"anchors":{},"codeblock-filename":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

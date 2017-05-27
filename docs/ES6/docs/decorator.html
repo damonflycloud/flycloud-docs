@@ -1,0 +1,1098 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Decorator | ES6 教程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="flycloud &lt;damonflycloud@126.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-prism/prism-tomorrow.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../docs/module.html" />
+    
+    
+    <link rel="prev" href="../docs/class.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="19"
+        data-chapter-title="Decorator"
+        data-filepath="docs/decorator.md"
+        data-basepath=".."
+        data-revision="Thu Apr 20 2017 20:20:59 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/intro.html">
+            
+                
+                    <a href="../docs/intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        ECMAScript 6简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/let.html">
+            
+                
+                    <a href="../docs/let.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        let和const命令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/destructuring.html">
+            
+                
+                    <a href="../docs/destructuring.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        变量的解构赋值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="docs/string.html">
+            
+                
+                    <a href="../docs/string.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        字符串的扩展
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="docs/regex.html">
+            
+                
+                    <a href="../docs/regex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        正则的扩展
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="docs/number.html">
+            
+                
+                    <a href="../docs/number.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        数值的扩展
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="docs/array.html">
+            
+                
+                    <a href="../docs/array.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        数组的扩展
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="docs/function.html">
+            
+                
+                    <a href="../docs/function.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        函数的扩展
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="docs/object.html">
+            
+                
+                    <a href="../docs/object.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        对象的扩展
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="docs/symbol.html">
+            
+                
+                    <a href="../docs/symbol.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Symbol
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="docs/proxy.html">
+            
+                
+                    <a href="../docs/proxy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Proxy和Reflect
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="docs/arraybuffer.html">
+            
+                
+                    <a href="../docs/arraybuffer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        二进制数组
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="docs/set-map.html">
+            
+                
+                    <a href="../docs/set-map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Set和Map数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="docs/iterator.html">
+            
+                
+                    <a href="../docs/iterator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Iterator和for...of循环
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="docs/generator.html">
+            
+                
+                    <a href="../docs/generator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        Generator函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="docs/promise.html">
+            
+                
+                    <a href="../docs/promise.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        Promise对象
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="docs/async.html">
+            
+                
+                    <a href="../docs/async.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        异步操作和Async函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="docs/class.html">
+            
+                
+                    <a href="../docs/class.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        Class
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="19" data-path="docs/decorator.html">
+            
+                
+                    <a href="../docs/decorator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        Decorator
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="docs/module.html">
+            
+                
+                    <a href="../docs/module.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        Module
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="docs/style.html">
+            
+                
+                    <a href="../docs/style.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        编程风格
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="docs/spec.html">
+            
+                
+                    <a href="../docs/spec.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        读懂规格
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="docs/reference.html">
+            
+                
+                    <a href="../docs/reference.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        参考链接
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >ES6 教程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x4FEE;&#x9970;&#x5668;">&#x4FEE;&#x9970;&#x5668;</h1>
+<h2 id="&#x7C7B;&#x7684;&#x4FEE;&#x9970;">&#x7C7B;&#x7684;&#x4FEE;&#x9970;</h2>
+<p>&#x4FEE;&#x9970;&#x5668;&#xFF08;Decorator&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x4FEE;&#x6539;&#x7C7B;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x8FD9;&#x662F;ES7&#x7684;&#x4E00;&#x4E2A;<a href="https://github.com/wycats/javascript-decorators" target="_blank">&#x63D0;&#x6848;</a>&#xFF0C;&#x76EE;&#x524D;Babel&#x8F6C;&#x7801;&#x5668;&#x5DF2;&#x7ECF;&#x652F;&#x6301;&#x3002;</p>
+<p>&#x4FEE;&#x9970;&#x5668;&#x5BF9;&#x7C7B;&#x7684;&#x884C;&#x4E3A;&#x7684;&#x6539;&#x53D8;&#xFF0C;&#x662F;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x65F6;&#x53D1;&#x751F;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x80FD;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#x8FD0;&#x884C;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">testable</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  target<span class="token punctuation">.</span>isTestable <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+@testable
+<span class="token keyword">class</span> <span class="token class-name">MyTestableClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>MyTestableClass<span class="token punctuation">.</span>isTestable<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;<code>@testable</code>&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4FEE;&#x9970;&#x5668;&#x3002;&#x5B83;&#x4FEE;&#x6539;&#x4E86;<code>MyTestableClass</code>&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x4E3A;&#x5B83;&#x52A0;&#x4E0A;&#x4E86;&#x9759;&#x6001;&#x5C5E;&#x6027;<code>isTestable</code>&#x3002;</p>
+<p>&#x57FA;&#x672C;&#x4E0A;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x7684;&#x884C;&#x4E3A;&#x5C31;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x3002;</p>
+<pre><code class="lang-javascript">@decorator
+<span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// &#x7B49;&#x540C;&#x4E8E;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+A <span class="token operator">=</span> <span class="token function">decorator</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span> <span class="token operator">||</span> A<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x7F16;&#x8BD1;&#x65F6;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x4FEE;&#x9970;&#x5668;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x662F;&#x6240;&#x8981;&#x4FEE;&#x9970;&#x7684;&#x76EE;&#x6807;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">testable</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;<code>testable</code>&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;<code>target</code>&#xFF0C;&#x5C31;&#x662F;&#x4F1A;&#x88AB;&#x4FEE;&#x9970;&#x7684;&#x7C7B;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x89C9;&#x5F97;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E0D;&#x591F;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4FEE;&#x9970;&#x5668;&#x5916;&#x9762;&#x518D;&#x5C01;&#x88C5;&#x4E00;&#x5C42;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">testable</span><span class="token punctuation">(</span>isTestable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    target<span class="token punctuation">.</span>isTestable <span class="token operator">=</span> isTestable<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@<span class="token function">testable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyTestableClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+MyTestableClass<span class="token punctuation">.</span>isTestable <span class="token comment" spellcheck="true">// true</span>
+
+@<span class="token function">testable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+MyClass<span class="token punctuation">.</span>isTestable <span class="token comment" spellcheck="true">// false</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x4FEE;&#x9970;&#x5668;<code>testable</code>&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x5C31;&#x7B49;&#x4E8E;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x4FEE;&#x9970;&#x5668;&#x7684;&#x884C;&#x4E3A;&#x3002;</p>
+<p>&#x524D;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x4E3A;&#x7C7B;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x6DFB;&#x52A0;&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x76EE;&#x6807;&#x7C7B;&#x7684;<code>prototype</code>&#x5BF9;&#x8C61;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">testable</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  target<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>isTestable <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+@testable
+<span class="token keyword">class</span> <span class="token class-name">MyTestableClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyTestableClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span>isTestable <span class="token comment" spellcheck="true">// true</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x51FD;&#x6570;<code>testable</code>&#x662F;&#x5728;&#x76EE;&#x6807;&#x7C7B;&#x7684;<code>prototype</code>&#x5BF9;&#x8C61;&#x4E0A;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5B9E;&#x4F8B;&#x4E0A;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// mixins.js</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">mixins</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>list<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// main.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> mixins <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;./mixins&apos;</span>
+
+<span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@<span class="token function">mixins</span><span class="token punctuation">(</span>Foo<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &apos;foo&apos;</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x901A;&#x8FC7;&#x4FEE;&#x9970;&#x5668;<code>mixins</code>&#xFF0C;&#x628A;<code>Foo</code>&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x5230;&#x4E86;<code>MyClass</code>&#x7684;&#x5B9E;&#x4F8B;&#x4E0A;&#x9762;&#x3002;&#x53EF;&#x4EE5;&#x7528;<code>Object.assign()</code>&#x6A21;&#x62DF;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>MyClass<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> Foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &apos;foo&apos;</span>
+</code></pre>
+<h2 id="&#x65B9;&#x6CD5;&#x7684;&#x4FEE;&#x9970;">&#x65B9;&#x6CD5;&#x7684;&#x4FEE;&#x9970;</h2>
+<p>&#x4FEE;&#x9970;&#x5668;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x4FEE;&#x9970;&#x7C7B;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4FEE;&#x9970;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  @readonly
+  <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x4FEE;&#x9970;&#x5668;<code>readonly</code>&#x7528;&#x6765;&#x4FEE;&#x9970;&#x201C;&#x7C7B;&#x201D;&#x7684;<code>name</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x6B64;&#x65F6;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x51FD;&#x6570;&#x4E00;&#x5171;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x6240;&#x8981;&#x4FEE;&#x9970;&#x7684;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x6240;&#x8981;&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;&#x540D;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">readonly</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// descriptor&#x5BF9;&#x8C61;&#x539F;&#x6765;&#x7684;&#x503C;&#x5982;&#x4E0B;</span>
+  <span class="token comment" spellcheck="true">// {</span>
+  <span class="token comment" spellcheck="true">//   value: specifiedFunction,</span>
+  <span class="token comment" spellcheck="true">//   enumerable: false,</span>
+  <span class="token comment" spellcheck="true">//   configurable: true,</span>
+  <span class="token comment" spellcheck="true">//   writable: true</span>
+  <span class="token comment" spellcheck="true">// };</span>
+  descriptor<span class="token punctuation">.</span>writable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> descriptor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">readonly</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">&apos;name&apos;</span><span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// &#x7C7B;&#x4F3C;&#x4E8E;</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">&apos;name&apos;</span><span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x8BF4;&#x660E;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#xFF08;readonly&#xFF09;&#x4F1A;&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x7684;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#xFF08;descriptor&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x518D;&#x7528;&#x6765;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x7684;<code>enumerable</code>&#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x5F97;&#x8BE5;&#x5C5E;&#x6027;&#x4E0D;&#x53EF;&#x904D;&#x5386;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  @nonenumerable
+  <span class="token keyword">get</span> <span class="token function">kidCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>children<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">nonenumerable</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  descriptor<span class="token punctuation">.</span>enumerable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> descriptor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x7684;<code>@log</code>&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x8D77;&#x5230;&#x8F93;&#x51FA;&#x65E5;&#x5FD7;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">Math</span> <span class="token punctuation">{</span>
+  @log
+  <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> oldValue <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+
+  descriptor<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Calling &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot; with`</span></span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> oldValue<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> descriptor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> math <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Math</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// passed parameters should get logged now</span>
+math<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;<code>@log</code>&#x4FEE;&#x9970;&#x5668;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5728;&#x6267;&#x884C;&#x539F;&#x59CB;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#xFF0C;&#x6267;&#x884C;&#x4E00;&#x6B21;<code>console.log</code>&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x8F93;&#x51FA;&#x65E5;&#x5FD7;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<p>&#x4FEE;&#x9970;&#x5668;&#x6709;&#x6CE8;&#x91CA;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+<pre><code class="lang-javascript">@testable
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  @readonly
+  @nonenumerable
+  <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x773C;&#x5C31;&#x80FD;&#x770B;&#x51FA;&#xFF0C;<code>Person</code>&#x7C7B;&#x662F;&#x53EF;&#x6D4B;&#x8BD5;&#x7684;&#xFF0C;&#x800C;<code>name</code>&#x65B9;&#x6CD5;&#x662F;&#x53EA;&#x8BFB;&#x548C;&#x4E0D;&#x53EF;&#x679A;&#x4E3E;&#x7684;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x540C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x6709;&#x591A;&#x4E2A;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x4F1A;&#x50CF;&#x5265;&#x6D0B;&#x8471;&#x4E00;&#x6837;&#xFF0C;&#x5148;&#x4ECE;&#x5916;&#x5230;&#x5185;&#x8FDB;&#x5165;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x5185;&#x5411;&#x5916;&#x6267;&#x884C;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">dec</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;evaluated&apos;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> property<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;executed&apos;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token punctuation">{</span>
+    @<span class="token function">dec</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    @<span class="token function">dec</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// evaluated 1</span>
+<span class="token comment" spellcheck="true">// evaluated 2</span>
+<span class="token comment" spellcheck="true">// executed 2</span>
+<span class="token comment" spellcheck="true">// executed 1</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5916;&#x5C42;&#x4FEE;&#x9970;&#x5668;<code>@dec(1)</code>&#x5148;&#x8FDB;&#x5165;&#xFF0C;&#x4F46;&#x662F;&#x5185;&#x5C42;&#x4FEE;&#x9970;&#x5668;<code>@dec(2)</code>&#x5148;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x6CE8;&#x91CA;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x8FD8;&#x80FD;&#x7528;&#x6765;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5BF9;&#x4E8E;&#x7C7B;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x9879;&#x529F;&#x80FD;&#x76F8;&#x5F53;&#x6709;&#x7528;&#x3002;&#x4ECE;&#x957F;&#x671F;&#x6765;&#x770B;&#xFF0C;&#x5B83;&#x5C06;&#x662F;JavaScript&#x4EE3;&#x7801;&#x9759;&#x6001;&#x5206;&#x6790;&#x7684;&#x91CD;&#x8981;&#x5DE5;&#x5177;&#x3002;</p>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4FEE;&#x9970;&#x5668;&#x4E0D;&#x80FD;&#x7528;&#x4E8E;&#x51FD;&#x6570;&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x4FEE;&#x9970;&#x5668;&#x4E0D;&#x80FD;&#x7528;&#x4E8E;&#x51FD;&#x6570;&#xFF1F;</h2>
+<p>&#x4FEE;&#x9970;&#x5668;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x7C7B;&#x548C;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;&#x4E8E;&#x51FD;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x5B58;&#x5728;&#x51FD;&#x6570;&#x63D0;&#x5347;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">var</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> add <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  counter<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@add
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x610F;&#x56FE;&#x662F;&#x6267;&#x884C;&#x540E;<code>counter</code>&#x7B49;&#x4E8E;1&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x7ED3;&#x679C;&#x662F;<code>counter</code>&#x7B49;&#x4E8E;0&#x3002;&#x56E0;&#x4E3A;&#x51FD;&#x6570;&#x63D0;&#x5347;&#xFF0C;&#x4F7F;&#x5F97;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x3002;</p>
+<pre><code class="lang-javascript">@add
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> counter<span class="token punctuation">;</span>
+<span class="token keyword">var</span> add<span class="token punctuation">;</span>
+
+counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+add <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  counter<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">var</span> readOnly <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;some-decorator&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+@readOnly
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E5F;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">var</span> readOnly<span class="token punctuation">;</span>
+
+@readOnly
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+readOnly <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;some-decorator&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x603B;&#x4E4B;&#xFF0C;&#x7531;&#x4E8E;&#x5B58;&#x5728;&#x51FD;&#x6570;&#x63D0;&#x5347;&#xFF0C;&#x4F7F;&#x5F97;&#x4FEE;&#x9970;&#x5668;&#x4E0D;&#x80FD;&#x7528;&#x4E8E;&#x51FD;&#x6570;&#x3002;&#x7C7B;&#x662F;&#x4E0D;&#x4F1A;&#x63D0;&#x5347;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x6CA1;&#x6709;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="coredecoratorsjs">core-decorators.js</h2>
+<p><a href="https://github.com/jayphelps/core-decorators.js" target="_blank">core-decorators.js</a>&#x662F;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x51E0;&#x4E2A;&#x5E38;&#x89C1;&#x7684;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x5730;&#x7406;&#x89E3;&#x4FEE;&#x9970;&#x5668;&#x3002;</p>
+<p><strong>&#xFF08;1&#xFF09;@autobind</strong></p>
+<p><code>autobind</code>&#x4FEE;&#x9970;&#x5668;&#x4F7F;&#x5F97;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;<code>this</code>&#x5BF9;&#x8C61;&#xFF0C;&#x7ED1;&#x5B9A;&#x539F;&#x59CB;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> autobind <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;core-decorators&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  @autobind
+  <span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> getPerson <span class="token operator">=</span> person<span class="token punctuation">.</span>getPerson<span class="token punctuation">;</span>
+
+<span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> person<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// true</span>
+</code></pre>
+<p><strong>&#xFF08;2&#xFF09;@readonly</strong></p>
+<p><code>readonly</code>&#x4FEE;&#x9970;&#x5668;&#x4F7F;&#x5F97;&#x5C5E;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x4E0D;&#x53EF;&#x5199;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> readonly <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;core-decorators&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Meal</span> <span class="token punctuation">{</span>
+  @readonly
+  entree <span class="token operator">=</span> <span class="token string">&apos;steak&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> dinner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Meal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+dinner<span class="token punctuation">.</span>entree <span class="token operator">=</span> <span class="token string">&apos;salmon&apos;</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Cannot assign to read only property &apos;entree&apos; of [object Object]</span>
+</code></pre>
+<p><strong>&#xFF08;3&#xFF09;@override</strong></p>
+<p><code>override</code>&#x4FEE;&#x9970;&#x5668;&#x68C0;&#x67E5;&#x5B50;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x662F;&#x5426;&#x6B63;&#x786E;&#x8986;&#x76D6;&#x4E86;&#x7236;&#x7C7B;&#x7684;&#x540C;&#x540D;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x6B63;&#x786E;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> override <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;core-decorators&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Parent</span> <span class="token punctuation">{</span>
+  <span class="token function">speak</span><span class="token punctuation">(</span>first<span class="token punctuation">,</span> second<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Child</span> <span class="token keyword">extends</span> <span class="token class-name">Parent</span> <span class="token punctuation">{</span>
+  @override
+  <span class="token function">speak</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// SyntaxError: Child#speak() does not properly override Parent#speak(first, second)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// or</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Child</span> <span class="token keyword">extends</span> <span class="token class-name">Parent</span> <span class="token punctuation">{</span>
+  @override
+  <span class="token function">speaks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// SyntaxError: No descriptor matching Child#speaks() was found on the prototype chain.</span>
+  <span class="token comment" spellcheck="true">//</span>
+  <span class="token comment" spellcheck="true">//   Did you mean &quot;speak&quot;?</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>&#xFF08;4&#xFF09;@deprecate (&#x522B;&#x540D;@deprecated)</strong></p>
+<p><code>deprecate</code>&#x6216;<code>deprecated</code>&#x4FEE;&#x9970;&#x5668;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x663E;&#x793A;&#x4E00;&#x6761;&#x8B66;&#x544A;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x5C06;&#x5E9F;&#x9664;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> deprecate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;core-decorators&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  @deprecate
+  <span class="token function">facepalm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  @<span class="token function">deprecate</span><span class="token punctuation">(</span><span class="token string">&apos;We stopped facepalming&apos;</span><span class="token punctuation">)</span>
+  <span class="token function">facepalmHard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  @<span class="token function">deprecate</span><span class="token punctuation">(</span><span class="token string">&apos;We stopped facepalming&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> url<span class="token punctuation">:</span> <span class="token string">&apos;http://knowyourmeme.com/memes/facepalm&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">facepalmHarder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+person<span class="token punctuation">.</span><span class="token function">facepalm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// DEPRECATION Person#facepalm: This function will be removed in future versions.</span>
+
+person<span class="token punctuation">.</span><span class="token function">facepalmHard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// DEPRECATION Person#facepalmHard: We stopped facepalming</span>
+
+person<span class="token punctuation">.</span><span class="token function">facepalmHarder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// DEPRECATION Person#facepalmHarder: We stopped facepalming</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//     See http://knowyourmeme.com/memes/facepalm for more details.</span>
+<span class="token comment" spellcheck="true">//</span>
+</code></pre>
+<p><strong>&#xFF08;5&#xFF09;@suppressWarnings</strong></p>
+<p><code>suppressWarnings</code>&#x4FEE;&#x9970;&#x5668;&#x6291;&#x5236;<code>decorated</code>&#x4FEE;&#x9970;&#x5668;&#x5BFC;&#x81F4;&#x7684;<code>console.warn()</code>&#x8C03;&#x7528;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x53D1;&#x51FA;&#x7684;&#x8C03;&#x7528;&#x9664;&#x5916;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> suppressWarnings <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;core-decorators&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  @deprecated
+  <span class="token function">facepalm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  @suppressWarnings
+  <span class="token function">facepalmWithoutWarning</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">facepalm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+person<span class="token punctuation">.</span><span class="token function">facepalmWithoutWarning</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// no warning is logged</span>
+</code></pre>
+<h2 id="&#x4F7F;&#x7528;&#x4FEE;&#x9970;&#x5668;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x53D1;&#x5E03;&#x4E8B;&#x4EF6;">&#x4F7F;&#x7528;&#x4FEE;&#x9970;&#x5668;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x53D1;&#x5E03;&#x4E8B;&#x4EF6;</h2>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x4F7F;&#x5F97;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x81EA;&#x52A8;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> postal <span class="token keyword">from</span> <span class="token string">&quot;postal/lib/postal.lodash&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">publish</span><span class="token punctuation">(</span>topic<span class="token punctuation">,</span> channel<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> fn <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+
+    descriptor<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> value <span class="token operator">=</span> fn<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      postal<span class="token punctuation">.</span><span class="token function">channel</span><span class="token punctuation">(</span>channel <span class="token operator">||</span> target<span class="token punctuation">.</span>channel <span class="token operator">||</span> <span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>topic<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>publish</code>&#x7684;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x6539;&#x5199;<code>descriptor.value</code>&#xFF0C;&#x4F7F;&#x5F97;&#x539F;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x5B83;&#x4F7F;&#x7528;&#x7684;&#x4E8B;&#x4EF6;&#x201C;&#x53D1;&#x5E03;/&#x8BA2;&#x9605;&#x201D;&#x5E93;&#x662F;<a href="https://github.com/postaljs/postal.js" target="_blank">Postal.js</a>&#x3002;</p>
+<p>&#x5B83;&#x7684;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> publish <span class="token keyword">from</span> <span class="token string">&quot;path/to/decorators/publish&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">FooComponent</span> <span class="token punctuation">{</span>
+  @<span class="token function">publish</span><span class="token punctuation">(</span><span class="token string">&quot;foo.some.message&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;component&quot;</span><span class="token punctuation">)</span>
+  <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      my<span class="token punctuation">:</span> <span class="token string">&quot;data&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  @<span class="token function">publish</span><span class="token punctuation">(</span><span class="token string">&quot;foo.some.other&quot;</span><span class="token punctuation">)</span>
+  <span class="token function">anotherMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4EE5;&#x540E;&#xFF0C;&#x53EA;&#x8981;&#x8C03;&#x7528;<code>someMethod</code>&#x6216;&#x8005;<code>anotherMethod</code>&#xFF0C;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">let</span> foo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FooComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+foo<span class="token punctuation">.</span><span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &#x5728;&quot;component&quot;&#x9891;&#x9053;&#x53D1;&#x5E03;&quot;foo.some.message&quot;&#x4E8B;&#x4EF6;&#xFF0C;&#x9644;&#x5E26;&#x7684;&#x6570;&#x636E;&#x662F;{ my: &quot;data&quot; }</span>
+foo<span class="token punctuation">.</span><span class="token function">anotherMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &#x5728;&quot;/&quot;&#x9891;&#x9053;&#x53D1;&#x5E03;&quot;foo.some.other&quot;&#x4E8B;&#x4EF6;&#xFF0C;&#x4E0D;&#x9644;&#x5E26;&#x6570;&#x636E;</span>
+</code></pre>
+<h2 id="mixin">Mixin</h2>
+<p>&#x5728;&#x4FEE;&#x9970;&#x5668;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>Mixin</code>&#x6A21;&#x5F0F;&#x3002;&#x6240;&#x8C13;<code>Mixin</code>&#x6A21;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x7684;&#x4E00;&#x79CD;&#x66FF;&#x4EE3;&#x65B9;&#x6848;&#xFF0C;&#x4E2D;&#x6587;&#x8BD1;&#x4E3A;&#x201C;&#x6DF7;&#x5165;&#x201D;&#xFF08;mix in&#xFF09;&#xFF0C;&#x610F;&#x4E3A;&#x5728;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E4B;&#x4E2D;&#x6DF7;&#x5165;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x8BF7;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>MyClass<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> Foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &apos;foo&apos;</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E4B;&#x4E2D;&#xFF0C;&#x5BF9;&#x8C61;<code>Foo</code>&#x6709;&#x4E00;&#x4E2A;<code>foo</code>&#x65B9;&#x6CD5;&#xFF0C;&#x901A;&#x8FC7;<code>Object.assign</code>&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;<code>foo</code>&#x65B9;&#x6CD5;&#x201C;&#x6DF7;&#x5165;&#x201D;<code>MyClass</code>&#x7C7B;&#xFF0C;&#x5BFC;&#x81F4;<code>MyClass</code>&#x7684;&#x5B9E;&#x4F8B;<code>obj</code>&#x5BF9;&#x8C61;&#x90FD;&#x5177;&#x6709;<code>foo</code>&#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x201C;&#x6DF7;&#x5165;&#x201D;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x90E8;&#x7F72;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x811A;&#x672C;<code>mixins.js</code>&#xFF0C;&#x5C06;mixin&#x5199;&#x6210;&#x4E00;&#x4E2A;&#x4FEE;&#x9970;&#x5668;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">mixins</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x7136;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x4E3A;&#x7C7B;&#x201C;&#x6DF7;&#x5165;&#x201D;&#x5404;&#x79CD;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> mixins <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;./mixins&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@<span class="token function">mixins</span><span class="token punctuation">(</span>Foo<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// &quot;foo&quot;</span>
+</code></pre>
+<p>&#x901A;&#x8FC7;mixins&#x8FD9;&#x4E2A;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x5728;MyClass&#x7C7B;&#x4E0A;&#x9762;&#x201C;&#x6DF7;&#x5165;&#x201D;Foo&#x5BF9;&#x8C61;&#x7684;<code>foo</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x4F1A;&#x6539;&#x5199;<code>MyClass</code>&#x7C7B;&#x7684;<code>prototype</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x559C;&#x6B22;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7C7B;&#x7684;&#x7EE7;&#x627F;&#x5B9E;&#x73B0;mixin&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token keyword">extends</span> <span class="token class-name">MyBaseClass</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* ... */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;<code>MyClass</code>&#x7EE7;&#x627F;&#x4E86;<code>MyBaseClass</code>&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x5728;<code>MyClass</code>&#x91CC;&#x9762;&#x201C;&#x6DF7;&#x5165;&#x201D;&#x4E00;&#x4E2A;<code>foo</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#x662F;&#x5728;<code>MyClass</code>&#x548C;<code>MyBaseClass</code>&#x4E4B;&#x95F4;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x6DF7;&#x5165;&#x7C7B;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x5177;&#x6709;<code>foo</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x7EE7;&#x627F;&#x4E86;<code>MyBaseClass</code>&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E;<code>MyClass</code>&#x518D;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">let</span> MyMixin <span class="token operator">=</span> <span class="token punctuation">(</span>superclass<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">class</span> <span class="token class-name">extends</span> superclass <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo from MyMixin&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;<code>MyMixin</code>&#x662F;&#x4E00;&#x4E2A;&#x6DF7;&#x5165;&#x7C7B;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x63A5;&#x53D7;<code>superclass</code>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;<code>superclass</code>&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x8BE5;&#x5B50;&#x7C7B;&#x5305;&#x542B;&#x4E00;&#x4E2A;<code>foo</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x63A5;&#x7740;&#xFF0C;&#x76EE;&#x6807;&#x7C7B;&#x518D;&#x53BB;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;&#x6DF7;&#x5165;&#x7C7B;&#xFF0C;&#x5C31;&#x8FBE;&#x5230;&#x4E86;&#x201C;&#x6DF7;&#x5165;&#x201D;<code>foo</code>&#x65B9;&#x6CD5;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token keyword">extends</span> <span class="token class-name">MyMixin</span><span class="token punctuation">(</span>MyBaseClass<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* ... */</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+c<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// &quot;foo from MyMixin&quot;</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x201C;&#x6DF7;&#x5165;&#x201D;&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x751F;&#x6210;&#x591A;&#x4E2A;&#x6DF7;&#x5165;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token keyword">extends</span> <span class="token class-name">Mixin1</span><span class="token punctuation">(</span><span class="token function">Mixin2</span><span class="token punctuation">(</span>MyBaseClass<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* ... */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x7684;&#x4E00;&#x4E2A;&#x597D;&#x5904;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>super</code>&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x5728;&#x201C;&#x6DF7;&#x5165;&#x201D;&#x8FC7;&#x7A0B;&#x4E2D;&#x8986;&#x76D6;&#x7236;&#x7C7B;&#x7684;&#x540C;&#x540D;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">let</span> Mixin1 <span class="token operator">=</span> <span class="token punctuation">(</span>superclass<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">class</span> <span class="token class-name">extends</span> superclass <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo from Mixin1&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span>foo<span class="token punctuation">)</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> Mixin2 <span class="token operator">=</span> <span class="token punctuation">(</span>superclass<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">class</span> <span class="token class-name">extends</span> superclass <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo from Mixin2&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span>foo<span class="token punctuation">)</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">S</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo from S&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">C</span> <span class="token keyword">extends</span> <span class="token class-name">Mixin1</span><span class="token punctuation">(</span><span class="token function">Mixin2</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo from C&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;<code>&#x6DF7;&#x5165;</code>&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x90FD;&#x8C03;&#x7528;&#x4E86;&#x7236;&#x7C7B;&#x7684;<code>super.foo</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5BFC;&#x81F4;&#x7236;&#x7C7B;&#x7684;&#x540C;&#x540D;&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x88AB;&#x8986;&#x76D6;&#xFF0C;&#x884C;&#x4E3A;&#x88AB;&#x4FDD;&#x7559;&#x4E86;&#x4E0B;&#x6765;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">new</span> <span class="token class-name">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// foo from C</span>
+<span class="token comment" spellcheck="true">// foo from Mixin1</span>
+<span class="token comment" spellcheck="true">// foo from Mixin2</span>
+<span class="token comment" spellcheck="true">// foo from S</span>
+</code></pre>
+<h2 id="trait">Trait</h2>
+<p>Trait&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x6548;&#x679C;&#x4E0E;Mixin&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x529F;&#x80FD;&#xFF0C;&#x6BD4;&#x5982;&#x9632;&#x6B62;&#x540C;&#x540D;&#x65B9;&#x6CD5;&#x7684;&#x51B2;&#x7A81;&#x3001;&#x6392;&#x9664;&#x6DF7;&#x5165;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x3001;&#x4E3A;&#x6DF7;&#x5165;&#x7684;&#x65B9;&#x6CD5;&#x8D77;&#x522B;&#x540D;&#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x91C7;&#x7528;<a href="https://github.com/CocktailJS/traits-decorator" target="_blank">traits-decorator</a>&#x8FD9;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x4F5C;&#x4E3A;&#x4F8B;&#x5B50;&#x3002;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684;traits&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;ES6&#x7C7B;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> traits <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;traits-decorator&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">TFoo</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> TBar <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;bar&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@<span class="token function">traits</span><span class="token punctuation">(</span>TFoo<span class="token punctuation">,</span> TBar<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// foo</span>
+obj<span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// bar</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;traits&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x5728;<code>MyClass</code>&#x7C7B;&#x4E0A;&#x9762;&#x201C;&#x6DF7;&#x5165;&#x201D;&#x4E86;<code>TFoo</code>&#x7C7B;&#x7684;<code>foo</code>&#x65B9;&#x6CD5;&#x548C;<code>TBar</code>&#x5BF9;&#x8C61;&#x7684;<code>bar</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<p>Trait&#x4E0D;&#x5141;&#x8BB8;&#x201C;&#x6DF7;&#x5165;&#x201D;&#x540C;&#x540D;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> traits <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;traits-decorator&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">TFoo</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> TBar <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;bar&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@<span class="token function">traits</span><span class="token punctuation">(</span>TFoo<span class="token punctuation">,</span> TBar<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// &#x62A5;&#x9519;</span>
+<span class="token comment" spellcheck="true">// throw new Error(&apos;Method named: &apos; + methodName + &apos; is defined twice.&apos;);</span>
+<span class="token comment" spellcheck="true">//        ^</span>
+<span class="token comment" spellcheck="true">// Error: Method named: foo is defined twice.</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;TFoo&#x548C;TBar&#x90FD;&#x6709;foo&#x65B9;&#x6CD5;&#xFF0C;&#x7ED3;&#x679C;traits&#x4FEE;&#x9970;&#x5668;&#x62A5;&#x9519;&#x3002;</p>
+<p>&#x4E00;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x662F;&#x6392;&#x9664;TBar&#x7684;foo&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> traits<span class="token punctuation">,</span> excludes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;traits-decorator&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">TFoo</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> TBar <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;bar&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@<span class="token function">traits</span><span class="token punctuation">(</span>TFoo<span class="token punctuation">,</span> TBar<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">excludes</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// foo</span>
+obj<span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// bar</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x7ED1;&#x5B9A;&#x8FD0;&#x7B97;&#x7B26;&#xFF08;::&#xFF09;&#x5728;TBar&#x4E0A;&#x6392;&#x9664;foo&#x65B9;&#x6CD5;&#xFF0C;&#x6DF7;&#x5165;&#x65F6;&#x5C31;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;&#x4E86;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x4E3A;TBar&#x7684;foo&#x65B9;&#x6CD5;&#x8D77;&#x4E00;&#x4E2A;&#x522B;&#x540D;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> traits<span class="token punctuation">,</span> alias <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;traits-decorator&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">TFoo</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> TBar <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;bar&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@<span class="token function">traits</span><span class="token punctuation">(</span>TFoo<span class="token punctuation">,</span> TBar<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">alias</span><span class="token punctuation">(</span><span class="token punctuation">{</span>foo<span class="token punctuation">:</span> <span class="token string">&apos;aliasFoo&apos;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// foo</span>
+obj<span class="token punctuation">.</span><span class="token function">aliasFoo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// foo</span>
+obj<span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// bar</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E3A;TBar&#x7684;foo&#x65B9;&#x6CD5;&#x8D77;&#x4E86;&#x522B;&#x540D;aliasFoo&#xFF0C;&#x4E8E;&#x662F;MyClass&#x4E5F;&#x53EF;&#x4EE5;&#x6DF7;&#x5165;TBar&#x7684;foo&#x65B9;&#x6CD5;&#x4E86;&#x3002;</p>
+<p>alias&#x548C;excludes&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
+<pre><code class="lang-javascript">@<span class="token function">traits</span><span class="token punctuation">(</span>TExample<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">excludes</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;bar&apos;</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">alias</span><span class="token punctuation">(</span><span class="token punctuation">{</span>baz<span class="token punctuation">:</span><span class="token string">&apos;exampleBaz&apos;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x6392;&#x9664;&#x4E86;TExample&#x7684;foo&#x65B9;&#x6CD5;&#x548C;bar&#x65B9;&#x6CD5;&#xFF0C;&#x4E3A;baz&#x65B9;&#x6CD5;&#x8D77;&#x4E86;&#x522B;&#x540D;exampleBaz&#x3002;</p>
+<p>as&#x65B9;&#x6CD5;&#x5219;&#x4E3A;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x63D0;&#x4F9B;&#x4E86;&#x53E6;&#x4E00;&#x79CD;&#x5199;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-javascript">@<span class="token function">traits</span><span class="token punctuation">(</span>TExample<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">as</span><span class="token punctuation">(</span><span class="token punctuation">{</span>excludes<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;bar&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> alias<span class="token punctuation">:</span> <span class="token punctuation">{</span>baz<span class="token punctuation">:</span> <span class="token string">&apos;exampleBaz&apos;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<h2 id="babel&#x8F6C;&#x7801;&#x5668;&#x7684;&#x652F;&#x6301;">Babel&#x8F6C;&#x7801;&#x5668;&#x7684;&#x652F;&#x6301;</h2>
+<p>&#x76EE;&#x524D;&#xFF0C;Babel&#x8F6C;&#x7801;&#x5668;&#x5DF2;&#x7ECF;&#x652F;&#x6301;Decorator&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5B89;&#x88C5;<code>babel-core</code>&#x548C;<code>babel-plugin-transform-decorators</code>&#x3002;&#x7531;&#x4E8E;&#x540E;&#x8005;&#x5305;&#x62EC;&#x5728;<code>babel-preset-stage-0</code>&#x4E4B;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x6539;&#x4E3A;&#x5B89;&#x88C5;<code>babel-preset-stage-0</code>&#x4EA6;&#x53EF;&#x3002;</p>
+<pre><code class="lang-bash">$ npm <span class="token function">install</span> babel-core babel-plugin-transform-decorators
+</code></pre>
+<p>&#x7136;&#x540E;&#xFF0C;&#x8BBE;&#x7F6E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>.babelrc</code>&#x3002;</p>
+<pre><code class="lang-javascript"><span class="token punctuation">{</span>
+  <span class="token string">&quot;plugins&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;transform-decorators&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x65F6;&#xFF0C;Babel&#x5C31;&#x53EF;&#x4EE5;&#x5BF9;Decorator&#x8F6C;&#x7801;&#x4E86;&#x3002;</p>
+<p>&#x811A;&#x672C;&#x4E2D;&#x6253;&#x5F00;&#x7684;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-javascript">babel<span class="token punctuation">.</span><span class="token function">transform</span><span class="token punctuation">(</span><span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;transform-decorators&quot;</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Babel&#x7684;&#x5B98;&#x65B9;&#x7F51;&#x7AD9;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;<a href="https://babeljs.io/repl/" target="_blank">&#x5728;&#x7EBF;&#x8F6C;&#x7801;&#x5668;</a>&#xFF0C;&#x53EA;&#x8981;&#x52FE;&#x9009;Experimental&#xFF0C;&#x5C31;&#x80FD;&#x652F;&#x6301;Decorator&#x7684;&#x5728;&#x7EBF;&#x8F6C;&#x7801;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../docs/class.html" class="navigation navigation-prev " aria-label="Previous page: Class"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../docs/module.html" class="navigation navigation-next " aria-label="Next page: Module"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"search":{"maxIndexSize":100000},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"splitter":{},"anchors":{},"codeblock-filename":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
