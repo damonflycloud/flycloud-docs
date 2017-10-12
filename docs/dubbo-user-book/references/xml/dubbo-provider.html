@@ -1,0 +1,2056 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book dubbo-user-book -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>8.8 dubbo:provider | dubbo-user-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="flycloud &lt;damonflycloud@126.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-theme-comscore/test.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../references/xml/dubbo-consumer.html" />
+    
+    
+    <link rel="prev" href="../../references/xml/dubbo-module.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="8.8"
+        data-chapter-title="8.8 dubbo:provider"
+        data-filepath="references/xml/dubbo-provider.md"
+        data-basepath="../.."
+        data-revision="Thu Oct 12 2017 18:49:09 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/dubbo/dubbo-user-book/details" target="blank" class="custom-link">dubbo-user-book</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="preface/index.html">
+            
+                
+                    <a href="../../preface/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        1 入门
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="preface/background.html">
+            
+                
+                    <a href="../../preface/background.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1.1 背景
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="preface/requirements.html">
+            
+                
+                    <a href="../../preface/requirements.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        1.2 需求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="preface/architecture.html">
+            
+                
+                    <a href="../../preface/architecture.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        1.3 架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="preface/usage.html">
+            
+                
+                    <a href="../../preface/usage.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        1.4 用法
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="quick-start.html">
+            
+                
+                    <a href="../../quick-start.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        2 快速启动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="dependencies.html">
+            
+                
+                    <a href="../../dependencies.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        3 依赖
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="maturity.html">
+            
+                
+                    <a href="../../maturity.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        4 成熟度
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="configuration/index.html">
+            
+                
+                    <a href="../../configuration/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        5 配置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="configuration/xml.html">
+            
+                
+                    <a href="../../configuration/xml.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        5.1 XML 配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="configuration/properties.html">
+            
+                
+                    <a href="../../configuration/properties.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        5.2 属性配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="configuration/api.html">
+            
+                
+                    <a href="../../configuration/api.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        5.3 API 配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="configuration/annotation.html">
+            
+                
+                    <a href="../../configuration/annotation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        5.4 注解配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="demos/index.html">
+            
+                
+                    <a href="../../demos/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        6 示例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="demos/preflight-check.html">
+            
+                
+                    <a href="../../demos/preflight-check.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        6.1 启动时检查
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="demos/fault-tolerent-strategy.html">
+            
+                
+                    <a href="../../demos/fault-tolerent-strategy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        6.2 集群容错
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="demos/loadbalance.html">
+            
+                
+                    <a href="../../demos/loadbalance.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        6.3 负载均衡
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="demos/thread-model.html">
+            
+                
+                    <a href="../../demos/thread-model.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        6.4 线程模型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="demos/explicit-target.html">
+            
+                
+                    <a href="../../demos/explicit-target.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        6.5 直连提供者
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="demos/subscribe-only.html">
+            
+                
+                    <a href="../../demos/subscribe-only.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        6.6 只订阅
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="demos/registry-only.html">
+            
+                
+                    <a href="../../demos/registry-only.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        6.7 只注册
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="demos/static-service.html">
+            
+                
+                    <a href="../../demos/static-service.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.</b>
+                        
+                        6.8 静态服务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" data-path="demos/multi-protocols.html">
+            
+                
+                    <a href="../../demos/multi-protocols.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.9.</b>
+                        
+                        6.9 多协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10" data-path="demos/multi-registry.html">
+            
+                
+                    <a href="../../demos/multi-registry.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.</b>
+                        
+                        6.10 多注册中心
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.11" data-path="demos/service-group.html">
+            
+                
+                    <a href="../../demos/service-group.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.11.</b>
+                        
+                        6.11 服务分组
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.12" data-path="demos/multi-versions.html">
+            
+                
+                    <a href="../../demos/multi-versions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.12.</b>
+                        
+                        6.12 多版本
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.13" data-path="demos/group-merger.html">
+            
+                
+                    <a href="../../demos/group-merger.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.13.</b>
+                        
+                        6.13 分组聚合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.14" data-path="demos/parameter-validation.html">
+            
+                
+                    <a href="../../demos/parameter-validation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.14.</b>
+                        
+                        6.14 参数验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.15" data-path="demos/result-cache.html">
+            
+                
+                    <a href="../../demos/result-cache.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.15.</b>
+                        
+                        6.15 结果缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.16" data-path="demos/generic-reference.html">
+            
+                
+                    <a href="../../demos/generic-reference.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.16.</b>
+                        
+                        6.16 泛化引用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.17" data-path="demos/generic-service.html">
+            
+                
+                    <a href="../../demos/generic-service.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.17.</b>
+                        
+                        6.17 泛化实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.18" data-path="demos/echo-service.html">
+            
+                
+                    <a href="../../demos/echo-service.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.18.</b>
+                        
+                        6.18 回声测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.19" data-path="demos/context.html">
+            
+                
+                    <a href="../../demos/context.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.19.</b>
+                        
+                        6.19 上下文信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.20" data-path="demos/attachment.html">
+            
+                
+                    <a href="../../demos/attachment.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.20.</b>
+                        
+                        6.20 隐式参数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.21" data-path="demos/async-call.html">
+            
+                
+                    <a href="../../demos/async-call.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.21.</b>
+                        
+                        6.21 异步调用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.22" data-path="demos/local-call.html">
+            
+                
+                    <a href="../../demos/local-call.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.22.</b>
+                        
+                        6.22 本地调用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.23" data-path="demos/callback-parameter.html">
+            
+                
+                    <a href="../../demos/callback-parameter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.23.</b>
+                        
+                        6.23 参数回调
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.24" data-path="demos/events-notify.html">
+            
+                
+                    <a href="../../demos/events-notify.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.24.</b>
+                        
+                        6.24 事件通知
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.25" data-path="demos/local-stub.html">
+            
+                
+                    <a href="../../demos/local-stub.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.25.</b>
+                        
+                        6.25 本地存根
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.26" data-path="demos/local-mock.html">
+            
+                
+                    <a href="../../demos/local-mock.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.26.</b>
+                        
+                        6.26 本地伪装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.27" data-path="demos/delay-publish.html">
+            
+                
+                    <a href="../../demos/delay-publish.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.27.</b>
+                        
+                        6.27 延迟暴露
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.28" data-path="demos/concurrency-control.html">
+            
+                
+                    <a href="../../demos/concurrency-control.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.28.</b>
+                        
+                        6.28 并发控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.29" data-path="demos/config-connections.html">
+            
+                
+                    <a href="../../demos/config-connections.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.29.</b>
+                        
+                        6.29 连接控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.30" data-path="demos/lazy-connect.html">
+            
+                
+                    <a href="../../demos/lazy-connect.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.30.</b>
+                        
+                        6.30 延迟连接
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.31" data-path="demos/stickiness.html">
+            
+                
+                    <a href="../../demos/stickiness.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.31.</b>
+                        
+                        6.31 粘滞连接
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.32" data-path="demos/token-authorization.html">
+            
+                
+                    <a href="../../demos/token-authorization.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.32.</b>
+                        
+                        6.32 令牌验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.33" data-path="demos/routing-rule.html">
+            
+                
+                    <a href="../../demos/routing-rule.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.33.</b>
+                        
+                        6.33 路由规则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.34" data-path="demos/config-rule.html">
+            
+                
+                    <a href="../../demos/config-rule.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.34.</b>
+                        
+                        6.34 配置规则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.35" data-path="demos/service-downgrade.html">
+            
+                
+                    <a href="../../demos/service-downgrade.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.35.</b>
+                        
+                        6.35 服务降级
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.36" data-path="demos/graceful-shutdown.html">
+            
+                
+                    <a href="../../demos/graceful-shutdown.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.36.</b>
+                        
+                        6.36 优雅停机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.37" data-path="demos/hostname-binding.html">
+            
+                
+                    <a href="../../demos/hostname-binding.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.37.</b>
+                        
+                        6.37 主机绑定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.38" data-path="demos/logger-strategy.html">
+            
+                
+                    <a href="../../demos/logger-strategy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.38.</b>
+                        
+                        6.38 日志适配
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.39" data-path="demos/accesslog.html">
+            
+                
+                    <a href="../../demos/accesslog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.39.</b>
+                        
+                        6.39 访问日志
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.40" data-path="demos/service-container.html">
+            
+                
+                    <a href="../../demos/service-container.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.40.</b>
+                        
+                        6.40 服务容器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.41" data-path="demos/reference-config-cache.html">
+            
+                
+                    <a href="../../demos/reference-config-cache.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.41.</b>
+                        
+                        6.41 Reference Config 缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.42" data-path="demos/distributed-transaction.html">
+            
+                
+                    <a href="../../demos/distributed-transaction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.42.</b>
+                        
+                        6.42 分布式事务
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="references/api.html">
+            
+                
+                    <a href="../../references/api.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        7 API 参考手册
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="references/xml/introduction.html">
+            
+                
+                    <a href="../../references/xml/introduction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        8 schema 配置参考手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="references/xml/dubbo-service.html">
+            
+                
+                    <a href="../../references/xml/dubbo-service.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        8.1 dubbo:service
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="references/xml/dubbo-reference.html">
+            
+                
+                    <a href="../../references/xml/dubbo-reference.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        8.2 dubbo:reference
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="references/xml/dubbo-protocol.html">
+            
+                
+                    <a href="../../references/xml/dubbo-protocol.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        8.3 dubbo:protocol
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="references/xml/dubbo-registry.html">
+            
+                
+                    <a href="../../references/xml/dubbo-registry.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        8.4 dubbo:registry
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="references/xml/dubbo-monitor.html">
+            
+                
+                    <a href="../../references/xml/dubbo-monitor.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        8.5 dubbo:monitor
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="references/xml/dubbo-application.html">
+            
+                
+                    <a href="../../references/xml/dubbo-application.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        8.6 dubbo:application
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="references/xml/dubbo-module.html">
+            
+                
+                    <a href="../../references/xml/dubbo-module.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        8.7 dubbo:module
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="8.8" data-path="references/xml/dubbo-provider.html">
+            
+                
+                    <a href="../../references/xml/dubbo-provider.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        8.8 dubbo:provider
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.9" data-path="references/xml/dubbo-consumer.html">
+            
+                
+                    <a href="../../references/xml/dubbo-consumer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.9.</b>
+                        
+                        8.9 dubbo:consumer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.10" data-path="references/xml/dubbo-method.html">
+            
+                
+                    <a href="../../references/xml/dubbo-method.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.10.</b>
+                        
+                        8.10 dubbo:method
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.11" data-path="references/xml/dubbo-argument.html">
+            
+                
+                    <a href="../../references/xml/dubbo-argument.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.11.</b>
+                        
+                        8.11 dubbo:argument
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.12" data-path="references/xml/dubbo-parameter.html">
+            
+                
+                    <a href="../../references/xml/dubbo-parameter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.12.</b>
+                        
+                        8.12 dubbo:parameter
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="references/protocol/introduction.html">
+            
+                
+                    <a href="../../references/protocol/introduction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        9 协议参考手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="references/protocol/dubbo.html">
+            
+                
+                    <a href="../../references/protocol/dubbo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        9.1 dubbo://
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="references/protocol/rmi.html">
+            
+                
+                    <a href="../../references/protocol/rmi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        9.2 rmi//
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="references/protocol/hessian.html">
+            
+                
+                    <a href="../../references/protocol/hessian.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        9.3 hessian://
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="references/protocol/http.html">
+            
+                
+                    <a href="../../references/protocol/http.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        9.4 http://
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="references/protocol/webservice.html">
+            
+                
+                    <a href="../../references/protocol/webservice.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        9.5 webservice://
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="references/protocol/thrift.html">
+            
+                
+                    <a href="../../references/protocol/thrift.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        9.6 thrift://
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="references/protocol/memcached.html">
+            
+                
+                    <a href="../../references/protocol/memcached.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        9.7 memcached://
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="references/protocol/redis.html">
+            
+                
+                    <a href="../../references/protocol/redis.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        9.8 redis://
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="references/registry/introduction.html">
+            
+                
+                    <a href="../../references/registry/introduction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        10 注册中心参考手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="references/registry/multicast.html">
+            
+                
+                    <a href="../../references/registry/multicast.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        10.1 Multicast 注册中心
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="references/registry/zookeeper.html">
+            
+                
+                    <a href="../../references/registry/zookeeper.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        10.2 Zookeeper 注册中心
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="references/registry/redis.html">
+            
+                
+                    <a href="../../references/registry/redis.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        10.3 Redis 注册中心
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="references/registry/simple.html">
+            
+                
+                    <a href="../../references/registry/simple.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        10.4 Simple 注册中心
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="references/telnet.html">
+            
+                
+                    <a href="../../references/telnet.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        11 telnet 命令参考手册
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="references/maven.html">
+            
+                
+                    <a href="../../references/maven.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        12 maven 插件参考手册
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="best-practice.html">
+            
+                
+                    <a href="../../best-practice.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        13 服务化最佳实践
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="recommend.html">
+            
+                
+                    <a href="../../recommend.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        14 推荐用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="capacity-plan.html">
+            
+                
+                    <a href="../../capacity-plan.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        15 容量规划
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="perf-test.html">
+            
+                
+                    <a href="../../perf-test.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        16 性能测试报告
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="coveragence.html">
+            
+                
+                    <a href="../../coveragence.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        17 测试覆盖率报告
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >dubbo-user-book</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="dubboprovider">dubbo:provider</h1>
+<p>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7F3A;&#x7701;&#x503C;&#x914D;&#x7F6E;&#x3002;&#x5BF9;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x7C7B;&#xFF1A; <code>com.alibaba.dubbo.config.ProviderConfig</code>&#x3002;&#x540C;&#x65F6;&#x8BE5;&#x6807;&#x7B7E;&#x4E3A; <code>&lt;dubbo:service&gt;</code> &#x548C; <code>&lt;dubbo:protocol&gt;</code> &#x6807;&#x7B7E;&#x7684;&#x7F3A;&#x7701;&#x503C;&#x8BBE;&#x7F6E;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x5C5E;&#x6027;</th>
+<th>&#x5BF9;&#x5E94;URL&#x53C2;&#x6570;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x662F;&#x5426;&#x5FC5;&#x586B;</th>
+<th>&#x7F3A;&#x7701;&#x503C;</th>
+<th>&#x4F5C;&#x7528;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x517C;&#x5BB9;&#x6027;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td></td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>dubbo</td>
+<td>&#x914D;&#x7F6E;&#x5173;&#x8054;</td>
+<td>&#x534F;&#x8BAE;BeanId&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&lt;dubbo:service proivder=&quot;&quot;&gt;&#x4E2D;&#x5F15;&#x7528;&#x6B64;ID</td>
+<td>1.0.16&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>&lt;protocol&gt;</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>dubbo</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x534F;&#x8BAE;&#x540D;&#x79F0;</td>
+<td>1.0.16&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>host</td>
+<td>&lt;host&gt;</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>&#x81EA;&#x52A8;&#x67E5;&#x627E;&#x672C;&#x673A;IP</td>
+<td>&#x670D;&#x52A1;&#x53D1;&#x73B0;</td>
+<td>&#x670D;&#x52A1;&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x591A;&#x7F51;&#x5361;&#x9009;&#x62E9;&#x6216;&#x6307;&#x5B9A;VIP&#x53CA;&#x57DF;&#x540D;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x4E3A;&#x7A7A;&#x5219;&#x81EA;&#x52A8;&#x67E5;&#x627E;&#x672C;&#x673A;IP&#xFF0C;&#x5EFA;&#x8BAE;&#x4E0D;&#x8981;&#x914D;&#x7F6E;&#xFF0C;&#x8BA9;Dubbo&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x672C;&#x673A;IP</td>
+<td>1.0.16&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>threads</td>
+<td>threads</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>100</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x670D;&#x52A1;&#x7EBF;&#x7A0B;&#x6C60;&#x5927;&#x5C0F;(&#x56FA;&#x5B9A;&#x5927;&#x5C0F;)</td>
+<td>1.0.16&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>payload</td>
+<td>payload</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>88388608(=8M)</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x8BF7;&#x6C42;&#x53CA;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x5305;&#x5927;&#x5C0F;&#x9650;&#x5236;&#xFF0C;&#x5355;&#x4F4D;&#xFF1A;&#x5B57;&#x8282;</td>
+<td>2.0.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>path</td>
+<td>&lt;path&gt;</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x670D;&#x52A1;&#x53D1;&#x73B0;</td>
+<td>&#x63D0;&#x4F9B;&#x8005;&#x4E0A;&#x4E0B;&#x6587;&#x8DEF;&#x5F84;&#xFF0C;&#x4E3A;&#x670D;&#x52A1;path&#x7684;&#x524D;&#x7F00;</td>
+<td>2.0.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>server</td>
+<td>server</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>dubbo&#x534F;&#x8BAE;&#x7F3A;&#x7701;&#x4E3A;netty&#xFF0C;http&#x534F;&#x8BAE;&#x7F3A;&#x7701;&#x4E3A;servlet</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x534F;&#x8BAE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5B9E;&#x73B0;&#x7C7B;&#x578B;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;dubbo&#x534F;&#x8BAE;&#x7684;mina,netty&#x7B49;&#xFF0C;http&#x534F;&#x8BAE;&#x7684;jetty,servlet&#x7B49;</td>
+<td>2.0.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>client</td>
+<td>client</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>dubbo&#x534F;&#x8BAE;&#x7F3A;&#x7701;&#x4E3A;netty</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x534F;&#x8BAE;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5B9E;&#x73B0;&#x7C7B;&#x578B;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;dubbo&#x534F;&#x8BAE;&#x7684;mina,netty&#x7B49;</td>
+<td>2.0.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>codec</td>
+<td>codec</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>dubbo</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x534F;&#x8BAE;&#x7F16;&#x7801;&#x65B9;&#x5F0F;</td>
+<td>2.0.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>serialization</td>
+<td>serialization</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>dubbo&#x534F;&#x8BAE;&#x7F3A;&#x7701;&#x4E3A;hessian2&#xFF0C;rmi&#x534F;&#x8BAE;&#x7F3A;&#x7701;&#x4E3A;java&#xFF0C;http&#x534F;&#x8BAE;&#x7F3A;&#x7701;&#x4E3A;json</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x534F;&#x8BAE;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x5F0F;&#xFF0C;&#x5F53;&#x534F;&#x8BAE;&#x652F;&#x6301;&#x591A;&#x79CD;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x5F0F;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;dubbo&#x534F;&#x8BAE;&#x7684;dubbo,hessian2,java,compactedjava&#xFF0C;&#x4EE5;&#x53CA;http&#x534F;&#x8BAE;&#x7684;json,xml&#x7B49;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>default</td>
+<td></td>
+<td>boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>false</td>
+<td>&#x914D;&#x7F6E;&#x5173;&#x8054;</td>
+<td>&#x662F;&#x5426;&#x4E3A;&#x7F3A;&#x7701;&#x534F;&#x8BAE;&#xFF0C;&#x7528;&#x4E8E;&#x591A;&#x534F;&#x8BAE;</td>
+<td>1.0.16&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>service.filter</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;&#x62E6;&#x622A;&#x5668;&#x540D;&#x79F0;&#xFF0C;&#x591A;&#x4E2A;&#x540D;&#x79F0;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>listener</td>
+<td>exporter.listener</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x5BFC;&#x51FA;&#x670D;&#x52A1;&#x76D1;&#x542C;&#x5668;&#x540D;&#x79F0;&#xFF0C;&#x591A;&#x4E2A;&#x540D;&#x79F0;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>threadpool</td>
+<td>threadpool</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>fixed</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x7EBF;&#x7A0B;&#x6C60;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x9009;&#xFF1A;fixed/cached</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>accepts</td>
+<td>accepts</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>0</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6700;&#x5927;&#x53EF;&#x63A5;&#x53D7;&#x8FDE;&#x63A5;&#x6570;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>version</td>
+<td>version</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>0.0.0</td>
+<td>&#x670D;&#x52A1;&#x53D1;&#x73B0;</td>
+<td>&#x670D;&#x52A1;&#x7248;&#x672C;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x4E24;&#x4F4D;&#x6570;&#x5B57;&#x7248;&#x672C;&#xFF0C;&#x5982;&#xFF1A;1.0&#xFF0C;&#x901A;&#x5E38;&#x5728;&#x63A5;&#x53E3;&#x4E0D;&#x517C;&#x5BB9;&#x65F6;&#x7248;&#x672C;&#x53F7;&#x624D;&#x9700;&#x8981;&#x5347;&#x7EA7;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>group</td>
+<td>group</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x670D;&#x52A1;&#x53D1;&#x73B0;</td>
+<td>&#x670D;&#x52A1;&#x5206;&#x7EC4;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x6709;&#x591A;&#x4E2A;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5206;&#x7EC4;&#x533A;&#x5206;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>delay</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>0</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x5EF6;&#x8FDF;&#x6CE8;&#x518C;&#x670D;&#x52A1;&#x65F6;&#x95F4;(&#x6BEB;&#x79D2;)- &#xFF0C;&#x8BBE;&#x4E3A;-1&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x5EF6;&#x8FDF;&#x5230;Spring&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x65F6;&#x66B4;&#x9732;&#x670D;&#x52A1;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>default.timeout</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>1000</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x8D85;&#x65F6;&#x65F6;&#x95F4;(&#x6BEB;&#x79D2;)</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>retries</td>
+<td>default.retries</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>2</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#xFF0C;&#x4E0D;&#x5305;&#x62EC;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x8BD5;&#x8BF7;&#x8BBE;&#x4E3A;0</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>connections</td>
+<td>default.connections</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>0</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x5BF9;&#x6BCF;&#x4E2A;&#x63D0;&#x4F9B;&#x8005;&#x7684;&#x6700;&#x5927;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;rmi&#x3001;http&#x3001;hessian&#x7B49;&#x77ED;&#x8FDE;&#x63A5;&#x534F;&#x8BAE;&#x8868;&#x793A;&#x9650;&#x5236;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;dubbo&#x7B49;&#x957F;&#x8FDE;&#x63A5;&#x534F;&#x8868;&#x793A;&#x5EFA;&#x7ACB;&#x7684;&#x957F;&#x8FDE;&#x63A5;&#x4E2A;&#x6570;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>loadbalance</td>
+<td>default.loadbalance</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>random</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;&#xFF0C;&#x53EF;&#x9009;&#x503C;&#xFF1A;random,roundrobin,leastactive&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;&#xFF1A;&#x968F;&#x673A;&#xFF0C;&#x8F6E;&#x5FAA;&#xFF0C;&#x6700;&#x5C11;&#x6D3B;&#x8DC3;&#x8C03;&#x7528;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>async</td>
+<td>default.async</td>
+<td>boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>false</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x662F;&#x5426;&#x7F3A;&#x7701;&#x5F02;&#x6B65;&#x6267;&#x884C;&#xFF0C;&#x4E0D;&#x53EF;&#x9760;&#x5F02;&#x6B65;&#xFF0C;&#x53EA;&#x662F;&#x5FFD;&#x7565;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E0D;&#x963B;&#x585E;&#x6267;&#x884C;&#x7EBF;&#x7A0B;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>stub</td>
+<td>stub</td>
+<td>boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>false</td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x8BBE;&#x4E3A;true&#xFF0C;&#x8868;&#x793A;&#x4F7F;&#x7528;&#x7F3A;&#x7701;&#x4EE3;&#x7406;&#x7C7B;&#x540D;&#xFF0C;&#x5373;&#xFF1A;&#x63A5;&#x53E3;&#x540D; + Local&#x540E;&#x7F00;&#x3002;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>mock</td>
+<td>mock</td>
+<td>boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>false</td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x8BBE;&#x4E3A;true&#xFF0C;&#x8868;&#x793A;&#x4F7F;&#x7528;&#x7F3A;&#x7701;Mock&#x7C7B;&#x540D;&#xFF0C;&#x5373;&#xFF1A;&#x63A5;&#x53E3;&#x540D; + Mock&#x540E;&#x7F00;&#x3002;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>token</td>
+<td>token</td>
+<td>boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>false</td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x4EE4;&#x724C;&#x9A8C;&#x8BC1;&#xFF0C;&#x4E3A;&#x7A7A;&#x8868;&#x793A;&#x4E0D;&#x5F00;&#x542F;&#xFF0C;&#x5982;&#x679C;&#x4E3A;true&#xFF0C;&#x8868;&#x793A;&#x968F;&#x673A;&#x751F;&#x6210;&#x52A8;&#x6001;&#x4EE4;&#x724C;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>registry</td>
+<td>registry</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>&#x7F3A;&#x7701;&#x5411;&#x6240;&#x6709;registry&#x6CE8;&#x518C;</td>
+<td>&#x914D;&#x7F6E;&#x5173;&#x8054;</td>
+<td>&#x5411;&#x6307;&#x5B9A;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x6CE8;&#x518C;&#xFF0C;&#x5728;&#x591A;&#x4E2A;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x503C;&#x4E3A;&lt;dubbo:registry&gt;&#x7684;id&#x5C5E;&#x6027;&#xFF0C;&#x591A;&#x4E2A;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;ID&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x5C06;&#x8BE5;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x5230;&#x4EFB;&#x4F55;registry&#xFF0C;&#x53EF;&#x5C06;&#x503C;&#x8BBE;&#x4E3A;N/A</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>dynamic</td>
+<td>dynamic</td>
+<td>boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>true</td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x670D;&#x52A1;&#x662F;&#x5426;&#x52A8;&#x6001;&#x6CE8;&#x518C;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x4E3A;false&#xFF0C;&#x6CE8;&#x518C;&#x540E;&#x5C06;&#x663E;&#x793A;&#x540E;disable&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x4EBA;&#x5DE5;&#x542F;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x505C;&#x6B62;&#x65F6;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x53D6;&#x6D88;&#x518C;&#xFF0C;&#x9700;&#x4EBA;&#x5DE5;&#x7981;&#x7528;&#x3002;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>accesslog</td>
+<td>accesslog</td>
+<td>string/boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>false</td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x8BBE;&#x4E3A;true&#xFF0C;&#x5C06;&#x5411;logger&#x4E2D;&#x8F93;&#x51FA;&#x8BBF;&#x95EE;&#x65E5;&#x5FD7;&#xFF0C;&#x4E5F;&#x53EF;&#x586B;&#x5199;&#x8BBF;&#x95EE;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x76F4;&#x63A5;&#x628A;&#x8BBF;&#x95EE;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;&#x6307;&#x5B9A;&#x6587;&#x4EF6;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>owner</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x670D;&#x52A1;&#x8D1F;&#x8D23;&#x4EBA;&#xFF0C;&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x6CBB;&#x7406;&#xFF0C;&#x8BF7;&#x586B;&#x5199;&#x8D1F;&#x8D23;&#x4EBA;&#x516C;&#x53F8;&#x90AE;&#x7BB1;&#x524D;&#x7F00;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>document</td>
+<td>document</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x670D;&#x52A1;&#x6587;&#x6863;URL</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>weight</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x670D;&#x52A1;&#x6743;&#x91CD;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>executes</td>
+<td>executes</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>0</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6BCF;&#x670D;&#x52A1;&#x6BCF;&#x65B9;&#x6CD5;&#x6700;&#x5927;&#x53EF;&#x5E76;&#x884C;&#x6267;&#x884C;&#x8BF7;&#x6C42;&#x6570;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>actives</td>
+<td>default.actives</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>0</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x6BCF;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x6BCF;&#x670D;&#x52A1;&#x6BCF;&#x65B9;&#x6CD5;&#x6700;&#x5927;&#x5E76;&#x53D1;&#x8C03;&#x7528;&#x6570;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td>proxy</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>javassist</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x751F;&#x6210;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x9009;&#xFF1A;jdk/javassist</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>cluster</td>
+<td>default.cluster</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>failover</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x96C6;&#x7FA4;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x9009;&#xFF1A;failover/failfast/failsafe/failback/forking</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>deprecated</td>
+<td>boolean</td>
+<td>&#x53EF;&#x9009;</td>
+<td>false</td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x670D;&#x52A1;&#x662F;&#x5426;&#x8FC7;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x4E3A;true&#xFF0C;&#x6D88;&#x8D39;&#x65B9;&#x5F15;&#x7528;&#x65F6;&#x5C06;&#x6253;&#x5370;&#x670D;&#x52A1;&#x8FC7;&#x65F6;&#x8B66;&#x544A;error&#x65E5;&#x5FD7;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>queues</td>
+<td>queues</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>0</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x7EBF;&#x7A0B;&#x6C60;&#x961F;&#x5217;&#x5927;&#x5C0F;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x6EE1;&#x65F6;&#xFF0C;&#x6392;&#x961F;&#x7B49;&#x5F85;&#x6267;&#x884C;&#x7684;&#x961F;&#x5217;&#x5927;&#x5C0F;&#xFF0C;&#x5EFA;&#x8BAE;&#x4E0D;&#x8981;&#x8BBE;&#x7F6E;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;&#x7A0B;&#x6C60;&#x65F6;&#x5E94;&#x7ACB;&#x5373;&#x5931;&#x8D25;&#xFF0C;&#x91CD;&#x8BD5;&#x5176;&#x5B83;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x673A;&#x5668;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6392;&#x961F;&#xFF0C;&#x9664;&#x975E;&#x6709;&#x7279;&#x6B8A;&#x9700;&#x6C42;&#x3002;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>charset</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td>UTF-8</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x5E8F;&#x5217;&#x5316;&#x7F16;&#x7801;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>buffer</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>8192</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x7F51;&#x7EDC;&#x8BFB;&#x5199;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>iothreads</td>
+<td>iothreads</td>
+<td>int</td>
+<td>&#x53EF;&#x9009;</td>
+<td>CPU + 1</td>
+<td>&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>IO&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x63A5;&#x6536;&#x7F51;&#x7EDC;&#x8BFB;&#x5199;&#x4E2D;&#x65AD;&#xFF0C;&#x4EE5;&#x53CA;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x4E0D;&#x5904;&#x7406;&#x4E1A;&#x52A1;&#xFF0C;&#x4E1A;&#x52A1;&#x7EBF;&#x7A0B;&#x6C60;&#x53C2;&#x89C1;threads&#x914D;&#x7F6E;&#xFF0C;&#x6B64;&#x7EBF;&#x7A0B;&#x6C60;&#x548C;CPU&#x76F8;&#x5173;&#xFF0C;&#x4E0D;&#x5EFA;&#x8BAE;&#x914D;&#x7F6E;&#x3002;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>telnet</td>
+<td>telnet</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x6240;&#x652F;&#x6301;&#x7684;telnet&#x547D;&#x4EE4;&#xFF0C;&#x591A;&#x4E2A;&#x547D;&#x4EE4;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td>2.0.5&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>&lt;dubbo:service&gt;</td>
+<td>contextpath</td>
+<td>contextpath</td>
+<td>String</td>
+<td>&#x53EF;&#x9009;</td>
+<td>&#x7F3A;&#x7701;&#x4E3A;&#x7A7A;&#x4E32;</td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td></td>
+<td>2.0.6&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+<tr>
+<td>layer</td>
+<td>layer</td>
+<td>string</td>
+<td>&#x53EF;&#x9009;</td>
+<td></td>
+<td>&#x670D;&#x52A1;&#x6CBB;&#x7406;</td>
+<td>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6240;&#x5728;&#x7684;&#x5206;&#x5C42;&#x3002;&#x5982;&#xFF1A;biz&#x3001;dao&#x3001;intl:web&#x3001;china:acton&#x3002;</td>
+<td>2.0.7&#x4EE5;&#x4E0A;&#x7248;&#x672C;</td>
+</tr>
+</tbody>
+</table>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../references/xml/dubbo-module.html" class="navigation navigation-prev " aria-label="Previous page: 8.7 dubbo:module"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../references/xml/dubbo-consumer.html" class="navigation navigation-next " aria-label="Next page: 8.9 dubbo:consumer"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-theme-comscore/test.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"splitter":{},"anchors":{},"theme-comscore":{},"codeblock-filename":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book dubbo-user-book -->
+</html>
