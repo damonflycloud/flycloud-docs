@@ -1,0 +1,597 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book GitBook 简明教程 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>绑定域名 | GitBook 简明教程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="flycloud &lt;damonflycloud@126.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-theme-comscore/test.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../customize/index.html" />
+    
+    
+    <link rel="prev" href="../../gitbook.com/config/github.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="4.3.3"
+        data-chapter-title="绑定域名"
+        data-filepath="gitbook.com/config/domain.md"
+        data-basepath="../.."
+        data-revision="Fri Oct 13 2017 09:27:44 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://www.flycloud.me" target="blank" class="custom-link">flycloudf Blog</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="introduction/index.html">
+            
+                
+                    <a href="../../introduction/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="installation/index.html">
+            
+                
+                    <a href="../../installation/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="basic-usage/index.html">
+            
+                
+                    <a href="../../basic-usage/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="gitbook.com/index.html">
+            
+                
+                    <a href="../../gitbook.com/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        GitBook.com
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="gitbook.com/newbook.html">
+            
+                
+                    <a href="../../gitbook.com/newbook.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        新建书籍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="gitbook.com/edit.html">
+            
+                
+                    <a href="../../gitbook.com/edit.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        编辑书籍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="gitbook.com/config.html">
+            
+                
+                    <a href="../../gitbook.com/config.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        配置书籍
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="gitbook.com/config/theme.html">
+            
+                
+                    <a href="../../gitbook.com/config/theme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.1.</b>
+                        
+                        书籍主题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="gitbook.com/config/github.html">
+            
+                
+                    <a href="../../gitbook.com/config/github.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.2.</b>
+                        
+                        GitHub 集成
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.3.3" data-path="gitbook.com/config/domain.html">
+            
+                
+                    <a href="../../gitbook.com/config/domain.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.3.</b>
+                        
+                        绑定域名
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="customize/index.html">
+            
+                
+                    <a href="../../customize/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        个性化配置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="customize/book.json.html">
+            
+                
+                    <a href="../../customize/book.json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        book.json
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="plugins/index.html">
+            
+                
+                    <a href="../../plugins/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        插件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="plugins/theme/index.html">
+            
+                
+                    <a href="../../plugins/theme/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        主题插件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="plugins/theme/comscore.html">
+            
+                
+                    <a href="../../plugins/theme/comscore.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.1.</b>
+                        
+                        comscore
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="plugins/functional/index.html">
+            
+                
+                    <a href="../../plugins/functional/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        实用插件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="plugins/functional/disqus.html">
+            
+                
+                    <a href="../../plugins/functional/disqus.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.1.</b>
+                        
+                        disqus
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="plugins/functional/multipart.html">
+            
+                
+                    <a href="../../plugins/functional/multipart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.2.</b>
+                        
+                        multipart
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="plugins/functional/toggle-chapters.html">
+            
+                
+                    <a href="../../plugins/functional/toggle-chapters.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.3.</b>
+                        
+                        toggle-chapters
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="plugins/functional/codeblock-filename.html">
+            
+                
+                    <a href="../../plugins/functional/codeblock-filename.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.4.</b>
+                        
+                        codeblock-filename
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="github-pages/index.html">
+            
+                
+                    <a href="../../github-pages/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        发布到 GitHub Pages
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >GitBook 简明教程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x7ED1;&#x5B9A;&#x57DF;&#x540D;">&#x7ED1;&#x5B9A;&#x57DF;&#x540D;</h1>
+<p>&#x9664;&#x4E86;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C; <code>http://chengweiv5.gitbooks.io/test/content/index.html</code> &#x5730;&#x5740;&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x7684;&#x4E66;&#x7C4D;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4E3A;&#x6BCF;&#x672C;&#x4E66;&#x7ED1;&#x5B9A;&#x57DF;&#x540D;&#xFF0C;&#x524D;&#x63D0;&#x662F;&#x7528;&#x6237;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x57DF;&#x540D;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x7EE7;&#x7EED;&#x4EE5; test book &#x4E3A;&#x4F8B;&#xFF0C;&#x5C06;&#x5176;&#x7ED1;&#x5B9A;&#x5230; test.chengweiyang.cn&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x7528;&#x6237;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x65B0;&#x7684;&#x57DF;&#x540D;&#x8BBF;&#x95EE;&#x672C;&#x4E66;&#xFF01;</p>
+<h2 id="&#x4FEE;&#x6539;&#x4E66;&#x7C4D;&#x7684;&#x57DF;&#x540D;&#x914D;&#x7F6E;">&#x4FEE;&#x6539;&#x4E66;&#x7C4D;&#x7684;&#x57DF;&#x540D;&#x914D;&#x7F6E;</h2>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5728;&#x4E66;&#x7C4D;&#x7684;&#x5C5E;&#x6027;&#x9875;&#x9762;&#x627E;&#x5230; &quot;Domain Names&quot; &#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="../../assets/gitbook.com/book-property-domain.png" alt="book domain names"></p>
+<p>&#x70B9;&#x51FB; &quot;Domain Names&quot;&#xFF0C;&#x8FDB;&#x5165;&#x914D;&#x7F6E;&#x9875;&#x9762;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="../../assets/gitbook.com/domain-name-config.png" alt="domain name config"></p>
+<p>&#x5206;&#x522B;&#x4E3A;&#x4E66;&#x7C4D;&#x7684;&#x5C01;&#x9762;&#x548C;&#x5185;&#x5BB9;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="../../assets/gitbook.com/domain-name-for-test.png" alt="domain name for test"></p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;&#x8FD9;&#x91CC;&#x53EA;&#x80FD;&#x662F;&#x4E00;&#x4E2A;&#x5408;&#x6CD5;&#x7684;&#x57DF;&#x540D;&#xFF0C;&#x4E0D;&#x80FD;&#x662F;&#x57DF;&#x540D;&#x4E0B;&#x7684;&#x67D0;&#x4E2A;&#x5730;&#x5740;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;<code>chengweiyang.cn/test</code>, <code>chengweiyang.cn/test/content</code>&#x3002;</p>
+<h2 id="&#x914D;&#x7F6E;&#x57DF;&#x540D;">&#x914D;&#x7F6E;&#x57DF;&#x540D;</h2>
+<p>&#x5C06;&#x4E66;&#x7C4D;&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x4FEE;&#x6539;&#x4E3A;&#x4E2A;&#x4EBA;&#x7684;&#x57DF;&#x540D;&#x540E;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x8BA9;&#x4E2A;&#x4EBA;&#x57DF;&#x540D;&#x80FD;&#x591F;&#x627E;&#x5230;&#x4E66;&#x7C4D;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x91CC;&#x53C2;&#x8003; <a href="http://help.gitbook.io/book/domains.html" target="_blank">gitbook &#x6587;&#x6863;</a> &#x6765;&#x914D;&#x7F6E;&#x3002;&#x4E3B;&#x8981;&#x7684;&#x662F;&#x8981;&#x4E3A;&#x4F60;&#x7684;&#x57DF;&#x540D;&#x6DFB;&#x52A0;&#x5B50;&#x57DF;&#x540D; CNAME&#xFF0C;&#x5E76;&#x4E14;&#x6307;&#x5411; gitbook.com&#xFF0C;&#x7136;&#x540E;&#x7B49;&#x5F85;&#x57DF;&#x540D;&#x751F;&#x6548;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x51E0;&#x5206;&#x949F;&#x5230;&#x51E0;&#x5C0F;&#x65F6;&#x4E0D;&#x7B49;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x4E0D;&#x518D;&#x6F14;&#x793A;&#x600E;&#x6837;&#x4E3A;&#x4F60;&#x7684;&#x57DF;&#x540D;&#x6DFB;&#x52A0; CNAME &#x8BB0;&#x5F55;&#xFF0C;&#x5404;&#x4E2A;&#x57DF;&#x540D;&#x670D;&#x52A1;&#x5546;&#x63D0;&#x4F9B;&#x7684;&#x5DE5;&#x5177;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x54A8;&#x8BE2;&#x57DF;&#x540D;&#x63D0;&#x4F9B;&#x5546;&#x83B7;&#x53D6;&#x5E2E;&#x52A9;&#x3002;</p>
+<h2 id="&#x9A8C;&#x8BC1;">&#x9A8C;&#x8BC1;</h2>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>nslookup</code> &#x6765;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x89E3;&#x6790;&#x6210;&#x529F;&#xFF1A;</p>
+<pre><code class="lang-bash">$ nslookup test.chengweiyang.cn
+Server:         <span class="hljs-number">10.11</span>.<span class="hljs-number">50.66</span>
+Address:        <span class="hljs-number">10.11</span>.<span class="hljs-number">50.66</span><span class="hljs-comment">#53</span>
+
+Non-authoritative answer:
+test.chengweiyang.cn    canonical name = www.gitbook.com.
+www.gitbook.com canonical name = saga-<span class="hljs-number">4658</span>.herokussl.com.
+saga-<span class="hljs-number">4658</span>.herokussl.com canonical name = elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com.
+Name:   elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com
+Address: <span class="hljs-number">23.21</span>.<span class="hljs-number">177.67</span>
+Name:   elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com
+Address: <span class="hljs-number">23.21</span>.<span class="hljs-number">212.67</span>
+Name:   elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com
+Address: <span class="hljs-number">23.21</span>.<span class="hljs-number">54.142</span>
+
+$ nslookup content.test.chengweiyang.cn
+Server:         <span class="hljs-number">10.11</span>.<span class="hljs-number">50.65</span>
+Address:        <span class="hljs-number">10.11</span>.<span class="hljs-number">50.65</span><span class="hljs-comment">#53</span>
+
+Non-authoritative answer:
+content.test.chengweiyang.cn    canonical name = www.gitbook.com.
+www.gitbook.com canonical name = saga-<span class="hljs-number">4658</span>.herokussl.com.
+saga-<span class="hljs-number">4658</span>.herokussl.com canonical name = elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com.
+Name:   elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com
+Address: <span class="hljs-number">23.21</span>.<span class="hljs-number">212.67</span>
+Name:   elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com
+Address: <span class="hljs-number">23.21</span>.<span class="hljs-number">54.142</span>
+Name:   elb049689-<span class="hljs-number">1604000308</span>.us-east-<span class="hljs-number">1</span>.elb.amazonaws.com
+Address: <span class="hljs-number">23.21</span>.<span class="hljs-number">177.67</span>
+</code></pre>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x5C06;&#x6D4F;&#x89C8;&#x5668;&#x6307;&#x5411; <code>http://test.chengweiyang.cn</code> &#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E66;&#x7C4D;&#x4E86;&#x3002;</p>
+<p><img src="../../assets/gitbook.com/new-book-domain.png" alt="test book new domain"></p>
+<p>&#x70B9;&#x51FB; &quot;READ&quot; &#x6309;&#x94AE;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x5C06;&#x6D4F;&#x89C8;&#x5668;&#x6307;&#x5411; <code>http://content.test.chengweiyang.cn</code> &#x5C31;&#x53EF;&#x4EE5;&#x9605;&#x8BFB;&#x4E66;&#x7C4D;&#x5185;&#x5BB9;&#x4E86;&#xFF01;</p>
+<p><img src="../../assets/gitbook.com/new-book-content-domain.png" alt="read test book"></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../gitbook.com/config/github.html" class="navigation navigation-prev " aria-label="Previous page: GitHub 集成"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../customize/index.html" class="navigation navigation-next " aria-label="Next page: 个性化配置"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-theme-comscore/test.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"splitter":{},"anchors":{},"theme-comscore":{},"codeblock-filename":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book GitBook 简明教程 -->
+</html>
