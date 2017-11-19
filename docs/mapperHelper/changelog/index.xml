@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>更新日志 on MyBatis 通用 Mapper</title>
-    <link>https://mapperhelper.github.io/changelog/</link>
+    <link>http://docs.flycloud.me/docs/mapperHelper/changelog/</link>
     <description>Recent content in 更新日志 on MyBatis 通用 Mapper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 04 Jun 2017 15:21:18 +0800</lastBuildDate>
     
-	<atom:link href="https://mapperhelper.github.io/changelog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://docs.flycloud.me/docs/mapperHelper/changelog/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

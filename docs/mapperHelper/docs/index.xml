@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MyBatis 通用 Mapper</title>
-    <link>https://mapperhelper.github.io/docs/</link>
+    <link>http://docs.flycloud.me/docs/mapperHelper/docs/</link>
     <description>Recent content on MyBatis 通用 Mapper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 04 Jun 2017 15:21:18 +0800</lastBuildDate>
     
-	<atom:link href="https://mapperhelper.github.io/docs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://docs.flycloud.me/docs/mapperHelper/docs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>1. 集成通用 Mapper</title>
-      <link>https://mapperhelper.github.io/docs/1.integration/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/1.integration/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/1.integration/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/1.integration/</guid>
       <description>添加 Maven 依赖或引入 Jar 包 如果你使用 Maven，只需要添加如下依赖：
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;tk.mybatis&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mapper&amp;lt;/artifactId&amp;gt; &amp;lt;!-- 建议使用最新版本,最新版本请从项目首页查找 --&amp;gt; &amp;lt;version&amp;gt;x.x.x&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  如果你想引入Jar包，你可以从下面的地址下载：
 https://oss.sonatype.org/content/repositories/releases/tk/mybatis/mapper
@@ -30,10 +30,10 @@ http://repo1.maven.org/maven2/javax/persistence/persistence-api/1.0/
     
     <item>
       <title>2. 使用通用 Mapper</title>
-      <link>https://mapperhelper.github.io/docs/2.use/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/2.use/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/2.use/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/2.use/</guid>
       <description>集成方法请看前面的文档，集成后，可以继续阅读本页文档。
 1. 继承通用的Mapper&amp;lt;T&amp;gt;,必须指定泛型&amp;lt;T&amp;gt; 例如下面的例子:
 public interface UserInfoMapper extends Mapper&amp;lt;UserInfo&amp;gt; { //其他必须手写的接口... }  一旦继承了Mapper&amp;lt;T&amp;gt;,继承的Mapper就拥有了Mapper&amp;lt;T&amp;gt;所有的通用方法。
@@ -47,10 +47,10 @@ public interface UserInfoMapper extends Mapper&amp;lt;UserInfo&amp;gt; { //其�
     
     <item>
       <title>3. MyBatis Generator 插件</title>
-      <link>https://mapperhelper.github.io/docs/3.usembg/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/3.usembg/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/3.usembg/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/3.usembg/</guid>
       <description>通用Mapper在1.0.0版本的时候增加了MyBatis Generator(以下简称MBG)插件，使用该插件可以很方便的生成实体类、Mapper接口以及对应的XML文件。
 本篇文档就是讲述如何在MBG中使用该插件。
 首先对MBG不太了解的可以先阅读下面的文档：
@@ -70,10 +70,10 @@ List&amp;lt;String&amp;gt; warnings = new ArrayList&amp;lt;String&amp;gt;(); boo
     
     <item>
       <title>4. UUID 简单示例</title>
-      <link>https://mapperhelper.github.io/docs/3-2.mapper-uuid/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/3-2.mapper-uuid/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/3-2.mapper-uuid/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/3-2.mapper-uuid/</guid>
       <description>通用 Mapper 中对 UUID 的用法主要提到了一种专有的写法，如下写法：
 @GeneratedValue(generator = &amp;quot;UUID&amp;quot;)  这种方式实现很容易理解，就是在你 insert 之前，调用 UUID 的公共方法在 &amp;lt;bind&amp;gt; 标签中生成了一个值，插入到了数据库，由于这个值是临时的，并没有 set 到对象，因此这种方式是不支持回写的。
 由于回写方式很常见，因此用这种方式很难满足要求。
@@ -86,10 +86,10 @@ Config config = new Config(); // 其他配置 // 主键自增回写方法执行�
     
     <item>
       <title>5. 高级用法</title>
-      <link>https://mapperhelper.github.io/docs/5.professional/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/5.professional/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/5.professional/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/5.professional/</guid>
       <description>如果你在使用通用 Mapper 过程中已经得心应手，并且几乎没有遇到过任何问题。那么，你可以看该部分内容。
 如果你对Mapper2已经很熟悉，想使用Mapper3新的方式，你也可以看该部分内容。
 但是在Mapper3相关的文档中，更多是按照Mapper2的方式来讲的。
@@ -107,10 +107,10 @@ public interface MyMapper&amp;lt;T&amp;gt; extends SelectMapper&amp;lt;T&amp;gt;
     
     <item>
       <title>6. 开发自己的通用接口方法</title>
-      <link>https://mapperhelper.github.io/docs/6.mymapper/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/6.mymapper/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/6.mymapper/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/6.mymapper/</guid>
       <description>除了Mapper2中支持的两种方式外（Mapper2扩展文档]
 增加了一种简单的方式，看下面一个例子：
 public interface InsertListMapper&amp;lt;T&amp;gt; { /** * 批量插入，支持数据库自增字段，支持回写 * * @param recordList * @return */ @Options(useGeneratedKeys = true, keyProperty = &amp;quot;id&amp;quot;) @InsertProvider(type = SpecialProvider.class, method = &amp;quot;dynamicSQL&amp;quot;) int insertList(List&amp;lt;T&amp;gt; recordList); }  这是一个批量插入的接口，这里限制自增属性为id。
@@ -120,19 +120,19 @@ public String insertList(MappedStatement ms) { final Class&amp;lt;?&amp;gt; enti
     
     <item>
       <title>7. 3.3.0 版本新增内容使用文档</title>
-      <link>https://mapperhelper.github.io/docs/7.use330/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/7.use330/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/7.use330/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/7.use330/</guid>
       <description>增加对动态表名的支持 新增IDynamicTableName接口： /** * 实现动态表名时，实体类实现该接口 * * @author liuzh * @since 2015-10-28 22:20 */ public interface IDynamicTableName { /** * 获取动态表名 - 这个方法是关键，只要有返回值，不是null和&#39;&#39;，就会用返回值作为表名 * * @return */ String getDynamicTableName(); }  一个动态表名的例子 首先继承 IDynamicTableName 接口： public class Country implements IDynamicTableName { @Id @OrderBy(&amp;quot;desc&amp;quot;) private Integer id; @Column private String countryname; private String countrycode; @Transient//非表字段，字段名称无所谓 private String dynamicTableName123; //省略getter和setter @Override//当该方法返回值不为空时，就会使用返回值作为表名 public String getDynamicTableName() { return dynamicTableName123; } public void setDynamicTableName(String dynamicTableName) { this.</description>
     </item>
     
     <item>
       <title>8. Mapper2 升级 3 注意事项</title>
-      <link>https://mapperhelper.github.io/docs/8.updateto3/</link>
+      <link>http://docs.flycloud.me/docs/mapperHelper/docs/8.updateto3/</link>
       <pubDate>Sun, 04 Jun 2017 15:21:18 +0800</pubDate>
       
-      <guid>https://mapperhelper.github.io/docs/8.updateto3/</guid>
+      <guid>http://docs.flycloud.me/docs/mapperHelper/docs/8.updateto3/</guid>
       <description>Mapper2.x 升级 Mapper 3 注意事项
 ##如果你只用到了Mapper&amp;lt;T&amp;gt;`接口，那么可以直接升级到3.0.0版本
 可以下载新的Jar替换，或者直接把Maven中Mapper的版本号改为3.0.0
