@@ -7,7 +7,7 @@ function getJson() {
     $.getJSON("./static/json/docs.json",function(data){
         $.each( data, function(i,item) {
             var middle="";
-            if(item.middle==null||item.middle==false){
+            if(item.middle==null||item.middle==true){
                 middle="<h2><span>"+item.title+"</span></h2>";
             }
             var listItem="<div class='list-item'><dl class='m-manual-item manual-item-standard'><dt><a class='e-cover' "+"href='"+ item.href+"' target='_blank'>" +
