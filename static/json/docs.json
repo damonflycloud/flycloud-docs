@@ -12,5 +12,6 @@
   {"href":"/docs/gitbook","img":"./static/img/gitbook.gif","title":"gitbook","middle":false},
   {"href":"/docs/Spring-Boot-Reference-Guide","img":"./static/img/spring-boot.jpg","title":"Spring-Boot","middle":false},
   {"href":"/docs/IntelliJ-IDEA-Tutorial","img":"./static/img/idea.jpg","title":"IntelliJ-IDEA","middle":false},
-  {"href":"/docs/mapperHelper","img":"./static/img/mapper.jpg","title":"mapperHelper","middle":true}
+  {"href":"/docs/mapperHelper","img":"./static/img/mapper.jpg","title":"mapperHelper","middle":true},
+  {"href":"/docs/spring-boot-starter","img":"./static/img/mapper.jpg","title":"mybatis-spring-boot-starter","middle":true}
 ]
